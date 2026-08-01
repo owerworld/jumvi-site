@@ -3,970 +3,609 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>JUMVI™ — Toss &amp; Catch Game Set with 36 Guided Missions | Ages 3–8</title>
-<meta name="description" content="JUMVI is the hook-and-loop toss & catch paddle set with a built-in mission system: 36 guided games, Coach Leo, streaks, badges and a printable Champion Certificate. CPSIA & ASTM F963 tested. Ages 3–8. Available on Amazon." />
+<title>JUMVI™ Toss &amp; Catch Set — 36 Guided Missions | Ages 3–8</title>
+<meta name="description" content="The hook-and-loop toss & catch paddle set with 36 guided missions, Coach Leo, badges and a printable Champion Certificate. 4 paddles, 4 balls, mesh bag. CPSIA & ASTM F963-23 tested. Ages 3–8." />
 <link rel="canonical" href="https://jumvi.co/" />
 <meta property="og:title" content="JUMVI™ — Toss. Catch. Level up." />
 <meta property="og:description" content="The toss & catch set with 36 guided missions that grow with your kid — from first catch to champion. Ages 3–8." />
-<meta property="og:image" content="https://jumvi.co/assets/img/og.jpg" />
-<meta property="og:type" content="website" />
+<meta property="og:image" content="https://jumvi.co/assets/g-hero.jpg" />
+<meta property="og:type" content="product" />
 <meta property="og:url" content="https://jumvi.co/" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="theme-color" content="#0B2340" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#0B2340;
-    --navy-2:#122E52;
-    --sky:#2FB6E8;
-    --lime:#8BD450;
-    --orange:#FF8A1E;
-    --sand:#FBF3E1;
-    --sand-2:#F5E7CC;
-    --ink:#122036;
-    --ink-soft:#4A5A72;
-    --white:#FFFFFF;
-    --line:#E7DFC9;
-    --shadow: 0 12px 30px rgba(11,35,64,.12);
-    --shadow-lg: 0 24px 60px rgba(11,35,64,.18);
-    --radius:20px;
-    --radius-sm:12px;
-    --maxw:1180px;
-    --display:'Baloo 2', system-ui, sans-serif;
-    --body:'Nunito', system-ui, sans-serif;
+    --navy:#0B2340; --navy-2:#122E52; --sky:#2FB6E8; --lime:#8BD450;
+    --orange:#FF8A1E; --sand:#FBF3E1; --sand-2:#F5E7CC; --ink:#122036;
+    --ink-soft:#4A5A72; --white:#fff; --line:#E7DFC9;
+    --shadow:0 12px 30px rgba(11,35,64,.12); --shadow-lg:0 24px 60px rgba(11,35,64,.18);
+    --r:20px; --r-sm:12px; --maxw:1180px;
+    --display:'Baloo 2',system-ui,sans-serif; --body:'Nunito',system-ui,sans-serif;
   }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    font-family:var(--body);
-    color:var(--ink);
-    background:var(--sand);
-    -webkit-font-smoothing:antialiased;
-  }
-  img{max-width:100%;display:block;}
-  a{color:inherit;text-decoration:none;}
-  h1,h2,h3{font-family:var(--display);margin:0;color:var(--navy);}
-  p{margin:0;line-height:1.55;}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
-  section{padding:88px 0;}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;
-    font-family:var(--display);font-weight:700;font-size:13px;
-    letter-spacing:.04em;text-transform:uppercase;color:var(--navy);
-    background:var(--sand-2);border:1px solid var(--line);
-    padding:6px 14px;border-radius:999px;
-  }
-  .h2{font-size:clamp(28px,4vw,42px);line-height:1.12;margin-top:14px;}
-  .lead{font-size:18px;color:var(--ink-soft);margin-top:14px;max-width:640px;}
-  .btn{
-    font-family:var(--display);font-weight:700;font-size:16px;
-    padding:15px 26px;border-radius:999px;display:inline-flex;
-    align-items:center;gap:8px;border:none;cursor:pointer;
-    transition:transform .15s ease, box-shadow .15s ease;
-    white-space:nowrap;
-  }
-  .btn:focus-visible{outline:3px solid var(--sky);outline-offset:2px;}
-  .btn:hover{transform:translateY(-2px);}
-  .btn-primary{
-    background:linear-gradient(135deg, var(--orange), #FFB25C);
-    color:var(--navy); box-shadow:0 10px 24px rgba(255,138,30,.35);
-  }
-  .btn-secondary{
-    background:var(--white); color:var(--navy);
-    border:2px solid var(--navy); 
-  }
-  .btn-ghost{background:transparent;color:var(--navy);border:2px solid rgba(11,35,64,.15);}
-  .btn-mission{
-    background:var(--sky); color:var(--white);
-    box-shadow:0 10px 24px rgba(47,182,232,.35);
-    padding:13px 24px 13px 14px;
-  }
-  .btn-mission:hover{box-shadow:0 14px 28px rgba(47,182,232,.45);}
-  .btn-mascot{height:32px;width:auto;border-radius:50%;background:var(--white);padding:2px;}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--body);color:var(--ink);background:var(--sand);-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,h4{font-family:var(--display);margin:0;color:var(--navy)}
+  p{margin:0;line-height:1.55}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  section{padding:72px 0}
+  @media(max-width:700px){section{padding:52px 0}}
 
-  .hero-mascot{
-    position:absolute; left:-26px; bottom:-22px; width:112px; height:auto;
-    filter:drop-shadow(0 10px 16px rgba(11,35,64,.25));
-    transform:rotate(-6deg);
-  }
-  .promise-mascot{
-    position:absolute; right:-18px; bottom:-24px; width:150px; height:auto;
-    filter:drop-shadow(0 10px 18px rgba(11,35,64,.28));
-    transform:rotate(5deg);
-  }
-  @media(max-width:900px){
-    .hero-mascot{width:84px;left:-10px;bottom:-14px;}
-    .promise-mascot{width:110px;right:-8px;bottom:-14px;}
-  }
-  .modal-mascot{width:96px;height:auto;margin:0 auto 6px;filter:drop-shadow(0 8px 14px rgba(11,35,64,.2));}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;
+    font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--navy);
+    background:var(--sand-2);border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+  .h2{font-size:clamp(26px,4vw,40px);line-height:1.12;margin-top:14px}
+  .lead{font-size:17px;color:var(--ink-soft);margin-top:12px;max-width:640px}
+  .center{text-align:center}
+  .center .lead{margin-left:auto;margin-right:auto}
 
-  /* ---------- NAV ---------- */
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(251,243,225,.92);backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:var(--maxw);margin:0 auto;}
-  .brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:20px;color:var(--navy);}
-  .brand img{height:34px;width:auto;}
-  .nav-links{display:flex;gap:28px;font-weight:700;font-size:15px;}
-  .nav-links a{padding:8px 2px;border-bottom:2px solid transparent;}
-  .nav-links a:hover{border-color:var(--orange);}
-  .nav-right{display:flex;align-items:center;gap:14px;}
-  .hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;}
-  .hamburger span{display:block;width:24px;height:3px;background:var(--navy);margin:5px 0;border-radius:2px;}
-  .mobile-menu{
-    display:none;flex-direction:column;gap:2px;
-    background:var(--white);border-top:1px solid var(--line);
-    padding:8px 24px 18px;
-  }
-  .mobile-menu.open{display:flex;}
-  .mobile-menu a{padding:12px 0;font-weight:700;border-bottom:1px solid var(--line);}
-  .mobile-menu .btn{margin-top:12px;justify-content:center;}
+  .btn{font-family:var(--display);font-weight:700;font-size:16px;padding:15px 26px;border-radius:999px;
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;cursor:pointer;
+    transition:transform .15s,box-shadow .15s;white-space:nowrap}
+  .btn:hover{transform:translateY(-2px)}
+  .btn:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+  .btn-primary{background:linear-gradient(135deg,var(--orange),#FFB25C);color:var(--navy);box-shadow:0 10px 24px rgba(255,138,30,.35)}
+  .btn-mission{background:var(--sky);color:#fff;box-shadow:0 10px 24px rgba(47,182,232,.32);padding:14px 22px 14px 14px}
+  .btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4)}
+  .btn-mascot{height:30px;width:auto;border-radius:50%;background:#fff;padding:2px}
 
-  @media(max-width:860px){
-    .nav-links{display:none;}
-    .nav-right .btn-primary{display:none;}
-    .hamburger{display:block;}
-  }
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(251,243,225,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:var(--maxw);margin:0 auto}
+  .nav .brand img{height:32px;width:auto}
+  .nav-links{display:flex;gap:26px;font-weight:700;font-size:14.5px}
+  .nav-links a{padding:6px 2px;border-bottom:2px solid transparent}
+  .nav-links a:hover{border-color:var(--orange)}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px}
+  .hamburger span{display:block;width:24px;height:3px;background:var(--navy);margin:5px 0;border-radius:2px}
+  .mobile-menu{display:none;flex-direction:column;background:#fff;border-top:1px solid var(--line);padding:6px 20px 16px}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a{padding:12px 0;font-weight:700;border-bottom:1px solid var(--line)}
+  .mobile-menu .btn{margin-top:12px}
+  @media(max-width:880px){.nav-links{display:none}.nav-right .btn{display:none}.hamburger{display:block}}
 
-  /* ---------- HERO ---------- */
-  .hero{padding:64px 0 40px;}
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
-  .hero h1{font-size:clamp(38px,6vw,64px);line-height:1.04;margin-top:16px;}
-  .hero h1 .accent{color:var(--sky);}
-  .hero-lead{font-size:19px;color:var(--ink-soft);margin-top:18px;max-width:520px;}
-  .hero-ctas{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;}
-  .hero-badges{display:flex;gap:22px;flex-wrap:wrap;margin-top:30px;}
-  .hero-badges span{font-size:14px;font-weight:700;color:var(--navy-2);display:flex;align-items:center;gap:7px;}
-  .hero-badges span::before{content:"✓";color:var(--lime);font-weight:900;}
-  .hero-art{position:relative;}
-  .hero-art img{border-radius:var(--radius);box-shadow:var(--shadow-lg);}
-  .hero-chip{
-    position:absolute;top:-16px;right:-12px;background:var(--navy);color:var(--white);
-    font-family:var(--display);font-weight:700;font-size:14px;line-height:1.2;
-    padding:12px 16px;border-radius:16px;box-shadow:var(--shadow);
-    text-align:center;
-  }
-  .hero-chip small{display:block;font-family:var(--body);font-weight:600;opacity:.75;font-size:11px;letter-spacing:.04em;text-transform:uppercase;}
-  @media(max-width:900px){
-    .hero-grid{grid-template-columns:1fr;gap:36px;}
-    .hero-chip{display:none;}
-  }
+  /* PDP */
+  .pdp{padding:32px 0 56px}
+  .pdp-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .pdp-gallery{position:sticky;top:80px}
+  .pdp-main{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-lg);background:#fff;border:1px solid var(--line);aspect-ratio:1/1}
+  .pdp-main img{width:100%;height:100%;object-fit:cover}
+  .pdp-thumbs{display:flex;gap:9px;margin-top:12px;overflow-x:auto;padding:4px 2px;scrollbar-width:thin}
+  .pdp-thumbs::-webkit-scrollbar{height:5px}
+  .pdp-thumbs::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
+  .pdp-thumbs button{flex:none;width:66px;height:66px;padding:0;border-radius:11px;overflow:hidden;
+    border:2.5px solid transparent;cursor:pointer;background:#fff;box-shadow:var(--shadow)}
+  .pdp-thumbs button.active{border-color:var(--sky)}
+  .pdp-thumbs img{width:100%;height:100%;object-fit:cover}
 
-  .skill-strip{
-    display:flex;flex-wrap:wrap;gap:10px;margin-top:44px;
-  }
-  .skill-strip span{
-    font-size:12.5px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;
-    background:var(--white);border:1.5px solid var(--line);color:var(--navy-2);
-    padding:8px 14px;border-radius:999px;
-  }
+  .pdp-buy h1{font-size:clamp(30px,4.2vw,46px);line-height:1.06;margin-top:12px}
+  .pdp-buy h1 .accent{color:var(--sky)}
+  .stars{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:14px;font-weight:700;color:var(--ink-soft)}
+  .stars b{color:var(--navy)}
+  .pdp-lead{font-size:16.5px;color:var(--ink-soft);margin-top:14px}
+  .kit{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .kit span{background:var(--navy);color:var(--sand);font-family:var(--display);font-weight:700;
+    font-size:12.5px;padding:7px 14px;border-radius:999px}
+  .feats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+  .feat{display:flex;align-items:center;gap:10px;background:var(--sand);border:1px solid var(--line);
+    border-radius:var(--r-sm);padding:12px 13px;font-size:13.5px;font-weight:700;color:var(--navy-2)}
+  .feat .i{font-size:19px;flex:none}
+  .buy-ctas{margin-top:24px;display:flex;flex-direction:column;gap:11px}
+  .buy-ctas .btn{width:100%;padding:18px;font-size:17px}
+  .buy-ctas .btn-mission{padding:15px;font-size:15px}
+  .steps3{display:flex;align-items:center;gap:4px;margin-top:24px;background:var(--sand-2);border-radius:var(--r-sm);padding:15px 8px}
+  .steps3 .s{flex:1;text-align:center;font-size:11.5px;font-weight:800;color:var(--navy-2)}
+  .steps3 .s .i{font-size:21px;display:block;margin-bottom:3px}
+  .steps3 .a{color:#C7BFA6;font-size:16px}
+  .trust{margin-top:14px;text-align:center;font-size:12.5px;color:var(--ink-soft);font-weight:700}
+  @media(max-width:900px){.pdp-grid{grid-template-columns:1fr;gap:26px}.pdp-gallery{position:static}}
 
-  /* ---------- PDP GALLERY + BUY BOX ---------- */
-  .pdp{padding:40px 0 64px;}
-  .pdp-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;}
-  .pdp-gallery{position:relative;}
-  .pdp-main{
-    border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-lg);
-    background:var(--white); border:1px solid var(--line); aspect-ratio:1/1;
-  }
-  .pdp-main img{width:100%;height:100%;object-fit:cover;display:block;}
-  .pdp-mascot{
-    position:absolute; left:-22px; bottom:-20px; width:100px; height:auto;
-    filter:drop-shadow(0 10px 16px rgba(11,35,64,.25)); transform:rotate(-6deg);
-  }
-  .pdp-thumbs{display:flex;gap:10px;margin-top:14px;overflow-x:auto;padding:4px 2px;}
-  .pdp-thumbs button{
-    flex:none; width:72px; height:72px; padding:0; border-radius:12px; overflow:hidden;
-    border:2.5px solid transparent; cursor:pointer; background:var(--white); box-shadow:var(--shadow);
-  }
-  .pdp-thumbs button.active{border-color:var(--sky);}
-  .pdp-thumbs img{width:100%;height:100%;object-fit:cover;display:block;}
+  /* BANNER */
+  .banner img{width:100%;border-radius:var(--r);box-shadow:var(--shadow)}
+  .banner-flush{padding-top:0}
 
-  .pdp-buybox{padding-top:4px;}
-  .pdp-buybox h1{font-size:clamp(32px,4.4vw,50px);line-height:1.06;margin-top:14px;}
-  .pdp-buybox h1 .accent{color:var(--sky);}
-  .pdp-lead{font-size:17px;color:var(--ink-soft);margin-top:14px;}
-  .buy-feature-grid{
-    display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:24px;
-  }
-  .buy-feature{
-    display:flex; align-items:center; gap:10px; background:var(--sand);
-    border:1px solid var(--line); border-radius:var(--radius-sm); padding:12px 14px;
-    font-size:13.5px; font-weight:700; color:var(--navy-2);
-  }
-  .buy-feature .ico{font-size:20px;flex:none;}
-  .buy-ctas{margin-top:26px;display:flex;flex-direction:column;gap:12px;}
-  .buy-ctas .btn{width:100%;justify-content:center;padding:18px;font-size:17px;}
-  .buy-ctas .btn-mission{padding:15px;font-size:15px;}
-  .ship-steps{
-    display:flex; align-items:center; gap:6px; margin-top:28px;
-    background:var(--sand-2); border-radius:var(--radius-sm); padding:16px 10px;
-  }
-  .ship-step{flex:1; text-align:center; font-size:12px; font-weight:800; color:var(--navy-2);}
-  .ship-step .ico{font-size:22px;display:block;margin-bottom:4px;}
-  .ship-arrow{color:var(--line);font-size:18px;flex:none;}
-  .trust-row{
-    margin-top:16px; text-align:center; font-size:12.5px; color:var(--ink-soft); font-weight:700;
-  }
-  @media(max-width:900px){
-    .pdp-grid{grid-template-columns:1fr;gap:28px;}
-    .pdp-mascot{width:76px;left:-10px;bottom:-12px;}
-  }
+  /* CARDS GRID */
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px 20px}
+  .card .i{font-size:28px}
+  .card h3{font-size:17px;margin-top:10px}
+  .card p{margin-top:7px;font-size:14px;color:var(--ink-soft)}
+  @media(max-width:900px){.grid4{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:1fr}}
+  @media(max-width:520px){.grid4{grid-template-columns:1fr 1fr;gap:12px}.card{padding:18px 15px}.card h3{font-size:15px}.card p{font-size:13px}}
 
-  /* ---------- FEATURE GRID ---------- */
-  .features{background:var(--white);}
-  .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:20px;}
-  .feature-card{
-    background:var(--sand);border:1px solid var(--line);border-radius:var(--radius);
-    padding:26px 22px;
-  }
-  .feature-card .ico{font-size:30px;}
-  .feature-card h3{font-size:18px;margin-top:12px;}
-  .feature-card p{margin-top:8px;font-size:14.5px;color:var(--ink-soft);}
-  @media(max-width:900px){.feature-grid{grid-template-columns:1fr 1fr;}}
-  @media(max-width:560px){.feature-grid{grid-template-columns:1fr;}}
+  /* SPLIT */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .split img{border-radius:var(--r);box-shadow:var(--shadow)}
+  @media(max-width:900px){.split{grid-template-columns:1fr;gap:26px}.split .art{order:-1}}
 
-  /* ---------- HOW IT WORKS ---------- */
-  .how-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center;margin-top:44px;}
-  .step{display:flex;gap:18px;margin-bottom:30px;}
-  .step:last-child{margin-bottom:0;}
-  .step-num{
-    flex:none;width:44px;height:44px;border-radius:50%;
-    background:var(--navy);color:var(--white);font-family:var(--display);font-weight:800;
-    display:flex;align-items:center;justify-content:center;font-size:18px;
-  }
-  .step h3{font-size:19px;}
-  .step p{color:var(--ink-soft);margin-top:6px;font-size:15px;}
-  .how-art img{border-radius:var(--radius);box-shadow:var(--shadow);}
-  @media(max-width:900px){.how-grid{grid-template-columns:1fr;}}
+  /* STEPS */
+  .step{display:flex;gap:16px;margin-bottom:26px}
+  .step:last-child{margin-bottom:0}
+  .step-n{flex:none;width:42px;height:42px;border-radius:50%;background:var(--navy);color:#fff;
+    font-family:var(--display);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:17px}
+  .step h3{font-size:18px}
+  .step p{color:var(--ink-soft);margin-top:5px;font-size:14.5px}
 
-  /* ---------- MISSIONS ---------- */
-  .missions{background:var(--navy);color:var(--sand);}
-  .missions .eyebrow{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:var(--sand);}
-  .missions h2{color:var(--white);}
-  .missions .lead{color:rgba(251,243,225,.75);}
-  .pack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;}
-  .pack-card{
-    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
-    border-radius:var(--radius-sm);padding:22px;
-  }
-  .pack-card .ico{font-size:26px;}
-  .pack-card h4{font-family:var(--display);color:var(--white);font-size:16.5px;margin-top:10px;}
-  .missions-art{margin-top:48px;}
-  .missions-art img{border-radius:var(--radius);box-shadow:var(--shadow-lg);}
-  @media(max-width:860px){.pack-grid{grid-template-columns:1fr 1fr;}}
-  @media(max-width:560px){.pack-grid{grid-template-columns:1fr;}}
+  /* MISSIONS DARK */
+  .dark{background:var(--navy);color:var(--sand)}
+  .dark h2,.dark h3,.dark h4{color:#fff}
+  .dark .eyebrow{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:var(--sand)}
+  .dark .lead{color:rgba(251,243,225,.75)}
+  .dark .card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
+  .dark .card p{color:rgba(251,243,225,.7)}
+  .packs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+  .pack{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-sm);padding:18px}
+  .pack .i{font-size:24px}
+  .pack h4{font-size:15.5px;margin-top:8px}
+  @media(max-width:860px){.packs{grid-template-columns:1fr 1fr}}
 
-  /* ---------- PROMISE / NO SCREENS ---------- */
-  .promise{background:var(--white);}
-  .promise-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
-  .promise-art img{border-radius:var(--radius);box-shadow:var(--shadow);}
-  @media(max-width:900px){.promise-grid{grid-template-columns:1fr;}.promise-grid .promise-art{order:-1;}}
+  /* LEVELS */
+  .levels{background:var(--sand-2)}
+  .lvl{background:#fff;border-radius:var(--r);padding:26px;border-top:6px solid var(--sky);box-shadow:var(--shadow)}
+  .lvl:nth-child(2){border-top-color:var(--lime)}
+  .lvl:nth-child(3){border-top-color:var(--orange)}
+  .lvl .tag{font-size:12.5px;font-weight:800;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.03em}
+  .lvl h3{font-size:21px;margin-top:7px}
+  .lvl p{margin-top:9px;color:var(--ink-soft);font-size:14.5px}
+  .cert{margin-top:28px;background:#fff;border-radius:var(--r-sm);padding:18px 22px;font-weight:700;
+    font-family:var(--display);color:var(--navy);display:flex;align-items:center;gap:12px;font-size:15.5px;box-shadow:var(--shadow)}
 
-  /* ---------- BUILT FOR REAL PLAY ---------- */
-  .quality-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px;}
-  .quality-card{
-    background:var(--white);border:1px solid var(--line);border-radius:var(--radius-sm);
-    padding:24px;
-  }
-  .quality-card .ico{font-size:26px;}
-  .quality-card h3{font-size:16.5px;margin-top:10px;}
-  .quality-card p{font-size:14px;color:var(--ink-soft);margin-top:6px;}
-  .quality-art{margin-top:40px;}
-  .quality-art img{border-radius:var(--radius);box-shadow:var(--shadow);}
-  @media(max-width:900px){.quality-grid{grid-template-columns:1fr 1fr;}}
-  @media(max-width:560px){.quality-grid{grid-template-columns:1fr;}}
+  /* CHECKS */
+  .checks{margin-top:24px;display:flex;flex-direction:column;gap:16px}
+  .chk{display:flex;gap:13px}
+  .chk .c{flex:none;width:26px;height:26px;border-radius:50%;background:var(--lime);color:var(--navy);
+    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px}
+  .chk h4{font-size:15.5px}
+  .chk p{color:var(--ink-soft);font-size:14px;margin-top:2px}
 
-  /* ---------- LEVELS ---------- */
-  .levels{background:var(--sand-2);}
-  .level-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px;}
-  .level-card{
-    background:var(--white);border-radius:var(--radius);padding:28px;
-    border-top:6px solid var(--sky);box-shadow:var(--shadow);
-  }
-  .level-card:nth-child(2){border-top-color:var(--lime);}
-  .level-card:nth-child(3){border-top-color:var(--orange);}
-  .level-tag{font-size:13px;font-weight:800;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.03em;}
-  .level-card h3{font-size:22px;margin-top:8px;}
-  .level-card p{margin-top:10px;color:var(--ink-soft);font-size:15px;}
-  .level-cert{
-    margin-top:36px;background:var(--white);border-radius:var(--radius-sm);
-    padding:20px 24px;font-weight:700;font-family:var(--display);color:var(--navy);
-    display:flex;align-items:center;gap:12px;font-size:16px;box-shadow:var(--shadow);
-  }
-  @media(max-width:860px){.level-grid{grid-template-columns:1fr;}}
+  /* TABLE */
+  .cmp table{width:100%;border-collapse:collapse;margin-top:30px;background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+  .cmp th,.cmp td{padding:14px 16px;text-align:center;font-size:14px;border-bottom:1px solid var(--line)}
+  .cmp th:first-child,.cmp td:first-child{text-align:left;font-weight:700;color:var(--navy)}
+  .cmp thead th{background:var(--navy);color:#fff;font-family:var(--display);font-size:13.5px}
+  .cmp .y{color:#5EA82C;font-weight:900;font-size:16px}
+  .cmp .n{color:#C7BFA6;font-weight:900}
+  @media(max-width:520px){.cmp th,.cmp td{padding:11px 9px;font-size:12.5px}}
 
-  /* ---------- ADVENTURES ---------- */
-  .adventures-art img{border-radius:var(--radius);box-shadow:var(--shadow-lg);margin-top:36px;}
+  /* FAQ */
+  .faq{margin-top:32px;display:flex;flex-direction:column;gap:11px}
+  .faq details{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden}
+  .faq summary{cursor:pointer;padding:17px 20px;font-family:var(--display);font-weight:700;color:var(--navy);
+    font-size:15.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";font-size:21px;color:var(--orange);font-weight:800;flex:none}
+  .faq details[open] summary::after{content:"–"}
+  .faq .a{padding:0 20px 18px;color:var(--ink-soft);font-size:14.5px;line-height:1.6}
 
-  /* ---------- PARENTS ---------- */
-  .parents{background:var(--white);}
-  .parents-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
-  .parent-points{margin-top:28px;display:flex;flex-direction:column;gap:20px;}
-  .parent-point{display:flex;gap:14px;}
-  .parent-point .check{
-    flex:none;width:28px;height:28px;border-radius:50%;background:var(--lime);
-    color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;
-  }
-  .parent-point h4{font-family:var(--display);font-size:16px;color:var(--navy);}
-  .parent-point p{color:var(--ink-soft);font-size:14.5px;margin-top:3px;}
-  .parents-art img{border-radius:var(--radius);box-shadow:var(--shadow);}
-  @media(max-width:900px){.parents-grid{grid-template-columns:1fr;}.parents-grid .parents-art{order:-1;}}
+  /* FINAL CTA */
+  .final{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;text-align:center}
+  .final h2{color:#fff}
+  .final .lead{color:rgba(251,243,225,.8);margin:12px auto 0}
+  .final .ctas{display:flex;gap:12px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+  .final small{display:block;margin-top:16px;color:rgba(251,243,225,.55);font-size:12.5px}
 
-  /* ---------- WHATS IN BOX ---------- */
-  .box{background:var(--sand-2);}
-  .box-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:20px;}
-  .box-list{display:flex;flex-direction:column;gap:18px;}
-  .box-item{display:flex;gap:14px;background:var(--white);border-radius:var(--radius-sm);padding:16px 18px;box-shadow:var(--shadow);}
-  .box-item .check{flex:none;width:26px;height:26px;border-radius:50%;background:var(--sky);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;}
-  .box-item h4{font-family:var(--display);font-size:15.5px;color:var(--navy);}
-  .box-item p{font-size:13.5px;color:var(--ink-soft);margin-top:2px;}
-  .box-flags{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap;}
-  .box-flags span{background:var(--navy);color:var(--sand);font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.03em;padding:8px 14px;border-radius:999px;}
-  .box-art img{border-radius:var(--radius);box-shadow:var(--shadow);}
-  @media(max-width:900px){.box-grid{grid-template-columns:1fr;}.box-grid .box-art{order:-1;}}
+  /* NEWSLETTER */
+  .news{background:var(--sand-2)}
+  .news-box{background:#fff;border-radius:var(--r);padding:34px;display:flex;align-items:center;
+    justify-content:space-between;gap:26px;flex-wrap:wrap;box-shadow:var(--shadow)}
+  .news-box form{display:flex;gap:10px;flex-wrap:wrap}
+  .news-box input{padding:14px 18px;border-radius:999px;border:2px solid var(--line);font-family:var(--body);font-size:15px;min-width:210px}
+  .news-box input:focus-visible{outline:3px solid var(--sky)}
 
-  /* ---------- COMPARE TABLE ---------- */
-  .compare table{width:100%;border-collapse:collapse;margin-top:34px;background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
-  .compare th,.compare td{padding:16px 20px;text-align:center;font-size:14.5px;border-bottom:1px solid var(--line);}
-  .compare th:first-child,.compare td:first-child{text-align:left;font-weight:700;color:var(--navy);}
-  .compare thead th{background:var(--navy);color:var(--white);font-family:var(--display);font-size:14px;}
-  .compare td.yes{color:var(--lime);font-weight:900;font-size:17px;}
-  .compare td.no{color:#C7BFA6;font-weight:900;}
-  .compare-note{font-size:12.5px;color:var(--ink-soft);margin-top:10px;}
-  .compare-art img{margin-top:32px;border-radius:var(--radius);box-shadow:var(--shadow);}
+  /* FOOTER */
+  footer{background:var(--navy);color:rgba(251,243,225,.75);padding:52px 0 26px}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:34px}
+  .foot h5{font-family:var(--display);color:#fff;font-size:13.5px;letter-spacing:.03em;text-transform:uppercase;margin-bottom:12px}
+  .foot a{display:block;padding:5px 0;font-size:14px}
+  .foot-brand{font-family:var(--display);font-weight:800;font-size:19px;color:#fff}
+  .foot-desc{margin-top:12px;font-size:14px;max-width:270px}
+  .warn{margin-top:36px;padding:15px 18px;background:rgba(255,138,30,.12);border:1px solid rgba(255,138,30,.35);
+    border-radius:var(--r-sm);font-size:12.5px;font-weight:700;color:#FFC98A}
+  .foot-b{margin-top:24px;font-size:12px;opacity:.6;border-top:1px solid rgba(255,255,255,.1);padding-top:18px}
+  @media(max-width:860px){.foot{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.foot{grid-template-columns:1fr}}
 
-  /* ---------- FAQ ---------- */
-  .faq-list{margin-top:36px;display:flex;flex-direction:column;gap:12px;}
-  .faq-item{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;}
-  .faq-item summary{
-    cursor:pointer;padding:18px 22px;font-family:var(--display);font-weight:700;
-    color:var(--navy);font-size:15.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;
-  }
-  .faq-item summary::-webkit-details-marker{display:none;}
-  .faq-item summary::after{content:"+";font-size:22px;color:var(--orange);font-weight:800;}
-  .faq-item[open] summary::after{content:"–";}
-  .faq-item .a{padding:0 22px 20px;color:var(--ink-soft);font-size:14.5px;line-height:1.6;}
+  /* STICKY MOBILE CTA */
+  .sticky{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:#fff;
+    border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    box-shadow:0 -8px 24px rgba(11,35,64,.14)}
+  .sticky .row{display:flex;align-items:center;gap:11px}
+  .sticky .info{flex:1;min-width:0}
+  .sticky .info strong{display:block;font-family:var(--display);color:var(--navy);font-size:13.5px}
+  .sticky .info span{font-size:11.5px;color:var(--ink-soft)}
+  .sticky .btn{padding:13px 20px;font-size:14.5px}
+  @media(max-width:760px){.sticky{display:block}body{padding-bottom:72px}}
 
-  /* ---------- FINAL CTA ---------- */
-  .final-cta{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:var(--white);text-align:center;}
-  .final-cta h2{color:var(--white);}
-  .final-cta .lead{color:rgba(251,243,225,.8);margin:14px auto 0;}
-  .final-cta .ctas{display:flex;gap:14px;justify-content:center;margin-top:30px;flex-wrap:wrap;}
-  .final-cta small{display:block;margin-top:18px;color:rgba(251,243,225,.55);font-size:13px;}
+  /* MODAL */
+  .ov{display:none;position:fixed;inset:0;background:rgba(11,35,64,.62);z-index:100;align-items:center;
+    justify-content:center;padding:18px;backdrop-filter:blur(3px)}
+  .ov.open{display:flex}
+  .modal{background:#fff;border-radius:var(--r);max-width:470px;width:100%;padding:26px 22px 28px;
+    text-align:center;box-shadow:var(--shadow-lg);position:relative;max-height:88vh;overflow-y:auto}
+  .modal .x{position:absolute;top:12px;right:14px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink-soft);z-index:2}
+  .modal-leo{width:88px;margin:0 auto 4px;filter:drop-shadow(0 8px 14px rgba(11,35,64,.2))}
+  .modal h3{font-size:19px}
+  .modal p{margin-top:9px;color:var(--ink-soft);font-size:14px}
+  .carousel{display:flex;gap:13px;overflow-x:auto;scroll-snap-type:x mandatory;margin:16px -3px 4px;padding:4px 3px}
+  .carousel::-webkit-scrollbar{height:5px}
+  .carousel::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
+  .slide{flex:none;width:160px;scroll-snap-align:center}
+  .slide img{width:100%;border-radius:14px;border:5px solid var(--navy);box-shadow:var(--shadow)}
+  .slide span{display:block;margin-top:7px;font-size:12px;font-weight:800;color:var(--navy)}
+  .unlock{margin-top:18px;background:var(--sand-2);border:1px dashed var(--sky);border-radius:var(--r-sm);
+    padding:13px 15px;font-size:13px;color:var(--navy-2);font-weight:700}
 
-  /* ---------- NEWSLETTER ---------- */
-  .newsletter{background:var(--sand-2);}
-  .news-box{
-    background:var(--white);border-radius:var(--radius);padding:40px;
-    display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;
-    box-shadow:var(--shadow);
-  }
-  .news-box form{display:flex;gap:10px;flex-wrap:wrap;}
-  .news-box input{
-    padding:14px 18px;border-radius:999px;border:2px solid var(--line);font-family:var(--body);
-    font-size:15px;min-width:220px;
-  }
-  .news-box input:focus-visible{outline:3px solid var(--sky);}
-
-  /* ---------- FOOTER ---------- */
-  footer{background:var(--navy);color:rgba(251,243,225,.75);padding:60px 0 30px;}
-  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;}
-  .foot-brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:19px;color:var(--white);}
-  .foot-brand img{height:30px;filter:brightness(0) invert(1);}
-  .foot-desc{margin-top:14px;font-size:14px;max-width:280px;}
-  .foot-col h5{font-family:var(--display);color:var(--white);font-size:14px;letter-spacing:.03em;text-transform:uppercase;margin-bottom:14px;}
-  .foot-col a{display:block;padding:6px 0;font-size:14px;}
-  .warning{
-    margin-top:44px;padding:16px 20px;background:rgba(255,138,30,.12);border:1px solid rgba(255,138,30,.35);
-    border-radius:var(--radius-sm);font-size:13px;font-weight:700;color:#FFC98A;
-  }
-  .foot-bottom{margin-top:28px;font-size:12.5px;opacity:.6;border-top:1px solid rgba(255,255,255,.1);padding-top:20px;}
-  @media(max-width:860px){.foot-grid{grid-template-columns:1fr 1fr;}}
-  @media(max-width:560px){.foot-grid{grid-template-columns:1fr;}}
-
-  /* ---------- MOBILE STICKY CTA ---------- */
-  .sticky-cta{
-    display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;
-    background:var(--white);border-top:1px solid var(--line);
-    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
-    box-shadow:0 -8px 24px rgba(11,35,64,.14);
-  }
-  .sticky-cta .row{display:flex;align-items:center;gap:12px;}
-  .sticky-cta .price-info{flex:1;min-width:0;}
-  .sticky-cta .price-info strong{display:block;font-family:var(--display);color:var(--navy);font-size:14px;}
-  .sticky-cta .price-info span{font-size:12px;color:var(--ink-soft);}
-  .sticky-cta .btn-primary{padding:13px 20px;font-size:14.5px;}
-  @media(max-width:760px){
-    .sticky-cta{display:block;}
-    body{padding-bottom:74px;}
-  }
-
-  /* ---------- MISSION HUB PREVIEW MODAL ---------- */
-  .hub-teaser{
-    background:var(--white);border:1px dashed var(--sky);border-radius:var(--radius-sm);
-    padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;
-    margin-top:26px;flex-wrap:wrap;
-  }
-  .hub-teaser p{font-size:14px;color:var(--ink-soft);}
-  .hub-teaser button{
-    font-family:var(--display);font-weight:700;font-size:14px;color:var(--sky);
-    background:none;border:2px solid var(--sky);border-radius:999px;padding:9px 16px;cursor:pointer;
-  }
-  .modal-overlay{
-    display:none;position:fixed;inset:0;background:rgba(11,35,64,.6);z-index:100;
-    align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(3px);
-  }
-  .modal-overlay.open{display:flex;}
-  .modal-box{
-    background:var(--white); border-radius:var(--radius); max-width:480px; width:100%;
-    padding:28px 24px 30px; text-align:center; box-shadow:var(--shadow-lg); position:relative;
-    max-height:88vh; overflow-y:auto;
-  }
-  .modal-box .close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink-soft);z-index:2;}
-  .modal-box h3{font-size:20px;}
-  .modal-box p{margin-top:10px;color:var(--ink-soft);font-size:14.5px;}
-  .modal-box .btn{margin-top:20px;width:100%;justify-content:center;}
-
-  .modal-carousel{
-    display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory;
-    margin:18px -4px 6px; padding:4px; -webkit-overflow-scrolling:touch;
-  }
-  .modal-carousel::-webkit-scrollbar{height:6px;}
-  .modal-carousel::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px;}
-  .carousel-slide{flex:none; width:180px; scroll-snap-align:center;}
-  .carousel-slide img{
-    width:100%; border-radius:16px; border:6px solid var(--navy); box-shadow:var(--shadow);
-    display:block;
-  }
-  .carousel-slide span{
-    display:block; margin-top:8px; font-size:12.5px; font-weight:800; color:var(--navy);
-  }
-  .modal-unlock{
-    margin-top:20px; background:var(--sand-2); border:1px dashed var(--sky); border-radius:var(--radius-sm);
-    padding:14px 16px; font-size:13.5px; color:var(--navy-2); font-weight:700;
-  }
-
-  /* ---------- REAL PHOTOS GALLERY ---------- */
-  .real-photos{background:var(--white);}
-  .photo-scroll{
-    display:flex; gap:18px; overflow-x:auto; margin-top:36px; padding:6px 6px 18px;
-    scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
-  }
-  .photo-scroll::-webkit-scrollbar{height:8px;}
-  .photo-scroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px;}
-  .photo-card{flex:none; width:260px; scroll-snap-align:start;}
-  .photo-card img{
-    width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:var(--radius);
-    box-shadow:var(--shadow); border:1px solid var(--line);
-  }
-  .photo-card span{display:block; margin-top:10px; font-weight:800; color:var(--navy); font-size:14.5px;}
-  .closing-banner{margin-top:8px;}
-  .closing-banner img{width:100%; border-radius:var(--radius); box-shadow:var(--shadow-lg);}
-  @media(max-width:640px){ .photo-card{width:210px;} }
-
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
-  .reveal.in{opacity:1;transform:translateY(0);}
-  @media (prefers-reduced-motion: reduce){
-    .reveal{opacity:1;transform:none;transition:none;}
-    html{scroll-behavior:auto;}
-  }
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
 <header>
   <nav class="nav">
-    <a href="#top" class="brand">
-      <img src="assets/jumvi-logo-navy.png" alt="JUMVI logo" />
-    </a>
+    <a href="#top" class="brand"><img src="assets/jumvi-logo-navy.png" alt="JUMVI" /></a>
     <div class="nav-links">
-      <a href="#how">How it works</a>
-      <a href="#missions">Missions</a>
-      <a href="#quality">Quality</a>
-      <a href="#faq">FAQ</a>
+      <a href="#how">How it works</a><a href="#missions">Missions</a>
+      <a href="#quality">Quality</a><a href="#faq">FAQ</a>
     </div>
     <div class="nav-right">
       <a class="btn btn-primary" href="https://www.amazon.com/dp/B0H16JPQCF" target="_blank" rel="noopener">Buy on Amazon</a>
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="hamburger" id="hb" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#how">How it works</a>
-    <a href="#missions">Missions</a>
-    <a href="#quality">Quality</a>
-    <a href="#faq">FAQ</a>
+  <div class="mobile-menu" id="mm">
+    <a href="#how">How it works</a><a href="#missions">Missions</a>
+    <a href="#quality">Quality</a><a href="#faq">FAQ</a>
     <a class="btn btn-primary" href="https://www.amazon.com/dp/B0H16JPQCF" target="_blank" rel="noopener">Buy on Amazon</a>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- HERO -->
-  <section class="pdp">
-    <div class="wrap pdp-grid">
-      <div class="pdp-gallery">
-        <div class="pdp-main">
-          <img id="pdpMainImg" src="assets/listing-hero.jpg" alt="JUMVI Toss & Catch gift box with 4 paddles, 4 balls, mesh bag and QR mission card" />
-        </div>
-        <img src="assets/coach-leo-180.png" alt="Coach Leo the quokka, JUMVI's mission guide" class="pdp-mascot" />
-        <div class="pdp-thumbs" id="pdpThumbs">
-          <button class="active" onclick="pdpSwap(this,'assets/listing-hero.jpg')"><img src="assets/listing-hero.jpg" alt="Full set thumbnail" /></button>
-          <button onclick="pdpSwap(this,'assets/listing-whats-inside.jpg')"><img src="assets/listing-whats-inside.jpg" alt="What's inside thumbnail" /></button>
-          <button onclick="pdpSwap(this,'assets/listing-lifestyle-1.jpg')"><img src="assets/listing-lifestyle-1.jpg" alt="Kids playing thumbnail" /></button>
-          <button onclick="pdpSwap(this,'assets/listing-benefits.jpg')"><img src="assets/listing-benefits.jpg" alt="Benefits thumbnail" /></button>
-          <button onclick="pdpSwap(this,'assets/listing-comparison.jpg')"><img src="assets/listing-comparison.jpg" alt="Comparison thumbnail" /></button>
-          <button onclick="pdpSwap(this,'assets/listing-gift.jpg')"><img src="assets/listing-gift.jpg" alt="Gift moment thumbnail" /></button>
-        </div>
-      </div>
-
-      <div class="pdp-buybox">
-        <span class="eyebrow">📱 Scan &amp; Play · 36 missions inside</span>
-        <h1>Toss. Catch. <span class="accent">Level&nbsp;up.</span></h1>
-        <p class="pdp-lead">JUMVI™ is the hook-and-loop toss &amp; catch set with a built-in mission system — 36 guided games that grow with your kid, from first catch to champion. Ages 3–8.</p>
-
-        <div class="buy-feature-grid">
-          <div class="buy-feature"><span class="ico">🎯</span> 36 Guided Missions</div>
-          <div class="buy-feature"><span class="ico">🛡️</span> CPSIA &amp; ASTM Tested</div>
-          <div class="buy-feature"><span class="ico">📱</span> No App or Signup</div>
-          <div class="buy-feature"><span class="ico">🏅</span> Badges &amp; Certificate</div>
-        </div>
-
-        <div class="buy-ctas">
-          <a class="btn btn-primary" href="https://www.amazon.com/dp/B0H16JPQCF" target="_blank" rel="noopener">Buy on Amazon →</a>
-          <button type="button" class="btn btn-mission" onclick="openHubModal()">
-            <img src="assets/coach-leo-180.png" alt="" class="btn-mascot" /> Meet Coach Leo
-          </button>
-        </div>
-
-        <div class="ship-steps">
-          <div class="ship-step"><span class="ico">🛒</span>Order on Amazon</div>
-          <div class="ship-arrow">→</div>
-          <div class="ship-step"><span class="ico">📦</span>Prime Shipping</div>
-          <div class="ship-arrow">→</div>
-          <div class="ship-step"><span class="ico">🏡</span>At your door</div>
-        </div>
-        <div class="trust-row">Prime eligible · Fast US shipping · 30-day Amazon returns</div>
+<!-- PDP -->
+<section class="pdp">
+  <div class="wrap pdp-grid">
+    <div class="pdp-gallery">
+      <div class="pdp-main"><img id="mainImg" src="assets/g-hero.jpg" alt="JUMVI Toss & Catch gift box with 4 paddles, 4 balls, mesh bag and QR mission card" /></div>
+      <div class="pdp-thumbs" id="thumbs">
+        <button class="active" onclick="swap(this,'assets/g-hero.jpg')"><img src="assets/g-hero.jpg" alt="Full set" loading="lazy" /></button>
+        <button onclick="swap(this,'assets/g-inside.jpg')"><img src="assets/g-inside.jpg" alt="What's inside" loading="lazy" /></button>
+        <button onclick="swap(this,'assets/g-together.jpg')"><img src="assets/g-together.jpg" alt="Kids playing" loading="lazy" /></button>
+        <button onclick="swap(this,'assets/g-playgrow.jpg')"><img src="assets/g-playgrow.jpg" alt="Missions and certificate" loading="lazy" /></button>
+        <button onclick="swap(this,'assets/g-size.jpg')"><img src="assets/g-size.jpg" alt="Size guide" loading="lazy" /></button>
+        <button onclick="swap(this,'assets/g-build.jpg')"><img src="assets/g-build.jpg" alt="Build quality" loading="lazy" /></button>
+        <button onclick="swap(this,'assets/g-settings.jpg')"><img src="assets/g-settings.jpg" alt="Play anywhere" loading="lazy" /></button>
+        <button onclick="swap(this,'assets/g-vs.jpg')"><img src="assets/g-vs.jpg" alt="Versus basic sets" loading="lazy" /></button>
+        <button onclick="swap(this,'assets/g-certified.jpg')"><img src="assets/g-certified.jpg" alt="Certified" loading="lazy" /></button>
+        <button onclick="swap(this,'assets/g-gift.jpg')"><img src="assets/g-gift.jpg" alt="Gift ready" loading="lazy" /></button>
       </div>
     </div>
 
-    <div class="wrap">
-      <div class="skill-strip">
-        <span>Red Light, Green Light</span><span>Focus &amp; Reflexes</span><span>Movement &amp; Speed</span>
-        <span>Family Play</span><span>Solo Practice</span><span>Creative Games</span>
-        <span>Confidence</span><span>Streaks &amp; Badges</span><span>Champion Certificate</span>
+    <div class="pdp-buy">
+      <span class="eyebrow">📱 Scan &amp; Play · 36 missions inside</span>
+      <h1>Toss. Catch. <span class="accent">Level&nbsp;up.</span></h1>
+      <div class="stars">🛡️ <b>CPSIA &amp; ASTM F963-23 tested</b> · Ages 3–8</div>
+      <p class="pdp-lead">The hook-and-loop toss &amp; catch set with a built-in mission system — 36 guided games that grow with your kid, from first catch to champion.</p>
+      <div class="kit"><span>4 Paddles</span><span>4 Balls</span><span>Mesh Bag</span><span>QR Mission Card</span><span>Gift Box</span></div>
+      <div class="feats">
+        <div class="feat"><span class="i">🎯</span> 36 guided missions</div>
+        <div class="feat"><span class="i">📱</span> No app, no signup</div>
+        <div class="feat"><span class="i">🏅</span> Badges &amp; certificate</div>
+        <div class="feat"><span class="i">💧</span> Beach &amp; pool ready</div>
       </div>
+      <div class="buy-ctas">
+        <a class="btn btn-primary" href="https://www.amazon.com/dp/B0H16JPQCF" target="_blank" rel="noopener">Buy on Amazon →</a>
+        <button type="button" class="btn btn-mission" onclick="openHub()"><img src="assets/coach-leo-180.png" alt="" class="btn-mascot" /> See what's inside the Mission Hub</button>
+      </div>
+      <div class="steps3">
+        <div class="s"><span class="i">🛒</span>Order on Amazon</div><div class="a">→</div>
+        <div class="s"><span class="i">📦</span>Prime shipping</div><div class="a">→</div>
+        <div class="s"><span class="i">🎉</span>Mission 1 in 60 sec</div>
+      </div>
+      <div class="trust">Prime eligible · Fast US shipping · 30-day Amazon returns</div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FEATURE STRIP -->
-  <section class="features">
-    <div class="wrap">
-      <div class="feature-grid">
-        <div class="feature-card reveal"><div class="ico">🎯</div><h3>36 guided missions</h3><p>Every game has a goal, so play never gets old after day one.</p></div>
-        <div class="feature-card reveal"><div class="ico">📱</div><h3>Screen-smart</h3><p>The phone is the game master. Kids watch the ball — not the screen.</p></div>
-        <div class="feature-card reveal"><div class="ico">🛡️</div><h3>Safety tested</h3><p>Third-party lab tested to CPSIA and ASTM F963-23 standards.</p></div>
-        <div class="feature-card reveal"><div class="ico">🏅</div><h3>Real progression</h3><p>Streaks, badges and a printable Champion Certificate.</p></div>
-      </div>
+<!-- BANNER: real play -->
+<section class="banner banner-flush"><div class="wrap"><img src="assets/b-realplay.jpg" alt="Real play. Real skills. No screens. ASTM F963-23 certified, CPSIA compliant, designed in USA" loading="lazy" /></div></section>
+
+<!-- WHY -->
+<section>
+  <div class="wrap center">
+    <span class="eyebrow">Why parents pick JUMVI</span>
+    <h2 class="h2">Most paddle sets are fun for one afternoon.</h2>
+    <p class="lead">JUMVI keeps going — every game has a goal, so play never gets old after day one.</p>
+    <div class="grid4">
+      <div class="card reveal"><div class="i">🎯</div><h3>36 guided missions</h3><p>Six skill packs turn toss &amp; catch into focus drills, speed challenges and family showdowns.</p></div>
+      <div class="card reveal"><div class="i">📱</div><h3>Screen-smart</h3><p>The phone is the game master. Kids watch the ball — not the screen.</p></div>
+      <div class="card reveal"><div class="i">🛡️</div><h3>Safety tested</h3><p>Third-party lab tested to CPSIA and ASTM F963-23 toy safety standards.</p></div>
+      <div class="card reveal"><div class="i">🏅</div><h3>Real progression</h3><p>Streaks, badges and a printable Champion Certificate for the fridge door.</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- HOW IT WORKS -->
-  <section id="how">
-    <div class="wrap">
-      <span class="eyebrow">How it works</span>
-      <h2 class="h2">From box to first mission in 60 seconds</h2>
-      <p class="lead">No app to download. No account to create. Just scan and play.</p>
-      <div class="how-grid">
-        <div>
-          <div class="step reveal">
-            <div class="step-num">1</div>
-            <div><h3>Scan the QR card</h3><p>Every set includes a Scan &amp; Play card. It opens the JUMVI Mission Hub in any browser — nothing to install.</p></div>
-          </div>
-          <div class="step reveal">
-            <div class="step-num">2</div>
-            <div><h3>Pick today's mission</h3><p>Coach Leo suggests a mission tuned to your kid's age and level — or browse all 36 and choose your own.</p></div>
-          </div>
-          <div class="step reveal">
-            <div class="step-num">3</div>
-            <div><h3>Play &amp; level up</h3><p>Finish missions to build streaks, earn badges and climb from First Catch to Champion.</p></div>
-          </div>
-          <div class="hub-teaser">
-            <p>👀 Curious what a mission actually looks like?</p>
-            <button type="button" onclick="openHubModal()">Sneak peek</button>
-          </div>
-        </div>
-        <div class="how-art reveal">
-          <img src="https://shop.jumvi.co/assets/img/how-it-works.jpg" alt="Pick, play, progress — the Mission Hub with age tracks, daily missions, badges and the certificate" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MISSIONS -->
-  <section id="missions" class="missions">
-    <div class="wrap">
-      <span class="eyebrow">The mission system</span>
-      <h2 class="h2">36 missions. Zero boredom.</h2>
-      <p class="lead">Most paddle sets are fun for an afternoon. JUMVI keeps going: six skill packs turn toss &amp; catch into focus drills, speed challenges, family showdowns and creative games — one mission at a time.</p>
-      <div class="pack-grid">
-        <div class="pack-card reveal"><div class="ico">⚡</div><h4>Focus &amp; Reflexes</h4></div>
-        <div class="pack-card reveal"><div class="ico">🏃</div><h4>Movement &amp; Speed</h4></div>
-        <div class="pack-card reveal"><div class="ico">💪</div><h4>Confidence</h4></div>
-        <div class="pack-card reveal"><div class="ico">👨‍👩‍👧</div><h4>Family Play</h4></div>
-        <div class="pack-card reveal"><div class="ico">🎯</div><h4>Solo Practice</h4></div>
-        <div class="pack-card reveal"><div class="ico">🎨</div><h4>Creative Games</h4></div>
-      </div>
-      <p class="lead" style="margin-top:26px;color:rgba(251,243,225,.65);">Missions run in the browser and are ready for the park, the beach or the backyard.</p>
-      <div class="missions-art reveal">
-        <img src="https://shop.jumvi.co/assets/img/missions-phone.jpg" alt="Play and grow: picking a mission on the phone, and a mom and daughter holding the Mission Champion certificate" />
-      </div>
-    </div>
-  </section>
-
-  <!-- PROMISE -->
-  <section class="promise">
-    <div class="wrap promise-grid">
+<!-- HOW -->
+<section id="how" style="background:var(--white)">
+  <div class="wrap">
+    <span class="eyebrow">How it works</span>
+    <h2 class="h2">From box to first mission in 60 seconds</h2>
+    <p class="lead">No app to download. No account to create. Just scan and play.</p>
+    <div class="split" style="margin-top:36px">
       <div>
-        <span class="eyebrow">The JUMVI promise</span>
-        <h2 class="h2">Real play. Real skills. No screens.</h2>
-        <p class="lead">The phone stays in a grown-up's hand as the game master — Coach Leo the quokka calls the shots and celebrates every win, while kids keep their eyes on the ball. Parent-designed, independently tested, and free of apps, signups and fees.</p>
-        <div class="hero-ctas" style="margin-top:26px;">
-          <button type="button" class="btn btn-mission" onclick="openHubModal()">
-            <img src="assets/coach-leo-180.png" alt="" class="btn-mascot" /> See the Hub in action
-          </button>
-        </div>
+        <div class="step reveal"><div class="step-n">1</div><div><h3>Scan the QR card</h3><p>Every set includes a Scan &amp; Play card. It opens the JUMVI Mission Hub in any browser — nothing to install.</p></div></div>
+        <div class="step reveal"><div class="step-n">2</div><div><h3>Pick today's mission</h3><p>Coach Leo suggests a mission tuned to your kid's age and level — or browse all 36 and choose your own.</p></div></div>
+        <div class="step reveal"><div class="step-n">3</div><div><h3>Play &amp; level up</h3><p>Finish missions to build streaks, earn badges and climb from First Catch to Champion.</p></div></div>
+        <button type="button" class="btn btn-mission" style="margin-top:24px" onclick="openHub()"><img src="assets/coach-leo-180.png" alt="" class="btn-mascot" /> Peek inside the Mission Hub</button>
       </div>
-      <div class="promise-art reveal" style="position:relative;">
-        <img src="https://shop.jumvi.co/assets/img/no-screens.jpg" alt="Real play, real skills, no screens — ASTM F963-23 certified, CPSIA compliant, parent-designed, no app or signup" />
-        <img src="assets/coach-leo-320.png" alt="" class="promise-mascot" />
-      </div>
+      <div class="art reveal"><img src="assets/g-playgrow.jpg" alt="Pick a mission on the phone, earn badges and print the Champion Certificate" loading="lazy" /></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- QUALITY -->
-  <section id="quality">
-    <div class="wrap">
-      <span class="eyebrow">Built for real play</span>
-      <h2 class="h2">Designed for little hands. Ready for big adventures.</h2>
-      <div class="quality-grid">
-        <div class="quality-card reveal"><div class="ico">🪶</div><h3>Ultra-light EVA foam</h3><p>Easy for small hands to swing — and soft enough for indoor play.</p></div>
-        <div class="quality-card reveal"><div class="ico">🧲</div><h3>Big hook-and-loop face</h3><p>A generous 8.5" catch surface that actually catches — wins from day one.</p></div>
-        <div class="quality-card reveal"><div class="ico">🎾</div><h3>Bright balls included</h3><p>One in the air, spares in the bag — the game never has to stop.</p></div>
-        <div class="quality-card reveal"><div class="ico">💧</div><h3>Water-friendly</h3><p>Backyard, beach or pool day — rinse, dry, play again.</p></div>
-        <div class="quality-card reveal"><div class="ico">🧺</div><h3>Mesh carry bag</h3><p>Everything packs up in seconds and hangs by the door, ready to go.</p></div>
-        <div class="quality-card reveal"><div class="ico">🛡️</div><h3>Safety first</h3><p>Rounded edges, kid-safe materials, third-party tested to CPSIA &amp; ASTM F963-23.</p></div>
-      </div>
-      <div class="quality-art reveal">
-        <img src="https://shop.jumvi.co/assets/img/quality-details.jpg" alt="Close-ups: beach-ready fabric, reinforced woven trim, the ball gripping the paddle, and the secure adjustable strap" />
-      </div>
+<!-- MISSIONS -->
+<section id="missions" class="dark">
+  <div class="wrap">
+    <span class="eyebrow">The mission system</span>
+    <h2 class="h2">36 missions. Zero boredom.</h2>
+    <p class="lead">Six skill packs, three age tracks, one set. Missions run in any browser and are ready for the park, the beach or the backyard.</p>
+    <div class="packs">
+      <div class="pack reveal"><div class="i">⚡</div><h4>Focus &amp; Reflexes</h4></div>
+      <div class="pack reveal"><div class="i">🏃</div><h4>Movement &amp; Speed</h4></div>
+      <div class="pack reveal"><div class="i">💪</div><h4>Confidence</h4></div>
+      <div class="pack reveal"><div class="i">👨‍👩‍👧</div><h4>Family Play</h4></div>
+      <div class="pack reveal"><div class="i">🎯</div><h4>Solo Practice</h4></div>
+      <div class="pack reveal"><div class="i">🎨</div><h4>Creative Games</h4></div>
     </div>
-  </section>
+    <div style="margin-top:36px"><img src="assets/b-pickplay.jpg" alt="Pick. Play. Progress. 36 guided missions across 6 skill packs" style="width:100%;border-radius:var(--r);box-shadow:var(--shadow-lg)" loading="lazy" /></div>
+  </div>
+</section>
 
-  <!-- LEVELS -->
-  <section class="levels">
-    <div class="wrap">
-      <span class="eyebrow">Grows with your kid</span>
-      <h2 class="h2">From first catch to Champion</h2>
-      <p class="lead">Missions are grouped into three levels, so a 3-year-old and an 8-year-old both get games that feel just right — and older kids stay challenged too.</p>
-      <div class="level-grid">
-        <div class="level-card reveal">
-          <div class="level-tag">Level 1 · Ages 3–5</div>
-          <h3>First Catch</h3>
-          <p>Big targets, short distances, instant wins. Confidence from the very first session.</p>
-        </div>
-        <div class="level-card reveal">
-          <div class="level-tag">Level 2 · Ages 6–8</div>
-          <h3>Skill Builder</h3>
-          <p>Longer rallies, moving targets and reflex games that sharpen focus and coordination.</p>
-        </div>
-        <div class="level-card reveal">
-          <div class="level-tag">Level 3 · Ages 8+</div>
-          <h3>Champion</h3>
-          <p>Timed challenges, trick catches and family showdowns for kids who want more.</p>
-        </div>
-      </div>
-      <div class="level-cert">🏆 Finish the journey and print the official JUMVI Champion Certificate — fridge-door approved.</div>
+<!-- LEVELS -->
+<section class="levels">
+  <div class="wrap">
+    <span class="eyebrow">Grows with your kid</span>
+    <h2 class="h2">From first catch to Champion</h2>
+    <p class="lead">Missions are grouped into three levels, so a 3-year-old and an 8-year-old both get games that feel just right.</p>
+    <div class="grid3">
+      <div class="lvl reveal"><div class="tag">Level 1 · Ages 3–5</div><h3>First Catch</h3><p>Big targets, short distances, instant wins. Confidence from the very first session.</p></div>
+      <div class="lvl reveal"><div class="tag">Level 2 · Ages 6–8</div><h3>Skill Builder</h3><p>Longer rallies, moving targets and reflex games that sharpen focus and coordination.</p></div>
+      <div class="lvl reveal"><div class="tag">Level 3 · Ages 8+</div><h3>Champion</h3><p>Timed challenges, trick catches and family showdowns for kids who want more.</p></div>
     </div>
-  </section>
+    <div class="cert">🏆 Finish the journey and print the official JUMVI Champion Certificate — fridge-door approved.</div>
+  </div>
+</section>
 
-  <!-- ADVENTURES -->
-  <section>
-    <div class="wrap">
-      <span class="eyebrow">One set, every setting</span>
-      <h2 class="h2">Backyard. Beach. Rainy day. Gift time.</h2>
-      <div class="adventures-art reveal">
-        <img src="assets/aplus-every-setting.jpg" alt="JUMVI played in the backyard, at the beach, indoors, and given as a gift" />
-      </div>
-    </div>
-  </section>
-
-  <!-- FOR PARENTS -->
-  <section class="parents">
-    <div class="wrap parents-grid">
+<!-- QUALITY -->
+<section id="quality" style="background:var(--white)">
+  <div class="wrap">
+    <span class="eyebrow">Built for real play</span>
+    <h2 class="h2">Stitched, not glued.</h2>
+    <p class="lead">Basic sets peel, tear and end up in the bin. JUMVI is built to survive a whole summer — and the one after that.</p>
+    <div class="split" style="margin-top:34px">
+      <div class="art reveal"><img src="assets/g-build.jpg" alt="Ultra-stick loop surface, rigid EVA core, tear-resistant backing and reinforced edge stitching" loading="lazy" /></div>
       <div>
-        <span class="eyebrow">For parents</span>
-        <h2 class="h2">Built for kids. Designed for peace of mind.</h2>
-        <div class="parent-points">
-          <div class="parent-point reveal"><div class="check">✓</div><div><h4>Track the journey</h4><p>Streak calendar, badges and progress for every child in the family.</p></div></div>
-          <div class="parent-point reveal"><div class="check">✓</div><div><h4>Nothing to install</h4><p>The Mission Hub runs in any browser — no app store, no updates.</p></div></div>
-          <div class="parent-point reveal"><div class="check">✓</div><div><h4>No account, no email needed to play</h4><p>Scan and start. Progress stays on your device.</p></div></div>
-          <div class="parent-point reveal"><div class="check">✓</div><div><h4>Privacy by design</h4><p>No ads, no tracking of kids. Read the full policy in the Hub.</p></div></div>
+        <div class="checks">
+          <div class="chk reveal"><div class="c">✓</div><div><h4>Ultra-stick loop surface</h4><p>A generous 8.5" catch face that actually catches — wins from day one.</p></div></div>
+          <div class="chk reveal"><div class="c">✓</div><div><h4>Slim &amp; rigid EVA core</h4><p>Light enough for small hands to swing, soft enough for indoor play.</p></div></div>
+          <div class="chk reveal"><div class="c">✓</div><div><h4>Reinforced edge stitching</h4><p>Lime webbing wraps the whole paddle — no peeling, no fraying.</p></div></div>
+          <div class="chk reveal"><div class="c">✓</div><div><h4>Adjustable hand strap</h4><p>Fits kids and adults, stays put through the wildest rallies.</p></div></div>
         </div>
       </div>
-      <div class="parents-art reveal">
-        <img src="https://shop.jumvi.co/assets/img/parents-brand.jpg" alt="A girl mid-catch in the garden — happy, active, screen-free play" />
+    </div>
+    <div style="margin-top:34px"><img src="assets/b-safety.jpg" alt="Beach & pool ready, reinforced woven trim, grips fast releases clean, secure adjustable strap" style="width:100%;border-radius:var(--r);box-shadow:var(--shadow)" loading="lazy" /></div>
+  </div>
+</section>
+
+<!-- SIZE -->
+<section>
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">Perfect fit</span>
+      <h2 class="h2">Sized for every hand in the family</h2>
+      <p class="lead">8.5" paddles with an adjustable strap and 2.4" dual-stick balls — small enough for a 3-year-old, satisfying for a grown-up.</p>
+      <div class="kit" style="margin-top:22px"><span>8.5" paddle</span><span>2.4" ball</span><span>15" × 11" bag</span><span>Ages 3–8</span></div>
+    </div>
+    <div class="art reveal"><img src="assets/g-size.jpg" alt="Paddle 8.5 inch diameter, ball 2.4 inch diameter, adjustable strap fits kids and adults" loading="lazy" /></div>
+  </div>
+</section>
+
+<!-- SETTINGS BANNER -->
+<section style="background:var(--white)">
+  <div class="wrap center">
+    <span class="eyebrow">One set, every setting</span>
+    <h2 class="h2">Backyard. Beach. Rainy day. Gift time.</h2>
+    <div style="margin-top:30px"><img src="assets/b-settings.jpg" alt="JUMVI played in the backyard, at the beach, indoors, and given as a gift" style="width:100%;border-radius:var(--r);box-shadow:var(--shadow-lg)" loading="lazy" /></div>
+  </div>
+</section>
+
+<!-- FOR PARENTS -->
+<section>
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">For parents</span>
+      <h2 class="h2">Built for kids. Designed for peace of mind.</h2>
+      <div class="checks">
+        <div class="chk reveal"><div class="c">✓</div><div><h4>Track the journey</h4><p>Streak calendar, badges and progress for every child in the family.</p></div></div>
+        <div class="chk reveal"><div class="c">✓</div><div><h4>Nothing to install</h4><p>The Mission Hub runs in any browser — no app store, no updates.</p></div></div>
+        <div class="chk reveal"><div class="c">✓</div><div><h4>No account, no email to play</h4><p>Scan and start. Progress stays on your device.</p></div></div>
+        <div class="chk reveal"><div class="c">✓</div><div><h4>Privacy by design</h4><p>No ads, no tracking of kids. Read the full policy in the Hub.</p></div></div>
       </div>
     </div>
-  </section>
+    <div class="art reveal"><img src="assets/g-learn.jpg" alt="Play more, learn more — develops real skills, kids catch it first try, gets kids off screens" loading="lazy" /></div>
+  </div>
+</section>
 
-  <!-- WHAT'S IN THE BOX -->
-  <section class="box">
-    <div class="wrap">
+<!-- IN THE BOX -->
+<section style="background:var(--sand-2)">
+  <div class="wrap split">
+    <div class="art reveal"><img src="assets/g-inside.jpg" alt="Everything you need: 4 paddles, 4 balls, gift box, QR mission card and mesh bag" loading="lazy" /></div>
+    <div>
       <span class="eyebrow">What's in the box</span>
       <h2 class="h2">Everything you need for Mission 1</h2>
-      <div class="box-grid">
-        <div>
-          <div class="box-list">
-            <div class="box-item reveal"><div class="check">✓</div><div><h4>4 × EVA foam paddles</h4><p>8.5" hook-and-loop catch face — the whole family plays at once.</p></div></div>
-            <div class="box-item reveal"><div class="check">✓</div><div><h4>4 × hook-and-loop balls</h4><p>2.4" dual-stick, soft &amp; safe — high-visibility outdoors.</p></div></div>
-            <div class="box-item reveal"><div class="check">✓</div><div><h4>Mesh carry bag</h4><p>15" × 11" — pack up in seconds, dry gear on the go.</p></div></div>
-            <div class="box-item reveal"><div class="check">✓</div><div><h4>QR Mission Card</h4><p>Your key to all the missions and Coach Leo. Gift-ready box.</p></div></div>
-          </div>
-          <div class="box-flags"><span>No batteries</span><span>No subscription</span><span>No signup</span></div>
-        </div>
-        <div class="box-art reveal">
-          <img src="https://shop.jumvi.co/assets/img/whats-in-box.jpg" alt="What's in the box: paddles, balls, mesh bag, gift box and the QR mission card" />
-        </div>
+      <div class="checks">
+        <div class="chk reveal"><div class="c">✓</div><div><h4>4 × EVA foam paddles</h4><p>8.5" hook-and-loop catch face — the whole family plays at once.</p></div></div>
+        <div class="chk reveal"><div class="c">✓</div><div><h4>4 × dual-stick balls</h4><p>2.4", soft &amp; safe, high-visibility outdoors. Always a spare in the bag.</p></div></div>
+        <div class="chk reveal"><div class="c">✓</div><div><h4>Mesh carry bag</h4><p>15" × 11" — pack up in seconds, dry gear on the go.</p></div></div>
+        <div class="chk reveal"><div class="c">✓</div><div><h4>QR Mission Card + gift box</h4><p>Your key to all 36 missions and Coach Leo, in a gift-ready box.</p></div></div>
       </div>
+      <div class="kit" style="margin-top:20px"><span>No batteries</span><span>No subscription</span><span>No signup</span></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- COMPARE -->
-  <section class="compare">
-    <div class="wrap">
-      <span class="eyebrow">The JUMVI difference</span>
-      <h2 class="h2">More than a paddle set</h2>
-      <table>
-        <thead><tr><th>What you get</th><th>JUMVI™</th><th>Basic paddle sets*</th></tr></thead>
-        <tbody>
-          <tr><td>Guided missions (36)</td><td class="yes">✓</td><td class="no">—</td></tr>
-          <tr><td>Age-based skill progression</td><td class="yes">✓</td><td class="no">—</td></tr>
-          <tr><td>Solo play mode</td><td class="yes">✓</td><td class="no">—</td></tr>
-          <tr><td>Family game modes</td><td class="yes">✓</td><td class="no">—</td></tr>
-          <tr><td>Streaks, badges &amp; certificate</td><td class="yes">✓</td><td class="no">—</td></tr>
-          <tr><td>4 paddles, 4 balls, carry bag</td><td class="yes">✓</td><td class="no">—</td></tr>
-        </tbody>
-      </table>
-      <p class="compare-note">*Typical unguided hook-and-loop paddle sets sold without a game system.</p>
-      <div class="compare-art reveal">
-        <img src="https://shop.jumvi.co/assets/img/durability.jpg" alt="Side by side: JUMVI built to last, dual-stick ball and mesh bag included — versus basic sets that fall apart, tear open and have no storage" />
+<!-- COMPARE -->
+<section class="cmp" style="background:var(--white)">
+  <div class="wrap">
+    <span class="eyebrow">The JUMVI difference</span>
+    <h2 class="h2">More than a paddle set</h2>
+    <table>
+      <thead><tr><th>What you get</th><th>JUMVI™</th><th>Basic sets*</th></tr></thead>
+      <tbody>
+        <tr><td>Guided missions (36)</td><td class="y">✓</td><td class="n">—</td></tr>
+        <tr><td>Age-based progression</td><td class="y">✓</td><td class="n">—</td></tr>
+        <tr><td>Solo &amp; family game modes</td><td class="y">✓</td><td class="n">—</td></tr>
+        <tr><td>Streaks, badges &amp; certificate</td><td class="y">✓</td><td class="n">—</td></tr>
+        <tr><td>Reinforced stitched edges</td><td class="y">✓</td><td class="n">—</td></tr>
+        <tr><td>4 paddles, 4 balls, carry bag</td><td class="y">✓</td><td class="n">—</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12.5px;color:var(--ink-soft);margin-top:10px">*Typical unguided hook-and-loop paddle sets sold without a game system.</p>
+    <div style="margin-top:28px"><img src="assets/g-vs.jpg" alt="JUMVI built to last versus basic sets that fall apart, tear open and have no storage" style="width:100%;border-radius:var(--r);box-shadow:var(--shadow)" loading="lazy" /></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <span class="eyebrow">Questions</span>
+    <h2 class="h2">Frequently asked</h2>
+    <div class="faq">
+      <details><summary>What ages is JUMVI for?</summary><div class="a">JUMVI is designed for ages 3–8. Missions are grouped into three age tracks (3–5, 6–8, 8+), so games always match your kid's stage. Adult supervision is recommended for the youngest players.</div></details>
+      <details><summary>Do I need to download an app?</summary><div class="a">No. The QR Mission Card opens the JUMVI Mission Hub in any browser — no download, no account, no email needed to play.</div></details>
+      <details><summary>Does it need batteries or a subscription?</summary><div class="a">No batteries, no subscription, ever. The set is ready to play out of the box, and all 36 missions are included.</div></details>
+      <details><summary>Is it safety tested?</summary><div class="a">Yes. JUMVI is third-party lab tested to CPSIA and ASTM F963-23 toy safety standards, with rounded edges and kid-safe materials. Please note the small-ball choking warning: not for children under 3.</div></details>
+      <details><summary>Can we play indoors?</summary><div class="a">Absolutely. The paddles are ultra-light EVA foam and several missions are designed specifically for living-room-friendly play.</div></details>
+      <details><summary>Is it beach and pool friendly?</summary><div class="a">Yes. The fabric is splash-friendly and wipe-clean — rinse, dry and play again. The mesh bag lets wet gear breathe on the way home.</div></details>
+      <details><summary>What if we lose a ball?</summary><div class="a">The set includes 4 balls, so there's always a spare in the mesh bag. If you ever run out, contact us at support@jumvi.co — we'll help make it right.</div></details>
+      <details><summary>Where can I buy JUMVI?</summary><div class="a">JUMVI is sold on Amazon.com with fast Prime shipping and Amazon's standard 30-day return policy.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING BANNER -->
+<section style="padding-bottom:0"><div class="wrap banner"><img src="assets/b-closing.jpg" alt="The days are long. The childhood isn't." loading="lazy" /></div></section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2 class="h2">Ready for Mission 1?</h2>
+    <p class="lead">Give your kid a game that grows with them — and give yourself a screen-smart way to get everyone moving.</p>
+    <div class="ctas">
+      <a class="btn btn-primary" href="https://www.amazon.com/dp/B0H16JPQCF" target="_blank" rel="noopener">Buy on Amazon →</a>
+      <button type="button" class="btn btn-ghost" onclick="openHub()">Explore the Mission Hub</button>
+    </div>
+    <small>Sold and shipped via Amazon.com · Prime eligible · 30-day returns</small>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="news">
+  <div class="wrap">
+    <div class="news-box">
+      <div>
+        <span class="eyebrow">For grown-ups</span>
+        <h3 style="font-size:21px;margin-top:10px">Get the printable Mission Book — free</h3>
+        <p style="margin-top:8px;color:var(--ink-soft);max-width:420px">All 36 missions in a print-ready PDF, plus a heads-up when new mission packs drop. One email now and then — never spam.</p>
       </div>
+      <form id="nlForm" action="https://formspree.io/f/xojgoeaw" method="POST">
+        <input type="email" name="email" placeholder="Parent's email" required />
+        <button class="btn btn-primary" type="submit">Send it to me</button>
+      </form>
     </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="wrap">
-      <span class="eyebrow">Questions</span>
-      <h2 class="h2">Frequently asked</h2>
-      <div class="faq-list">
-        <details class="faq-item"><summary>What ages is JUMVI for?</summary><div class="a">JUMVI is designed for ages 3–8. Missions are grouped into three age tracks (3–5, 6–8, 8+), so games always match your kid's stage. Adult supervision is recommended for the youngest players.</div></details>
-        <details class="faq-item"><summary>Do I need to download an app?</summary><div class="a">No. The QR Mission Card opens the JUMVI Mission Hub in any browser — no download, no account, no email needed to play.</div></details>
-        <details class="faq-item"><summary>Does it need batteries or a subscription?</summary><div class="a">No batteries, no subscription, ever. The set is ready to play out of the box, and all missions are included.</div></details>
-        <details class="faq-item"><summary>Is it safety tested?</summary><div class="a">Yes. JUMVI is third-party lab tested to CPSIA and ASTM F963-23 toy safety standards, with kid-safe materials and rounded edges. Please note the small-ball choking warning: not for children under 3.</div></details>
-        <details class="faq-item"><summary>Can we play indoors?</summary><div class="a">Absolutely. The paddles are ultra-light EVA foam and several missions are designed for living-room-friendly play.</div></details>
-        <details class="faq-item"><summary>What if we lose a ball?</summary><div class="a">The set includes 4 balls, so there's always a spare in the mesh bag. If you ever run out, contact us at support@jumvi.co — we'll help make it right.</div></details>
-        <details class="faq-item"><summary>Where can I buy JUMVI?</summary><div class="a">JUMVI is sold on Amazon.com with fast Prime shipping.</div></details>
-      </div>
-    </div>
-  </section>
-
-  <!-- CLOSING BANNER -->
-  <section style="padding-top:0;padding-bottom:0;">
-    <div class="wrap closing-banner">
-      <img src="assets/aplus-closing.jpg" alt="The days are long, the childhood isn't — JUMVI family moment" />
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="final-cta">
-    <div class="wrap">
-      <h2 class="h2">Ready for Mission 1?</h2>
-      <p class="lead">Give your kid a game that grows with them — and give yourself a screen-smart way to get everyone moving.</p>
-      <div class="ctas">
-        <a class="btn btn-primary" href="https://www.amazon.com/dp/B0H16JPQCF" target="_blank" rel="noopener">Buy on Amazon →</a>
-        <button type="button" class="btn btn-ghost" style="border-color:rgba(255,255,255,.35);color:#fff;" onclick="openHubModal()">Explore the Mission Hub</button>
-      </div>
-      <small>Sold and shipped via Amazon.com · Prime eligible</small>
-    </div>
-  </section>
-
-  <!-- NEWSLETTER -->
-  <section class="newsletter">
-    <div class="wrap">
-      <div class="news-box">
-        <div>
-          <span class="eyebrow">For grown-ups</span>
-          <h3 style="font-size:22px;margin-top:12px;">Get the printable Mission Book</h3>
-          <p style="margin-top:8px;color:var(--ink-soft);max-width:420px;">Join the JUMVI parents' list and we'll send the printable Mission Book, plus a heads-up when new mission packs drop. One email now and then — never spam.</p>
-        </div>
-        <form id="newsletterForm" action="https://formspree.io/f/xojgoeaw" method="POST">
-          <input type="email" name="email" placeholder="Parent's email" required />
-          <button class="btn btn-primary" type="submit">Sign up</button>
-        </form>
-      </div>
-      <p style="font-size:12.5px;color:var(--ink-soft);margin-top:14px;">Parents only. Unsubscribe anytime. See our <a href="/privacy.html" style="text-decoration:underline;">privacy policy</a>.</p>
-    </div>
-  </section>
+    <p style="font-size:12.5px;color:var(--ink-soft);margin-top:12px">Parents only. Unsubscribe anytime.</p>
+  </div>
+</section>
 
 </main>
 
 <footer>
   <div class="wrap">
-    <div class="foot-grid">
+    <div class="foot">
       <div>
         <div class="foot-brand">JUMVI</div>
         <p class="foot-desc">Toss &amp; catch, leveled up. Guided missions that turn play into skills — for ages 3–8.</p>
       </div>
-      <div class="foot-col">
-        <h5>Product</h5>
-        <a href="#how">How it works</a>
-        <a href="#missions">The missions</a>
-        <a href="#quality">Quality &amp; safety</a>
-        <a href="#faq">FAQ</a>
-      </div>
-      <div class="foot-col">
-        <h5>Play</h5>
-        <a href="#" onclick="openHubModal(); return false;">Mission Hub</a>
-        <a href="/privacy.html">Privacy policy</a>
-        <a href="/terms.html">Terms of use</a>
-      </div>
-      <div class="foot-col">
-        <h5>Support</h5>
-        <a href="mailto:support@jumvi.co">support@jumvi.co</a>
-        <a href="https://www.amazon.com/dp/B0H16JPQCF" target="_blank" rel="noopener">Buy on Amazon</a>
-      </div>
+      <div><h5>Product</h5><a href="#how">How it works</a><a href="#missions">The missions</a><a href="#quality">Quality &amp; safety</a><a href="#faq">FAQ</a></div>
+      <div><h5>Play</h5><a href="#" onclick="openHub();return false;">Mission Hub</a><a href="#faq">Help</a></div>
+      <div><h5>Support</h5><a href="mailto:support@jumvi.co">support@jumvi.co</a><a href="https://www.amazon.com/dp/B0H16JPQCF" target="_blank" rel="noopener">Buy on Amazon</a></div>
     </div>
-    <div class="warning">⚠️ WARNING: CHOKING HAZARD — This toy is a small ball. Not for children under 3 yrs.</div>
-    <div class="foot-bottom">
-      © 2026 SAY23 LLC. All rights reserved. JUMVI™ is a trademark of SAY23 LLC.<br />
-      Amazon and all related marks are trademarks of Amazon.com, Inc. or its affiliates.
-    </div>
+    <div class="warn">⚠️ WARNING: CHOKING HAZARD — This toy is a small ball. Not for children under 3 yrs.</div>
+    <div class="foot-b">© 2026 SAY23 LLC. All rights reserved. JUMVI™ is a trademark of SAY23 LLC.<br />Amazon and all related marks are trademarks of Amazon.com, Inc. or its affiliates.</div>
   </div>
 </footer>
 
-<!-- MOBILE STICKY CTA -->
-<div class="sticky-cta">
+<div class="sticky">
   <div class="row">
-    <div class="price-info"><strong>JUMVI Toss &amp; Catch Set</strong><span>Ages 3–8 · Prime eligible</span></div>
+    <div class="info"><strong>JUMVI Toss &amp; Catch Set</strong><span>36 missions · Ages 3–8 · Prime</span></div>
     <a class="btn btn-primary" href="https://www.amazon.com/dp/B0H16JPQCF" target="_blank" rel="noopener">Buy on Amazon</a>
   </div>
 </div>
 
-<!-- MISSION HUB PREVIEW MODAL -->
-<div class="modal-overlay" id="hubModal">
-  <div class="modal-box">
-    <button class="close" aria-label="Close" onclick="document.getElementById('hubModal').classList.remove('open')">×</button>
-    <img src="assets/coach-leo-320.png" alt="Coach Leo the quokka" class="modal-mascot" />
+<div class="ov" id="hub">
+  <div class="modal">
+    <button class="x" aria-label="Close" onclick="closeHub()">×</button>
+    <img src="assets/coach-leo-320.png" alt="Coach Leo the quokka" class="modal-leo" />
     <h3>Hi, I'm Coach Leo! 👋</h3>
-    <p>Here's a peek at what's waiting inside your Mission Hub — real missions, a 3D island to explore, streaks, badges and more.</p>
-
-    <div class="modal-carousel">
-      <div class="carousel-slide"><img src="assets/shot-welcome.jpg" alt="Welcome to Leo's Island screen" loading="lazy" /><span>Leo's Island</span></div>
-      <div class="carousel-slide"><img src="assets/shot-today.jpg" alt="Today's mission screen" loading="lazy" /><span>Today's Mission</span></div>
-      <div class="carousel-slide"><img src="assets/shot-power-step.jpg" alt="Power Step mission detail screen" loading="lazy" /><span>Step-by-Step Missions</span></div>
-      <div class="carousel-slide"><img src="assets/shot-mission-path.jpg" alt="Mission path progression screen" loading="lazy" /><span>Mission Path</span></div>
-      <div class="carousel-slide"><img src="assets/shot-stats.jpg" alt="Badges and stats screen" loading="lazy" /><span>Badges &amp; Stats</span></div>
-      <div class="carousel-slide"><img src="assets/shot-leo-island.jpg" alt="3D Leo's Island exploration screen" loading="lazy" /><span>Explore in 3D</span></div>
+    <p>Here's a peek at what's waiting inside the Mission Hub — daily missions, a 3D island to explore, streaks, badges and the Champion Certificate.</p>
+    <div class="carousel">
+      <div class="slide"><img src="assets/shot-welcome.jpg" alt="Welcome screen" loading="lazy" /><span>Pick an age track</span></div>
+      <div class="slide"><img src="assets/shot-today.jpg" alt="Today's mission" loading="lazy" /><span>Today's mission</span></div>
+      <div class="slide"><img src="assets/shot-power-step.jpg" alt="Mission detail" loading="lazy" /><span>Step-by-step</span></div>
+      <div class="slide"><img src="assets/shot-mission-path.jpg" alt="Mission path" loading="lazy" /><span>Mission path</span></div>
+      <div class="slide"><img src="assets/shot-stats.jpg" alt="Badges and stats" loading="lazy" /><span>Badges &amp; stats</span></div>
+      <div class="slide"><img src="assets/shot-leo-island.jpg" alt="3D island" loading="lazy" /><span>Explore in 3D</span></div>
     </div>
-
-    <div class="modal-unlock">🎁 Included with every JUMVI set — scan the Scan &amp; Play card in your box to unlock the full Mission Hub.</div>
+    <div class="unlock">🎁 Included with every JUMVI set — scan the Scan &amp; Play card in your box to unlock the full Mission Hub.</div>
   </div>
 </div>
 
 <script>
-  // Mobile menu toggle
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-  }));
+  const hb=document.getElementById('hb'),mm=document.getElementById('mm');
+  hb.addEventListener('click',()=>{const o=mm.classList.toggle('open');hb.setAttribute('aria-expanded',o)});
+  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mm.classList.remove('open');hb.setAttribute('aria-expanded','false')}));
 
-  function openHubModal(){ document.getElementById('hubModal').classList.add('open'); }
+  function swap(b,src){document.getElementById('mainImg').src=src;
+    document.querySelectorAll('#thumbs button').forEach(x=>x.classList.remove('active'));b.classList.add('active')}
 
-  // PDP gallery thumbnail swap
-  function pdpSwap(btn, src){
-    document.getElementById('pdpMainImg').src = src;
-    document.querySelectorAll('#pdpThumbs button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  }
+  function openHub(){document.getElementById('hub').classList.add('open')}
+  function closeHub(){document.getElementById('hub').classList.remove('open')}
+  document.getElementById('hub').addEventListener('click',e=>{if(e.target.id==='hub')closeHub()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeHub()});
 
-  // Newsletter form -> Formspree
-  const newsletterForm = document.getElementById('newsletterForm');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function(e){
-      e.preventDefault();
-      const btn = this.querySelector('button');
-      const input = this.querySelector('input');
-      const originalLabel = btn.textContent;
-      btn.textContent = 'Sending…';
-      btn.disabled = true;
-      fetch(this.action, {
-        method: 'POST',
-        body: new FormData(this),
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          btn.textContent = 'Thanks!';
-          input.disabled = true;
-          const dl = document.createElement('a');
-          dl.href = 'assets/jumvi-mission-book.pdf';
-          dl.download = 'JUMVI-Mission-Book.pdf';
-          dl.className = 'btn btn-secondary';
-          dl.style.marginTop = '10px';
-          dl.style.display = 'inline-block';
-          dl.textContent = '📘 Download the Mission Book (PDF)';
-          this.after(dl);
-        } else {
-          btn.textContent = originalLabel;
-          btn.disabled = false;
-          alert('Something went wrong — please try again in a moment.');
-        }
-      }).catch(() => {
-        btn.textContent = originalLabel;
-        btn.disabled = false;
-        alert('Something went wrong — please try again in a moment.');
-      });
-    });
-  }
-
-  // Close modal on overlay click
-  document.getElementById('hubModal').addEventListener('click', (e) => {
-    if (e.target.id === 'hubModal') e.target.classList.remove('open');
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') document.getElementById('hubModal').classList.remove('open');
+  const f=document.getElementById('nlForm');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    const b=this.querySelector('button'),i=this.querySelector('input'),lbl=b.textContent;
+    b.textContent='Sending…';b.disabled=true;
+    fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}})
+      .then(r=>{if(r.ok){b.textContent='Thanks!';i.disabled=true;
+        const a=document.createElement('a');a.href='assets/jumvi-mission-book.pdf';a.download='JUMVI-Mission-Book.pdf';
+        a.className='btn btn-mission';a.style.marginTop='10px';a.textContent='📘 Download the Mission Book';this.after(a);
+      }else{b.textContent=lbl;b.disabled=false}})
+      .catch(()=>{b.textContent=lbl;b.disabled=false});
   });
 
-  // Scroll reveal
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
-
 </body>
 </html>
