@@ -794,8 +794,16 @@
         headers: { 'Accept': 'application/json' }
       }).then(response => {
         if (response.ok) {
-          btn.textContent = 'Thanks — check your inbox!';
+          btn.textContent = 'Thanks!';
           input.disabled = true;
+          const dl = document.createElement('a');
+          dl.href = 'assets/jumvi-mission-book.pdf';
+          dl.download = 'JUMVI-Mission-Book.pdf';
+          dl.className = 'btn btn-secondary';
+          dl.style.marginTop = '10px';
+          dl.style.display = 'inline-block';
+          dl.textContent = '📘 Download the Mission Book (PDF)';
+          this.after(dl);
         } else {
           btn.textContent = originalLabel;
           btn.disabled = false;
