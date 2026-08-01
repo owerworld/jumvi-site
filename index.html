@@ -166,6 +166,58 @@
     padding:8px 14px;border-radius:999px;
   }
 
+  /* ---------- PDP GALLERY + BUY BOX ---------- */
+  .pdp{padding:40px 0 64px;}
+  .pdp-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;}
+  .pdp-gallery{position:relative;}
+  .pdp-main{
+    border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-lg);
+    background:var(--white); border:1px solid var(--line); aspect-ratio:1/1;
+  }
+  .pdp-main img{width:100%;height:100%;object-fit:cover;display:block;}
+  .pdp-mascot{
+    position:absolute; left:-22px; bottom:-20px; width:100px; height:auto;
+    filter:drop-shadow(0 10px 16px rgba(11,35,64,.25)); transform:rotate(-6deg);
+  }
+  .pdp-thumbs{display:flex;gap:10px;margin-top:14px;overflow-x:auto;padding:4px 2px;}
+  .pdp-thumbs button{
+    flex:none; width:72px; height:72px; padding:0; border-radius:12px; overflow:hidden;
+    border:2.5px solid transparent; cursor:pointer; background:var(--white); box-shadow:var(--shadow);
+  }
+  .pdp-thumbs button.active{border-color:var(--sky);}
+  .pdp-thumbs img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  .pdp-buybox{padding-top:4px;}
+  .pdp-buybox h1{font-size:clamp(32px,4.4vw,50px);line-height:1.06;margin-top:14px;}
+  .pdp-buybox h1 .accent{color:var(--sky);}
+  .pdp-lead{font-size:17px;color:var(--ink-soft);margin-top:14px;}
+  .buy-feature-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:24px;
+  }
+  .buy-feature{
+    display:flex; align-items:center; gap:10px; background:var(--sand);
+    border:1px solid var(--line); border-radius:var(--radius-sm); padding:12px 14px;
+    font-size:13.5px; font-weight:700; color:var(--navy-2);
+  }
+  .buy-feature .ico{font-size:20px;flex:none;}
+  .buy-ctas{margin-top:26px;display:flex;flex-direction:column;gap:12px;}
+  .buy-ctas .btn{width:100%;justify-content:center;padding:18px;font-size:17px;}
+  .buy-ctas .btn-mission{padding:15px;font-size:15px;}
+  .ship-steps{
+    display:flex; align-items:center; gap:6px; margin-top:28px;
+    background:var(--sand-2); border-radius:var(--radius-sm); padding:16px 10px;
+  }
+  .ship-step{flex:1; text-align:center; font-size:12px; font-weight:800; color:var(--navy-2);}
+  .ship-step .ico{font-size:22px;display:block;margin-bottom:4px;}
+  .ship-arrow{color:var(--line);font-size:18px;flex:none;}
+  .trust-row{
+    margin-top:16px; text-align:center; font-size:12.5px; color:var(--ink-soft); font-weight:700;
+  }
+  @media(max-width:900px){
+    .pdp-grid{grid-template-columns:1fr;gap:28px;}
+    .pdp-mascot{width:76px;left:-10px;bottom:-12px;}
+  }
+
   /* ---------- FEATURE GRID ---------- */
   .features{background:var(--white);}
   .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:20px;}
@@ -458,31 +510,53 @@
 <main id="top">
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
+  <section class="pdp">
+    <div class="wrap pdp-grid">
+      <div class="pdp-gallery">
+        <div class="pdp-main">
+          <img id="pdpMainImg" src="assets/listing-hero.jpg" alt="JUMVI Toss & Catch gift box with 4 paddles, 4 balls, mesh bag and QR mission card" />
+        </div>
+        <img src="assets/coach-leo-180.png" alt="Coach Leo the quokka, JUMVI's mission guide" class="pdp-mascot" />
+        <div class="pdp-thumbs" id="pdpThumbs">
+          <button class="active" onclick="pdpSwap(this,'assets/listing-hero.jpg')"><img src="assets/listing-hero.jpg" alt="Full set thumbnail" /></button>
+          <button onclick="pdpSwap(this,'assets/listing-whats-inside.jpg')"><img src="assets/listing-whats-inside.jpg" alt="What's inside thumbnail" /></button>
+          <button onclick="pdpSwap(this,'assets/listing-lifestyle-1.jpg')"><img src="assets/listing-lifestyle-1.jpg" alt="Kids playing thumbnail" /></button>
+          <button onclick="pdpSwap(this,'assets/listing-benefits.jpg')"><img src="assets/listing-benefits.jpg" alt="Benefits thumbnail" /></button>
+          <button onclick="pdpSwap(this,'assets/listing-comparison.jpg')"><img src="assets/listing-comparison.jpg" alt="Comparison thumbnail" /></button>
+          <button onclick="pdpSwap(this,'assets/listing-gift.jpg')"><img src="assets/listing-gift.jpg" alt="Gift moment thumbnail" /></button>
+        </div>
+      </div>
+
+      <div class="pdp-buybox">
         <span class="eyebrow">📱 Scan &amp; Play · 36 missions inside</span>
         <h1>Toss. Catch. <span class="accent">Level&nbsp;up.</span></h1>
-        <p class="hero-lead">JUMVI™ is the hook-and-loop toss &amp; catch set with a built-in mission system — 36 guided games that grow with your kid, from first catch to champion. Ages 3–8.</p>
-        <div class="hero-ctas">
+        <p class="pdp-lead">JUMVI™ is the hook-and-loop toss &amp; catch set with a built-in mission system — 36 guided games that grow with your kid, from first catch to champion. Ages 3–8.</p>
+
+        <div class="buy-feature-grid">
+          <div class="buy-feature"><span class="ico">🎯</span> 36 Guided Missions</div>
+          <div class="buy-feature"><span class="ico">🛡️</span> CPSIA &amp; ASTM Tested</div>
+          <div class="buy-feature"><span class="ico">📱</span> No App or Signup</div>
+          <div class="buy-feature"><span class="ico">🏅</span> Badges &amp; Certificate</div>
+        </div>
+
+        <div class="buy-ctas">
           <a class="btn btn-primary" href="https://www.amazon.com/dp/B0H16JPQCF" target="_blank" rel="noopener">Buy on Amazon →</a>
           <button type="button" class="btn btn-mission" onclick="openHubModal()">
             <img src="assets/coach-leo-180.png" alt="" class="btn-mascot" /> Meet Coach Leo
           </button>
         </div>
-        <div class="hero-badges">
-          <span>Ages 3–8</span>
-          <span>CPSIA &amp; ASTM F963 tested</span>
-          <span>No batteries · no signup</span>
-          <span>4 paddles · 4 balls · mesh bag</span>
+
+        <div class="ship-steps">
+          <div class="ship-step"><span class="ico">🛒</span>Order on Amazon</div>
+          <div class="ship-arrow">→</div>
+          <div class="ship-step"><span class="ico">📦</span>Prime Shipping</div>
+          <div class="ship-arrow">→</div>
+          <div class="ship-step"><span class="ico">🏡</span>At your door</div>
         </div>
-      </div>
-      <div class="hero-art">
-        <div class="hero-chip">36 missions<small>inside</small></div>
-        <img src="https://shop.jumvi.co/assets/img/hero.jpg" alt="JUMVI toss and catch set: blue and green paddles, three balls, mesh carry bag and Scan & Play mission card" />
-        <img src="assets/coach-leo-180.png" alt="Coach Leo the quokka, JUMVI's mission guide" class="hero-mascot" />
+        <div class="trust-row">Prime eligible · Fast US shipping · 30-day Amazon returns</div>
       </div>
     </div>
+
     <div class="wrap">
       <div class="skill-strip">
         <span>Red Light, Green Light</span><span>Focus &amp; Reflexes</span><span>Movement &amp; Speed</span>
@@ -675,23 +749,6 @@
     </div>
   </section>
 
-  <!-- REAL PHOTOS -->
-  <section class="real-photos">
-    <div class="wrap">
-      <span class="eyebrow">Straight from the box</span>
-      <h2 class="h2">Real photos. Real families.</h2>
-      <p class="lead">No stock photography — this is the actual JUMVI set, straight from the listing.</p>
-      <div class="photo-scroll">
-        <div class="photo-card reveal"><img src="assets/listing-hero.jpg" alt="JUMVI gift box with all set contents laid out" /><span>The full set</span></div>
-        <div class="photo-card reveal"><img src="assets/listing-whats-inside.jpg" alt="Infographic showing everything included in the box" /><span>Everything included</span></div>
-        <div class="photo-card reveal"><img src="assets/listing-lifestyle-1.jpg" alt="Two kids playing JUMVI together in the garden" /><span>Play together</span></div>
-        <div class="photo-card reveal"><img src="assets/listing-benefits.jpg" alt="Kids playing JUMVI with benefit callouts" /><span>Real skills, real fun</span></div>
-        <div class="photo-card reveal"><img src="assets/listing-comparison.jpg" alt="JUMVI compared to basic paddle sets" /><span>Built to last</span></div>
-        <div class="photo-card reveal"><img src="assets/listing-gift.jpg" alt="Father and daughter with the JUMVI gift box" /><span>Gift-ready</span></div>
-      </div>
-    </div>
-  </section>
-
   <!-- COMPARE -->
   <section class="compare">
     <div class="wrap">
@@ -849,6 +906,13 @@
   }));
 
   function openHubModal(){ document.getElementById('hubModal').classList.add('open'); }
+
+  // PDP gallery thumbnail swap
+  function pdpSwap(btn, src){
+    document.getElementById('pdpMainImg').src = src;
+    document.querySelectorAll('#pdpThumbs button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
 
   // Newsletter form -> Formspree
   const newsletterForm = document.getElementById('newsletterForm');
