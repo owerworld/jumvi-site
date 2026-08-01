@@ -400,6 +400,24 @@
     padding:14px 16px; font-size:13.5px; color:var(--navy-2); font-weight:700;
   }
 
+  /* ---------- REAL PHOTOS GALLERY ---------- */
+  .real-photos{background:var(--white);}
+  .photo-scroll{
+    display:flex; gap:18px; overflow-x:auto; margin-top:36px; padding:6px 6px 18px;
+    scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+  }
+  .photo-scroll::-webkit-scrollbar{height:8px;}
+  .photo-scroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px;}
+  .photo-card{flex:none; width:260px; scroll-snap-align:start;}
+  .photo-card img{
+    width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:var(--radius);
+    box-shadow:var(--shadow); border:1px solid var(--line);
+  }
+  .photo-card span{display:block; margin-top:10px; font-weight:800; color:var(--navy); font-size:14.5px;}
+  .closing-banner{margin-top:8px;}
+  .closing-banner img{width:100%; border-radius:var(--radius); box-shadow:var(--shadow-lg);}
+  @media(max-width:640px){ .photo-card{width:210px;} }
+
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
   .reveal.in{opacity:1;transform:translateY(0);}
   @media (prefers-reduced-motion: reduce){
@@ -611,7 +629,7 @@
       <span class="eyebrow">One set, every setting</span>
       <h2 class="h2">Backyard. Beach. Rainy day. Gift time.</h2>
       <div class="adventures-art reveal">
-        <img src="https://shop.jumvi.co/assets/img/adventures.jpg" alt="Four scenes: backyard fun, beach days, indoor play and JUMVI as a gift" />
+        <img src="assets/aplus-every-setting.jpg" alt="JUMVI played in the backyard, at the beach, indoors, and given as a gift" />
       </div>
     </div>
   </section>
@@ -657,6 +675,23 @@
     </div>
   </section>
 
+  <!-- REAL PHOTOS -->
+  <section class="real-photos">
+    <div class="wrap">
+      <span class="eyebrow">Straight from the box</span>
+      <h2 class="h2">Real photos. Real families.</h2>
+      <p class="lead">No stock photography — this is the actual JUMVI set, straight from the listing.</p>
+      <div class="photo-scroll">
+        <div class="photo-card reveal"><img src="assets/listing-hero.jpg" alt="JUMVI gift box with all set contents laid out" /><span>The full set</span></div>
+        <div class="photo-card reveal"><img src="assets/listing-whats-inside.jpg" alt="Infographic showing everything included in the box" /><span>Everything included</span></div>
+        <div class="photo-card reveal"><img src="assets/listing-lifestyle-1.jpg" alt="Two kids playing JUMVI together in the garden" /><span>Play together</span></div>
+        <div class="photo-card reveal"><img src="assets/listing-benefits.jpg" alt="Kids playing JUMVI with benefit callouts" /><span>Real skills, real fun</span></div>
+        <div class="photo-card reveal"><img src="assets/listing-comparison.jpg" alt="JUMVI compared to basic paddle sets" /><span>Built to last</span></div>
+        <div class="photo-card reveal"><img src="assets/listing-gift.jpg" alt="Father and daughter with the JUMVI gift box" /><span>Gift-ready</span></div>
+      </div>
+    </div>
+  </section>
+
   <!-- COMPARE -->
   <section class="compare">
     <div class="wrap">
@@ -694,6 +729,13 @@
         <details class="faq-item"><summary>What if we lose a ball?</summary><div class="a">The set includes 4 balls, so there's always a spare in the mesh bag. If you ever run out, contact us at support@jumvi.co — we'll help make it right.</div></details>
         <details class="faq-item"><summary>Where can I buy JUMVI?</summary><div class="a">JUMVI is sold on Amazon.com with fast Prime shipping.</div></details>
       </div>
+    </div>
+  </section>
+
+  <!-- CLOSING BANNER -->
+  <section style="padding-top:0;padding-bottom:0;">
+    <div class="wrap closing-banner">
+      <img src="assets/aplus-closing.jpg" alt="The days are long, the childhood isn't — JUMVI family moment" />
     </div>
   </section>
 
