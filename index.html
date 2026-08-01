@@ -16,6 +16,21 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/g-hero.jpg" fetchpriority="high">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"Product",
+  "name":"JUMVI Toss & Catch Game Set with 36 Guided Missions",
+  "brand":{"@type":"Brand","name":"JUMVI"},
+  "description":"Hook-and-loop toss & catch paddle set with a built-in mission system: 36 guided games, badges and a printable Champion Certificate. 4 paddles, 4 balls, mesh bag and QR Mission Card. CPSIA & ASTM F963-23 tested. Ages 3–8.",
+  "sku":"JUMVI-001","mpn":"JMV-TC-001",
+  "audience":{"@type":"PeopleAudience","suggestedMinAge":3,"suggestedMaxAge":8},
+  "material":"EVA foam, polyester",
+  "image":["https://jumvi.co/assets/g-hero.jpg","https://jumvi.co/assets/g-inside.jpg","https://jumvi.co/assets/g-size.jpg"],
+  "manufacturer":{"@type":"Organization","name":"SAY23 LLC"},
+  "offers":{"@type":"Offer","availability":"https://schema.org/InStock","url":"https://www.amazon.com/dp/B0H16JPQCF","seller":{"@type":"Organization","name":"Amazon.com"}}
+}
+</script>
 <style>
   :root{
     --navy:#0B2340; --navy-2:#122E52; --sky:#2FB6E8; --lime:#8BD450;
@@ -83,6 +98,42 @@
     border:2.5px solid transparent;cursor:pointer;background:#fff;box-shadow:var(--shadow)}
   .pdp-thumbs button.active{border-color:var(--sky)}
   .pdp-thumbs img{width:100%;height:100%;object-fit:cover}
+
+  .pdp-main{position:relative;cursor:zoom-in}
+  .img-count{position:absolute;right:12px;bottom:12px;background:rgba(11,35,64,.82);color:#fff;
+    font-size:12.5px;font-weight:800;padding:6px 12px;border-radius:999px;z-index:2;pointer-events:none}
+  .zoom-hint{position:absolute;left:12px;bottom:12px;background:rgba(11,35,64,.82);color:#fff;
+    font-size:12px;font-weight:700;padding:6px 11px;border-radius:999px;z-index:2;pointer-events:none}
+  .g-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;
+    border:none;background:rgba(255,255,255,.94);box-shadow:var(--shadow);cursor:pointer;font-size:20px;
+    color:var(--navy);z-index:2;display:flex;align-items:center;justify-content:center}
+  .g-nav.prev{left:10px} .g-nav.next{right:10px}
+  .thumbs-more{font-size:12px;color:var(--ink-soft);font-weight:700;margin-top:6px}
+
+  /* LIGHTBOX */
+  .lb{display:none;position:fixed;inset:0;background:rgba(11,35,64,.94);z-index:200;
+    align-items:center;justify-content:center;padding:16px}
+  .lb.open{display:flex}
+  .lb img{max-width:100%;max-height:86vh;object-fit:contain;border-radius:10px;touch-action:pinch-zoom}
+  .lb .x{position:absolute;top:14px;right:16px;background:rgba(255,255,255,.15);border:none;color:#fff;
+    font-size:26px;width:44px;height:44px;border-radius:50%;cursor:pointer}
+  .lb .nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;
+    border:none;background:rgba(255,255,255,.16);color:#fff;font-size:22px;cursor:pointer}
+  .lb .nav.p{left:14px} .lb .nav.n{right:14px}
+  .lb .cnt{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.8);
+    font-size:13px;font-weight:700}
+
+  /* SHIPPING ACCORDION */
+  .info-acc{margin-top:18px;border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;background:#fff}
+  .info-acc details{border-bottom:1px solid var(--line)}
+  .info-acc details:last-child{border-bottom:none}
+  .info-acc summary{cursor:pointer;padding:14px 16px;font-weight:800;font-size:14px;color:var(--navy);
+    list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:44px}
+  .info-acc summary::-webkit-details-marker{display:none}
+  .info-acc summary::after{content:"+";color:var(--orange);font-size:19px;font-weight:800}
+  .info-acc details[open] summary::after{content:"–"}
+  .info-acc .b{padding:0 16px 14px;font-size:13.5px;color:var(--ink-soft);line-height:1.6}
+  .info-acc .b b{color:var(--navy)}
 
   .pdp-buy h1{font-size:clamp(30px,4.2vw,46px);line-height:1.06;margin-top:12px}
   .pdp-buy h1 .accent{color:var(--sky)}
@@ -274,19 +325,16 @@
 <section class="pdp">
   <div class="wrap pdp-grid">
     <div class="pdp-gallery">
-      <div class="pdp-main"><img id="mainImg" src="assets/g-hero.jpg" alt="JUMVI Toss & Catch gift box with 4 paddles, 4 balls, mesh bag and QR mission card" /></div>
-      <div class="pdp-thumbs" id="thumbs">
-        <button class="active" onclick="swap(this,'assets/g-hero.jpg')"><img src="assets/g-hero.jpg" alt="Full set" loading="lazy" /></button>
-        <button onclick="swap(this,'assets/g-inside.jpg')"><img src="assets/g-inside.jpg" alt="What's inside" loading="lazy" /></button>
-        <button onclick="swap(this,'assets/g-together.jpg')"><img src="assets/g-together.jpg" alt="Kids playing" loading="lazy" /></button>
-        <button onclick="swap(this,'assets/g-playgrow.jpg')"><img src="assets/g-playgrow.jpg" alt="Missions and certificate" loading="lazy" /></button>
-        <button onclick="swap(this,'assets/g-size.jpg')"><img src="assets/g-size.jpg" alt="Size guide" loading="lazy" /></button>
-        <button onclick="swap(this,'assets/g-build.jpg')"><img src="assets/g-build.jpg" alt="Build quality" loading="lazy" /></button>
-        <button onclick="swap(this,'assets/g-settings.jpg')"><img src="assets/g-settings.jpg" alt="Play anywhere" loading="lazy" /></button>
-        <button onclick="swap(this,'assets/g-vs.jpg')"><img src="assets/g-vs.jpg" alt="Versus basic sets" loading="lazy" /></button>
-        <button onclick="swap(this,'assets/g-certified.jpg')"><img src="assets/g-certified.jpg" alt="Certified" loading="lazy" /></button>
-        <button onclick="swap(this,'assets/g-gift.jpg')"><img src="assets/g-gift.jpg" alt="Gift ready" loading="lazy" /></button>
+      <div class="pdp-main" id="mainWrap">
+        <img id="mainImg" src="assets/g-hero.jpg" fetchpriority="high"
+             alt="JUMVI Toss & Catch gift box with 4 paddles, 4 balls, mesh bag and QR mission card" />
+        <button class="g-nav prev" aria-label="Previous image" onclick="go(-1)">‹</button>
+        <button class="g-nav next" aria-label="Next image" onclick="go(1)">›</button>
+        <span class="zoom-hint">🔍 Tap to zoom</span>
+        <span class="img-count" id="imgCount">1 / 10</span>
       </div>
+      <div class="pdp-thumbs" id="thumbs"></div>
+      <div class="thumbs-more">10 photos — swipe or tap an image to zoom</div>
     </div>
 
     <div class="pdp-buy">
@@ -311,6 +359,21 @@
         <div class="s"><span class="i">🎉</span>Mission 1 in 60 sec</div>
       </div>
       <div class="trust">Prime eligible · Fast US shipping · 30-day Amazon returns</div>
+
+      <div class="info-acc">
+        <details open><summary>🚚 Shipping &amp; total cost</summary><div class="b">
+          Sold and shipped through <b>Amazon.com</b>. Prime members get <b>free delivery</b> — the price you see on Amazon is the price you pay, no separate handling fee from us. Standard delivery is typically 2–5 business days within the US.
+        </div></details>
+        <details><summary>↩️ Returns &amp; guarantee</summary><div class="b">
+          Covered by <b>Amazon's standard 30-day return policy</b> — if it isn't right, send it back through your Amazon orders page. Missing or damaged part? Email <b>support@jumvi.co</b> and we'll make it right directly.
+        </div></details>
+        <details><summary>🎁 Buying it as a gift?</summary><div class="b">
+          JUMVI ships in a <b>printed gift-ready box</b> — no extra wrapping needed. At Amazon checkout you can select <b>"This is a gift"</b> to add a gift receipt and hide the price. The QR Mission Card sits inside the box, so the surprise stays intact until it's opened.
+        </div></details>
+        <details><summary>🛡️ Safety &amp; certification</summary><div class="b">
+          Third-party lab tested to <b>CPSIA</b> and <b>ASTM F963-23</b> toy safety standards. Rounded edges, soft EVA foam, kid-safe materials. <b>Choking hazard:</b> contains a small ball — not for children under 3.
+        </div></details>
+      </div>
     </div>
   </div>
 </section>
@@ -560,6 +623,14 @@
   </div>
 </div>
 
+<div class="lb" id="lb">
+  <button class="x" aria-label="Close" onclick="lbClose()">×</button>
+  <button class="nav p" aria-label="Previous" onclick="lbGo(-1)">‹</button>
+  <img id="lbImg" src="" alt="" />
+  <button class="nav n" aria-label="Next" onclick="lbGo(1)">›</button>
+  <span class="cnt" id="lbCount"></span>
+</div>
+
 <div class="ov" id="hub">
   <div class="modal">
     <button class="x" aria-label="Close" onclick="closeHub()">×</button>
@@ -583,8 +654,72 @@
   hb.addEventListener('click',()=>{const o=mm.classList.toggle('open');hb.setAttribute('aria-expanded',o)});
   mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mm.classList.remove('open');hb.setAttribute('aria-expanded','false')}));
 
-  function swap(b,src){document.getElementById('mainImg').src=src;
-    document.querySelectorAll('#thumbs button').forEach(x=>x.classList.remove('active'));b.classList.add('active')}
+  /* ---- GALLERY ---- */
+  const GAL=[
+    ['assets/g-hero.jpg','The complete set in its gift box'],
+    ['assets/g-inside.jpg','Everything included: 4 paddles, 4 balls, mesh bag, QR card'],
+    ['assets/g-size.jpg','In scale: 8.5" paddle and 2.4" ball next to real hands'],
+    ['assets/g-together.jpg','Two kids playing JUMVI in the garden'],
+    ['assets/g-playgrow.jpg','Pick a mission on the phone and earn the Champion Certificate'],
+    ['assets/g-build.jpg','Build quality: loop surface, EVA core, reinforced stitching'],
+    ['assets/g-settings.jpg','Backyard, beach, indoor and park play'],
+    ['assets/g-vs.jpg','JUMVI compared with basic paddle sets'],
+    ['assets/g-certified.jpg','Safety certified, ASTM and CPSIA compliant'],
+    ['assets/g-gift.jpg','Gift-ready: father and daughter opening the box']
+  ];
+  let idx=0;
+  const mainImg=document.getElementById('mainImg'), thumbsEl=document.getElementById('thumbs'),
+        countEl=document.getElementById('imgCount');
+
+  GAL.forEach((g,i)=>{
+    const b=document.createElement('button');
+    b.innerHTML=`<img src="${g[0]}" alt="${g[1]}" loading="lazy">`;
+    b.setAttribute('aria-label',g[1]);
+    b.onclick=()=>show(i);
+    thumbsEl.appendChild(b);
+  });
+
+  function show(i){
+    idx=(i+GAL.length)%GAL.length;
+    mainImg.src=GAL[idx][0]; mainImg.alt=GAL[idx][1];
+    countEl.textContent=`${idx+1} / ${GAL.length}`;
+    [...thumbsEl.children].forEach((b,j)=>b.classList.toggle('active',j===idx));
+    thumbsEl.children[idx].scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'});
+    if(document.getElementById('lb').classList.contains('open')) lbSync();
+  }
+  function go(d){show(idx+d)}
+  show(0);
+
+  // swipe on main image (mobile)
+  let sx=null;
+  const mw=document.getElementById('mainWrap');
+  mw.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+  mw.addEventListener('touchend',e=>{
+    if(sx===null)return; const dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>45){go(dx<0?1:-1)} sx=null;
+  },{passive:true});
+  mainImg.addEventListener('click',lbOpen);
+
+  /* ---- LIGHTBOX ---- */
+  const lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'), lbCount=document.getElementById('lbCount');
+  function lbSync(){lbImg.src=GAL[idx][0];lbImg.alt=GAL[idx][1];lbCount.textContent=`${idx+1} / ${GAL.length}`}
+  function lbOpen(){lbSync();lb.classList.add('open');document.body.style.overflow='hidden'}
+  function lbClose(){lb.classList.remove('open');document.body.style.overflow=''}
+  function lbGo(d){show(idx+d);lbSync()}
+  lb.addEventListener('click',e=>{if(e.target===lb)lbClose()});
+  let lsx=null;
+  lb.addEventListener('touchstart',e=>{if(e.touches.length===1)lsx=e.touches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',e=>{
+    if(lsx===null)return; const dx=e.changedTouches[0].clientX-lsx;
+    if(Math.abs(dx)>45)lbGo(dx<0?1:-1); lsx=null;
+  },{passive:true});
+  document.addEventListener('keydown',e=>{
+    if(lb.classList.contains('open')){
+      if(e.key==='Escape')lbClose();
+      if(e.key==='ArrowRight')lbGo(1);
+      if(e.key==='ArrowLeft')lbGo(-1);
+    }
+  });
 
   function openHub(){document.getElementById('hub').classList.add('open')}
   function closeHub(){document.getElementById('hub').classList.remove('open')}
