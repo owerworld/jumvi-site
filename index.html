@@ -699,7 +699,7 @@
           <h3 style="font-size:22px;margin-top:12px;">Get the printable Mission Book</h3>
           <p style="margin-top:8px;color:var(--ink-soft);max-width:420px;">Join the JUMVI parents' list and we'll send the printable Mission Book, plus a heads-up when new mission packs drop. One email now and then — never spam.</p>
         </div>
-        <form onsubmit="event.preventDefault(); alert('Thanks! (connect this form to your email tool)');">
+        <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thanks — check your inbox!'; this.querySelector('button').disabled=true; this.querySelector('input').disabled=true;">
           <input type="email" placeholder="Parent's email" required />
           <button class="btn btn-primary" type="submit">Sign up</button>
         </form>
