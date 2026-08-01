@@ -699,8 +699,8 @@
           <h3 style="font-size:22px;margin-top:12px;">Get the printable Mission Book</h3>
           <p style="margin-top:8px;color:var(--ink-soft);max-width:420px;">Join the JUMVI parents' list and we'll send the printable Mission Book, plus a heads-up when new mission packs drop. One email now and then — never spam.</p>
         </div>
-        <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thanks — check your inbox!'; this.querySelector('button').disabled=true; this.querySelector('input').disabled=true;">
-          <input type="email" placeholder="Parent's email" required />
+        <form id="newsletterForm" action="https://formspree.io/f/xojgoeaw" method="POST">
+          <input type="email" name="email" placeholder="Parent's email" required />
           <button class="btn btn-primary" type="submit">Sign up</button>
         </form>
       </div>
@@ -777,6 +777,37 @@
   }));
 
   function openHubModal(){ document.getElementById('hubModal').classList.add('open'); }
+
+  // Newsletter form -> Formspree
+  const newsletterForm = document.getElementById('newsletterForm');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const btn = this.querySelector('button');
+      const input = this.querySelector('input');
+      const originalLabel = btn.textContent;
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          btn.textContent = 'Thanks — check your inbox!';
+          input.disabled = true;
+        } else {
+          btn.textContent = originalLabel;
+          btn.disabled = false;
+          alert('Something went wrong — please try again in a moment.');
+        }
+      }).catch(() => {
+        btn.textContent = originalLabel;
+        btn.disabled = false;
+        alert('Something went wrong — please try again in a moment.');
+      });
+    });
+  }
 
   // Close modal on overlay click
   document.getElementById('hubModal').addEventListener('click', (e) => {
