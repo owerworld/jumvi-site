@@ -13,6 +13,10 @@
 <meta property="og:url" content="https://jumvi.co/" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="theme-color" content="#0B2340" />
+<meta name="copyright" content="© 2026 SAY23 LLC. All rights reserved." />
+<meta name="author" content="SAY23 LLC" />
+<meta name="rights" content="JUMVI™ and all product imagery are the property of SAY23 LLC. Unauthorized reproduction prohibited." />
+<meta name="robots" content="index, follow, noimageindex, noarchive, max-image-preview:standard" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -45,6 +49,9 @@
   html{scroll-behavior:smooth}
   body{margin:0;font-family:var(--body);color:var(--ink);background:var(--sand);-webkit-font-smoothing:antialiased;
     overflow-wrap:break-word}
+  /* image protection layer */
+  img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-drag:none;user-drag:none;
+      -webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;user-select:none;pointer-events:auto}
   img{max-width:100%;display:block}
   a{color:inherit;text-decoration:none}
   h1,h2,h3,h4{font-family:var(--display);margin:0;color:var(--navy)}
@@ -703,7 +710,9 @@
       <div><h5>Support</h5><a href="mailto:support@jumvi.co">support@jumvi.co</a><a href="https://www.amazon.com/dp/B0H16JPQCF" target="_blank" rel="noopener">Buy on Amazon</a></div>
     </div>
     <div class="warn">⚠️ WARNING: CHOKING HAZARD — This toy is a small ball. Not for children under 3 yrs.</div>
-    <div class="foot-b">© 2026 SAY23 LLC. All rights reserved. JUMVI™ is a trademark of SAY23 LLC.<br />Amazon and all related marks are trademarks of Amazon.com, Inc. or its affiliates.</div>
+    <div class="foot-b">© 2026 SAY23 LLC. All rights reserved. JUMVI™ is a registered trademark of SAY23 LLC (Delaware, USA).<br />
+    All product photography, illustrations, copy and page design on this site are protected works. Reproduction, scraping, hotlinking or redistribution without written permission is prohibited. Infringement or licensing enquiries: <a href="mailto:support@jumvi.co" style="text-decoration:underline">support@jumvi.co</a><br />
+    Amazon and all related marks are trademarks of Amazon.com, Inc. or its affiliates.</div>
   </div>
 </footer>
 
@@ -744,6 +753,23 @@
   const hb=document.getElementById('hb'),mm=document.getElementById('mm');
   hb.addEventListener('click',()=>{const o=mm.classList.toggle('open');hb.setAttribute('aria-expanded',o)});
   mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mm.classList.remove('open');hb.setAttribute('aria-expanded','false')}));
+
+  /* ---- IMAGE PROTECTION (deterrent layer) ---- */
+  document.addEventListener('dragstart',e=>{if(e.target.tagName==='IMG')e.preventDefault()});
+  document.addEventListener('contextmenu',e=>{
+    if(e.target.tagName==='IMG'){
+      e.preventDefault();
+      const t=document.createElement('div');
+      t.textContent='© 2026 SAY23 LLC — JUMVI™ product images are protected. Licensing: support@jumvi.co';
+      t.style.cssText='position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#0B2340;color:#FBF3E1;'+
+        'padding:11px 18px;border-radius:999px;font:600 13px Nunito,sans-serif;z-index:999;box-shadow:0 8px 24px rgba(0,0,0,.3);'+
+        'max-width:92vw;text-align:center;line-height:1.4';
+      document.body.appendChild(t);
+      setTimeout(()=>t.remove(),2600);
+    }
+  });
+  console.log('%c© 2026 SAY23 LLC — JUMVI™','font:bold 15px sans-serif;color:#2FB6E8');
+  console.log('All imagery, copy and design on this site are protected works. Unauthorized reproduction, scraping or redistribution is prohibited. Licensing enquiries: support@jumvi.co');
 
   /* ---- GALLERY ---- */
   const GAL=[
