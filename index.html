@@ -372,13 +372,33 @@
   }
   .modal-overlay.open{display:flex;}
   .modal-box{
-    background:var(--white);border-radius:var(--radius);max-width:420px;width:100%;
-    padding:30px;text-align:center;box-shadow:var(--shadow-lg);position:relative;
+    background:var(--white); border-radius:var(--radius); max-width:480px; width:100%;
+    padding:28px 24px 30px; text-align:center; box-shadow:var(--shadow-lg); position:relative;
+    max-height:88vh; overflow-y:auto;
   }
-  .modal-box .close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink-soft);}
+  .modal-box .close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink-soft);z-index:2;}
   .modal-box h3{font-size:20px;}
   .modal-box p{margin-top:10px;color:var(--ink-soft);font-size:14.5px;}
   .modal-box .btn{margin-top:20px;width:100%;justify-content:center;}
+
+  .modal-carousel{
+    display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory;
+    margin:18px -4px 6px; padding:4px; -webkit-overflow-scrolling:touch;
+  }
+  .modal-carousel::-webkit-scrollbar{height:6px;}
+  .modal-carousel::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px;}
+  .carousel-slide{flex:none; width:180px; scroll-snap-align:center;}
+  .carousel-slide img{
+    width:100%; border-radius:16px; border:6px solid var(--navy); box-shadow:var(--shadow);
+    display:block;
+  }
+  .carousel-slide span{
+    display:block; margin-top:8px; font-size:12.5px; font-weight:800; color:var(--navy);
+  }
+  .modal-unlock{
+    margin-top:20px; background:var(--sand-2); border:1px dashed var(--sky); border-radius:var(--radius-sm);
+    padding:14px 16px; font-size:13.5px; color:var(--navy-2); font-weight:700;
+  }
 
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
   .reveal.in{opacity:1;transform:translateY(0);}
@@ -758,8 +778,18 @@
     <button class="close" aria-label="Close" onclick="document.getElementById('hubModal').classList.remove('open')">×</button>
     <img src="assets/coach-leo-320.png" alt="Coach Leo the quokka" class="modal-mascot" />
     <h3>Hi, I'm Coach Leo! 👋</h3>
-    <p>I pick today's mission, track streaks and badges, and hand out the Champion Certificate — all without an app or signup. The full Mission Hub only unlocks from the Scan &amp; Play card inside your box.</p>
-    <a class="btn btn-primary" href="https://qr.jumvi.co" target="_blank" rel="noopener">Open the Mission Hub</a>
+    <p>Here's a peek at what's waiting inside your Mission Hub — real missions, a 3D island to explore, streaks, badges and more.</p>
+
+    <div class="modal-carousel">
+      <div class="carousel-slide"><img src="assets/shot-welcome.jpg" alt="Welcome to Leo's Island screen" loading="lazy" /><span>Leo's Island</span></div>
+      <div class="carousel-slide"><img src="assets/shot-today.jpg" alt="Today's mission screen" loading="lazy" /><span>Today's Mission</span></div>
+      <div class="carousel-slide"><img src="assets/shot-power-step.jpg" alt="Power Step mission detail screen" loading="lazy" /><span>Step-by-Step Missions</span></div>
+      <div class="carousel-slide"><img src="assets/shot-mission-path.jpg" alt="Mission path progression screen" loading="lazy" /><span>Mission Path</span></div>
+      <div class="carousel-slide"><img src="assets/shot-stats.jpg" alt="Badges and stats screen" loading="lazy" /><span>Badges &amp; Stats</span></div>
+      <div class="carousel-slide"><img src="assets/shot-leo-island.jpg" alt="3D Leo's Island exploration screen" loading="lazy" /><span>Explore in 3D</span></div>
+    </div>
+
+    <div class="modal-unlock">🎁 Included with every JUMVI set — scan the Scan &amp; Play card in your box to unlock the full Mission Hub.</div>
   </div>
 </div>
 
