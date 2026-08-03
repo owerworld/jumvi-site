@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/g-hero.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="assets/g-together.jpg" fetchpriority="high">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"Product",
@@ -72,6 +72,10 @@
   .lead{font-size:17px;color:var(--ink-soft);margin-top:12px;max-width:640px}
   .center{text-align:center}
   .center .lead{margin-left:auto;margin-right:auto}
+  /* full-width section intros are centred; detail content and split columns stay left */
+  .wrap > .eyebrow{display:flex;width:fit-content;margin-left:auto;margin-right:auto}
+  .wrap > .h2{text-align:center}
+  .wrap > .lead{text-align:center;margin-left:auto;margin-right:auto;max-width:660px}
 
   .btn{font-family:var(--display);font-weight:800;font-size:16px;padding:15px 26px;border-radius:16px;
     display:inline-flex;align-items:center;justify-content:center;gap:9px;border:none;cursor:pointer;
@@ -171,7 +175,8 @@
     border-radius:var(--r-sm);padding:12px 13px;font-size:13.5px;font-weight:700;color:var(--navy-2);
     box-shadow:0 2px 6px rgba(11,26,56,.05)}
   .feat .i{font-size:19px;flex:none}
-  .buy-ctas{margin-top:24px;display:flex;flex-direction:column;gap:11px}
+  .pre-cta{margin-top:20px;margin-bottom:0;font-size:13.5px;font-weight:800;color:var(--lime-dk);text-align:center}
+  .buy-ctas{margin-top:11px;display:flex;flex-direction:column;gap:11px}
   .buy-ctas .btn{width:100%;padding:18px;font-size:17px}
   .buy-ctas .btn-mission{padding:15px;font-size:15px}
   .steps3{display:flex;align-items:center;gap:4px;min-width:0;margin-top:24px;background:var(--sky-pale);border:1.5px solid #CFE4FA;border-radius:var(--r-sm);padding:15px 8px}
@@ -330,6 +335,15 @@
   /* ================= MOBILE ================= */
   @media(max-width:760px){
     .wrap{padding:0 16px}
+    /* every section intro centres on mobile so nothing reads as lopsided */
+    .split > div > .eyebrow{display:flex;width:fit-content;margin-left:auto;margin-right:auto}
+    .split > div > .h2{text-align:center}
+    .split > div > .lead{text-align:center;margin-left:auto;margin-right:auto}
+    /* buy box header centres too, so the whole column reads as one centred stack */
+    .pdp-buy > .eyebrow{display:flex;width:fit-content;margin-left:auto;margin-right:auto}
+    .pdp-buy h1,.pdp-buy .pdp-lead{text-align:center}
+    .pdp-buy .stars{justify-content:center;flex-wrap:wrap;text-align:center}
+    .kit{justify-content:center}
     /* centred blocks read as crooked on narrow screens - left align everything except the final CTA */
     .center,.center .lead{text-align:left;margin-left:0}
     .final .lead,.final{text-align:center}
@@ -445,7 +459,7 @@
   <div class="wrap pdp-grid">
     <div class="pdp-gallery">
       <div class="pdp-main" id="mainWrap">
-        <img id="mainImg" src="assets/g-hero.jpg" fetchpriority="high"
+        <img id="mainImg" src="assets/g-together.jpg" fetchpriority="high"
              alt="JUMVI Toss & Catch gift box with 4 paddles, 4 balls, mesh bag and QR mission card" />
         <button class="g-nav prev" aria-label="Previous image" onclick="go(-1)">‹</button>
         <button class="g-nav next" aria-label="Next image" onclick="go(1)">›</button>
@@ -461,13 +475,13 @@
       <h1>Toss. Catch. <span class="accent">Level&nbsp;up.</span></h1>
       <div class="stars">🛡️ <b>CPSIA &amp; ASTM F963-23 tested</b> · Ages 3–8</div>
       <p class="pdp-lead">The hook-and-loop toss &amp; catch set with a built-in mission system — 36 guided games that grow with your kid, from first catch to champion.</p>
-      <div class="kit"><span>4 Paddles</span><span>4 Balls</span><span>Mesh Bag</span><span>QR Mission Card</span><span>Gift Box</span></div>
       <div class="feats">
         <div class="feat"><span class="i">🎯</span> 36 guided missions</div>
         <div class="feat"><span class="i">📱</span> No app, no signup</div>
         <div class="feat"><span class="i">🏅</span> Badges &amp; certificate</div>
         <div class="feat"><span class="i">💧</span> Beach &amp; pool ready</div>
       </div>
+      <p class="pre-cta">✓ Prime delivery · ✓ 30-day returns · ✓ Ships gift-ready</p>
       <div class="buy-ctas">
         <a class="btn btn-primary" href="https://www.amazon.com/dp/B0H16JPQCF" target="_blank" rel="noopener">Buy on Amazon →</a>
         <button type="button" class="btn btn-mission" onclick="openHub()"><img src="assets/coach-leo-180.png" alt="" class="btn-mascot" /> See what's inside the Mission Hub</button>
@@ -477,7 +491,7 @@
         <div class="s"><span class="i">📦</span>Prime shipping</div><div class="a">→</div>
         <div class="s"><span class="i">🎉</span>Mission 1 in 60 sec</div>
       </div>
-      <div class="trust">Prime eligible · Fast US shipping · 30-day Amazon returns</div>
+      <div class="kit"><span>4 Paddles</span><span>4 Balls</span><span>Mesh Bag</span><span>QR Mission Card</span><span>Gift Box</span></div>
 
       <div class="info-acc">
         <details open><summary>🚚 Shipping &amp; total cost</summary><div class="b">
@@ -796,16 +810,16 @@
 
   /* ---- GALLERY ---- */
   const GAL=[
-    ['assets/g-hero.jpg','The complete set in its gift box'],
-    ['assets/g-inside.jpg','Everything included: 4 paddles, 4 balls, mesh bag, QR card'],
+    ['assets/g-together.jpg','Two kids playing JUMVI together in the garden'],
+    ['assets/g-hero.jpg','The complete set: 4 paddles, 4 balls, mesh bag and gift box'],
     ['assets/g-size.jpg','In scale: 8.5" paddle and 2.4" ball next to real hands'],
-    ['assets/g-together.jpg','Two kids playing JUMVI in the garden'],
+    ['assets/g-inside.jpg','Everything included, laid out'],
     ['assets/g-playgrow.jpg','Pick a mission on the phone and earn the Champion Certificate'],
     ['assets/g-build.jpg','Build quality: loop surface, EVA core, reinforced stitching'],
     ['assets/g-settings.jpg','Backyard, beach, indoor and park play'],
+    ['assets/g-learn.jpg','Develops coordination, focus and reflexes while playing'],
     ['assets/g-vs.jpg','JUMVI compared with basic paddle sets'],
-    ['assets/g-certified.jpg','Safety certified, ASTM and CPSIA compliant'],
-    ['assets/g-gift.jpg','Gift-ready: father and daughter opening the box']
+    ['assets/g-gift.jpg','Gift-ready: opening the box together']
   ];
   let idx=0;
   const mainImg=document.getElementById('mainImg'), thumbsEl=document.getElementById('thumbs'),
