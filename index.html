@@ -8,11 +8,20 @@
 <link rel="canonical" href="https://jumvi.co/" />
 <meta property="og:title" content="JUMVI™ — Toss. Catch. Level up." />
 <meta property="og:description" content="The toss & catch set with 36 guided missions that grow with your kid — from first catch to champion. Ages 3–8." />
-<meta property="og:image" content="https://jumvi.co/assets/g-hero.jpg" />
+<meta property="og:image" content="https://jumvi.co/assets/og-image.jpg" />
 <meta property="og:type" content="product" />
 <meta property="og:url" content="https://jumvi.co/" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="theme-color" content="#0B2340" />
+<meta name="theme-color" content="#0E1F42" />
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="JUMVI" />
+<meta property="og:locale" content="en_US" />
 <meta name="copyright" content="© 2026 SAY23 LLC. All rights reserved." />
 <meta name="author" content="SAY23 LLC" />
 <meta name="rights" content="JUMVI™ and all product imagery are the property of SAY23 LLC. Unauthorized reproduction prohibited." />
@@ -20,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/g-together.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="assets/g-together.webp" fetchpriority="high">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"Product",
@@ -344,6 +353,24 @@
     .pdp-buy h1,.pdp-buy .pdp-lead{text-align:center}
     .pdp-buy .stars{justify-content:center;flex-wrap:wrap;text-align:center}
     .kit{justify-content:center}
+
+    /* ---- centred mobile column: short blocks stack centred, long text stays readable ---- */
+    .feat{justify-content:center;text-align:center}
+    .chk{flex-direction:column;align-items:center;text-align:center;gap:9px}
+    .step{flex-direction:column;align-items:center;text-align:center;gap:11px}
+    .cert{justify-content:center;text-align:center}
+    .pack{text-align:center}
+    .lvl{text-align:center}
+    .card{text-align:center}
+    .thumbs-more{text-align:center}
+    .pdp-thumbs{justify-content:flex-start}
+    .foot{text-align:center}
+    .foot-desc{margin-left:auto;margin-right:auto}
+    .news-box > div{text-align:center}
+    .news-box > div p{margin-left:auto;margin-right:auto}
+    .news-box .eyebrow{display:flex;width:fit-content;margin-left:auto;margin-right:auto}
+    /* long-form text stays left-aligned for readability */
+    .faq summary,.faq .a,.info-acc summary,.info-acc .b{text-align:left}
     /* centred blocks read as crooked on narrow screens - left align everything except the final CTA */
     .center,.center .lead{text-align:left;margin-left:0}
     .final .lead,.final{text-align:center}
@@ -430,12 +457,84 @@
     .lb img{max-height:92vh}
   }
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What ages is JUMVI for?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "JUMVI is designed for ages 3-8. Missions are grouped into three age tracks (3-5, 6-8, 8+), so games always match your kid's stage. Adult supervision is recommended for the youngest players."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Do I need to download an app?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. The QR Mission Card opens the JUMVI Mission Hub in any browser - no download, no account, no email needed to play."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does it need batteries or a subscription?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No batteries, no subscription, ever. The set is ready to play out of the box, and all 36 missions are included."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is it safety tested?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. JUMVI is third-party lab tested to CPSIA and ASTM F963-23 toy safety standards, with rounded edges and kid-safe materials. Choking hazard: contains a small ball, not for children under 3."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can we play indoors?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. The paddles are ultra-light EVA foam and several missions are designed specifically for living-room-friendly play."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is it beach and pool friendly?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. The fabric is splash-friendly and wipe-clean. The mesh bag lets wet gear breathe on the way home."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What if we lose a ball?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The set includes 4 balls, so there is always a spare in the mesh bag. If you ever run out, contact support@jumvi.co and we will help make it right."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Where can I buy JUMVI?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "JUMVI is sold on Amazon.com with fast Prime shipping and Amazon's standard 30-day return policy."
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 
 <header>
   <nav class="nav">
-    <a href="#top" class="brand"><img src="assets/jumvi-logo-navy.png" alt="JUMVI" /></a>
+    <a href="#top" class="brand"><img width="834" height="414" src="assets/jumvi-logo-navy.webp" alt="JUMVI" /></a>
     <div class="nav-links">
       <a href="#how">How it works</a><a href="#missions">Missions</a>
       <a href="#quality">Quality</a><a href="#faq">FAQ</a>
@@ -459,7 +558,7 @@
   <div class="wrap pdp-grid">
     <div class="pdp-gallery">
       <div class="pdp-main" id="mainWrap">
-        <img id="mainImg" src="assets/g-together.jpg" fetchpriority="high"
+        <img width="800" height="800" id="mainImg" src="assets/g-together.webp" fetchpriority="high"
              alt="JUMVI Toss & Catch gift box with 4 paddles, 4 balls, mesh bag and QR mission card" />
         <button class="g-nav prev" aria-label="Previous image" onclick="go(-1)">‹</button>
         <button class="g-nav next" aria-label="Next image" onclick="go(1)">›</button>
@@ -484,7 +583,7 @@
       <p class="pre-cta">✓ Prime delivery · ✓ 30-day returns · ✓ Ships gift-ready</p>
       <div class="buy-ctas">
         <a class="btn btn-primary" href="https://www.amazon.com/dp/B0H16JPQCF" target="_blank" rel="noopener">Buy on Amazon →</a>
-        <button type="button" class="btn btn-mission" onclick="openHub()"><img src="assets/coach-leo-180.png" alt="" class="btn-mascot" /> See what's inside the Mission Hub</button>
+        <button type="button" class="btn btn-mission" onclick="openHub()"><img width="180" height="239" src="assets/coach-leo-180.webp" alt="" class="btn-mascot" /> See what's inside the Mission Hub</button>
       </div>
       <div class="steps3">
         <div class="s"><span class="i">🛒</span>Order on Amazon</div><div class="a">→</div>
@@ -512,7 +611,7 @@
 </section>
 
 <!-- BANNER: real play -->
-<section class="banner banner-flush"><div class="wrap"><img src="assets/b-realplay.jpg" alt="Real play. Real skills. No screens. ASTM F963-23 certified, CPSIA compliant, designed in USA" loading="lazy" /></div></section>
+<section class="banner banner-flush"><div class="wrap"><img width="1200" height="491" src="assets/b-realplay.webp" alt="Real play. Real skills. No screens. ASTM F963-23 certified, CPSIA compliant, designed in USA" loading="lazy" /></div></section>
 
 <!-- WHY -->
 <section>
@@ -540,9 +639,9 @@
         <div class="step reveal"><div class="step-n">1</div><div><h3>Scan the QR card</h3><p>Every set includes a Scan &amp; Play card. It opens the JUMVI Mission Hub in any browser — nothing to install.</p></div></div>
         <div class="step reveal"><div class="step-n">2</div><div><h3>Pick today's mission</h3><p>Coach Leo suggests a mission tuned to your kid's age and level — or browse all 36 and choose your own.</p></div></div>
         <div class="step reveal"><div class="step-n">3</div><div><h3>Play &amp; level up</h3><p>Finish missions to build streaks, earn badges and climb from First Catch to Champion.</p></div></div>
-        <button type="button" class="btn btn-mission" style="margin-top:24px" onclick="openHub()"><img src="assets/coach-leo-180.png" alt="" class="btn-mascot" /> Peek inside the Mission Hub</button>
+        <button type="button" class="btn btn-mission" style="margin-top:24px" onclick="openHub()"><img width="180" height="239" src="assets/coach-leo-180.webp" alt="" class="btn-mascot" /> Peek inside the Mission Hub</button>
       </div>
-      <div class="art reveal"><img src="assets/g-playgrow.jpg" alt="Pick a mission on the phone, earn badges and print the Champion Certificate" loading="lazy" /></div>
+      <div class="art reveal"><img width="800" height="799" src="assets/g-playgrow.webp" alt="Pick a mission on the phone, earn badges and print the Champion Certificate" loading="lazy" /></div>
     </div>
   </div>
 </section>
@@ -561,7 +660,7 @@
       <div class="pack reveal"><div class="i">🎯</div><h4>Solo Practice</h4></div>
       <div class="pack reveal"><div class="i">🎨</div><h4>Creative Games</h4></div>
     </div>
-    <div style="margin-top:36px"><img src="assets/b-pickplay.jpg" alt="Pick. Play. Progress. 36 guided missions across 6 skill packs" style="width:100%;border-radius:var(--r);box-shadow:var(--shadow-lg)" loading="lazy" /></div>
+    <div style="margin-top:36px"><img width="1200" height="491" src="assets/b-pickplay.webp" alt="Pick. Play. Progress. 36 guided missions across 6 skill packs" style="width:100%;border-radius:var(--r);box-shadow:var(--shadow-lg)" loading="lazy" /></div>
   </div>
 </section>
 
@@ -587,7 +686,7 @@
     <h2 class="h2">Stitched, not glued.</h2>
     <p class="lead">Basic sets peel, tear and end up in the bin. JUMVI is built to survive a whole summer — and the one after that.</p>
     <div class="split" style="margin-top:34px">
-      <div class="art reveal"><img src="assets/g-build.jpg" alt="Ultra-stick loop surface, rigid EVA core, tear-resistant backing and reinforced edge stitching" loading="lazy" /></div>
+      <div class="art reveal"><img width="800" height="769" src="assets/g-build.webp" alt="Ultra-stick loop surface, rigid EVA core, tear-resistant backing and reinforced edge stitching" loading="lazy" /></div>
       <div>
         <div class="checks">
           <div class="chk reveal"><div class="c">✓</div><div><h4>Ultra-stick loop surface</h4><p>A generous 8.5" catch face that actually catches — wins from day one.</p></div></div>
@@ -597,7 +696,7 @@
         </div>
       </div>
     </div>
-    <div style="margin-top:34px"><img src="assets/b-safety.jpg" alt="Beach & pool ready, reinforced woven trim, grips fast releases clean, secure adjustable strap" style="width:100%;border-radius:var(--r);box-shadow:var(--shadow)" loading="lazy" /></div>
+    <div style="margin-top:34px"><img width="1200" height="491" src="assets/b-safety.webp" alt="Beach & pool ready, reinforced woven trim, grips fast releases clean, secure adjustable strap" style="width:100%;border-radius:var(--r);box-shadow:var(--shadow)" loading="lazy" /></div>
   </div>
 </section>
 
@@ -610,7 +709,7 @@
       <p class="lead">8.5" paddles with an adjustable strap and 2.4" dual-stick balls — small enough for a 3-year-old, satisfying for a grown-up.</p>
       <div class="kit" style="margin-top:22px"><span>8.5" paddle</span><span>2.4" ball</span><span>15" × 11" bag</span><span>Ages 3–8</span></div>
     </div>
-    <div class="art reveal"><img src="assets/g-size.jpg" alt="Paddle 8.5 inch diameter, ball 2.4 inch diameter, adjustable strap fits kids and adults" loading="lazy" /></div>
+    <div class="art reveal"><img width="800" height="766" src="assets/g-size.webp" alt="Paddle 8.5 inch diameter, ball 2.4 inch diameter, adjustable strap fits kids and adults" loading="lazy" /></div>
   </div>
 </section>
 
@@ -619,7 +718,7 @@
   <div class="wrap center">
     <span class="eyebrow">One set, every setting</span>
     <h2 class="h2">Backyard. Beach. Rainy day. Gift time.</h2>
-    <div style="margin-top:30px"><img src="assets/b-settings.jpg" alt="JUMVI played in the backyard, at the beach, indoors, and given as a gift" style="width:100%;border-radius:var(--r);box-shadow:var(--shadow-lg)" loading="lazy" /></div>
+    <div style="margin-top:30px"><img width="1200" height="491" src="assets/b-settings.webp" alt="JUMVI played in the backyard, at the beach, indoors, and given as a gift" style="width:100%;border-radius:var(--r);box-shadow:var(--shadow-lg)" loading="lazy" /></div>
   </div>
 </section>
 
@@ -636,14 +735,14 @@
         <div class="chk reveal"><div class="c">✓</div><div><h4>Privacy by design</h4><p>No ads, no tracking of kids. Read the full policy in the Hub.</p></div></div>
       </div>
     </div>
-    <div class="art reveal"><img src="assets/g-learn.jpg" alt="Play more, learn more — develops real skills, kids catch it first try, gets kids off screens" loading="lazy" /></div>
+    <div class="art reveal"><img width="800" height="800" src="assets/g-learn.webp" alt="Play more, learn more — develops real skills, kids catch it first try, gets kids off screens" loading="lazy" /></div>
   </div>
 </section>
 
 <!-- IN THE BOX -->
 <section style="background:var(--sand-2)">
   <div class="wrap split">
-    <div class="art reveal"><img src="assets/g-inside.jpg" alt="Everything you need: 4 paddles, 4 balls, gift box, QR mission card and mesh bag" loading="lazy" /></div>
+    <div class="art reveal"><img width="800" height="797" src="assets/g-inside.webp" alt="Everything you need: 4 paddles, 4 balls, gift box, QR mission card and mesh bag" loading="lazy" /></div>
     <div>
       <span class="eyebrow">What's in the box</span>
       <h2 class="h2">Everything you need for Mission 1</h2>
@@ -677,7 +776,7 @@
     </table>
     </div>
     <p style="font-size:12.5px;color:var(--ink-soft);margin-top:10px">*Typical unguided hook-and-loop paddle sets sold without a game system.</p>
-    <div style="margin-top:28px"><img src="assets/g-vs.jpg" alt="JUMVI built to last versus basic sets that fall apart, tear open and have no storage" style="width:100%;border-radius:var(--r);box-shadow:var(--shadow)" loading="lazy" /></div>
+    <div style="margin-top:28px"><img width="800" height="799" src="assets/g-vs.webp" alt="JUMVI built to last versus basic sets that fall apart, tear open and have no storage" style="width:100%;border-radius:var(--r);box-shadow:var(--shadow)" loading="lazy" /></div>
   </div>
 </section>
 
@@ -700,7 +799,7 @@
 </section>
 
 <!-- CLOSING BANNER -->
-<section style="padding-bottom:0"><div class="wrap banner"><img src="assets/b-closing.jpg" alt="The days are long. The childhood isn't." loading="lazy" /></div></section>
+<section style="padding-bottom:0"><div class="wrap banner"><img width="1200" height="491" src="assets/b-closing.webp" alt="The days are long. The childhood isn't." loading="lazy" /></div></section>
 
 <!-- FINAL CTA -->
 <section class="final">
@@ -729,7 +828,7 @@
         <button class="btn btn-primary" type="submit">Send it to me</button>
       </form>
     </div>
-    <p style="font-size:12.5px;color:var(--ink-soft);margin-top:12px">Parents only. Unsubscribe anytime.</p>
+    <p style="font-size:12.5px;color:var(--ink-soft);margin-top:12px">Parents only. Unsubscribe anytime. See our <a href="/privacy" style="text-decoration:underline">privacy policy</a>.</p>
   </div>
 </section>
 
@@ -743,7 +842,7 @@
         <p class="foot-desc">Toss &amp; catch, leveled up. Guided missions that turn play into skills — for ages 3–8.</p>
       </div>
       <div><h5>Product</h5><a href="#how">How it works</a><a href="#missions">The missions</a><a href="#quality">Quality &amp; safety</a><a href="#faq">FAQ</a></div>
-      <div><h5>Play</h5><a href="#" onclick="openHub();return false;">Mission Hub</a><a href="#faq">Help</a></div>
+      <div><h5>Play</h5><a href="#" onclick="openHub();return false;">Mission Hub</a><a href="#faq">Help</a><a href="/privacy">Privacy policy</a></div>
       <div><h5>Support</h5><a href="mailto:support@jumvi.co">support@jumvi.co</a><a href="https://www.amazon.com/dp/B0H16JPQCF" target="_blank" rel="noopener">Buy on Amazon</a></div>
     </div>
     <div class="warn">⚠️ WARNING: CHOKING HAZARD — This toy is a small ball. Not for children under 3 yrs.</div>
@@ -771,16 +870,16 @@
 <div class="ov" id="hub">
   <div class="modal">
     <button class="x" aria-label="Close" onclick="closeHub()">×</button>
-    <img src="assets/coach-leo-320.png" alt="Coach Leo the quokka" class="modal-leo" />
+    <img width="320" height="426" src="assets/coach-leo-320.webp" alt="Coach Leo the quokka" class="modal-leo" />
     <h3>Hi, I'm Coach Leo! 👋</h3>
     <p>Here's a peek at what's waiting inside the Mission Hub — daily missions, a 3D island to explore, streaks, badges and the Champion Certificate.</p>
     <div class="carousel">
-      <div class="slide"><img src="assets/shot-welcome.jpg" alt="Welcome screen" loading="lazy" /><span>Pick an age track</span></div>
-      <div class="slide"><img src="assets/shot-today.jpg" alt="Today's mission" loading="lazy" /><span>Today's mission</span></div>
-      <div class="slide"><img src="assets/shot-power-step.jpg" alt="Mission detail" loading="lazy" /><span>Step-by-step</span></div>
-      <div class="slide"><img src="assets/shot-mission-path.jpg" alt="Mission path" loading="lazy" /><span>Mission path</span></div>
-      <div class="slide"><img src="assets/shot-stats.jpg" alt="Badges and stats" loading="lazy" /><span>Badges &amp; stats</span></div>
-      <div class="slide"><img src="assets/shot-leo-island.jpg" alt="3D island" loading="lazy" /><span>Explore in 3D</span></div>
+      <div class="slide"><img width="420" height="908" src="assets/shot-welcome.webp" alt="Welcome screen" loading="lazy" /><span>Pick an age track</span></div>
+      <div class="slide"><img width="420" height="908" src="assets/shot-today.webp" alt="Today's mission" loading="lazy" /><span>Today's mission</span></div>
+      <div class="slide"><img width="420" height="908" src="assets/shot-power-step.webp" alt="Mission detail" loading="lazy" /><span>Step-by-step</span></div>
+      <div class="slide"><img width="420" height="908" src="assets/shot-mission-path.webp" alt="Mission path" loading="lazy" /><span>Mission path</span></div>
+      <div class="slide"><img width="420" height="908" src="assets/shot-stats.webp" alt="Badges and stats" loading="lazy" /><span>Badges &amp; stats</span></div>
+      <div class="slide"><img width="420" height="908" src="assets/shot-leo-island.webp" alt="3D island" loading="lazy" /><span>Explore in 3D</span></div>
     </div>
     <div class="unlock">🎁 Included with every JUMVI set — scan the Scan &amp; Play card in your box to unlock the full Mission Hub.</div>
   </div>
@@ -810,16 +909,16 @@
 
   /* ---- GALLERY ---- */
   const GAL=[
-    ['assets/g-together.jpg','Two kids playing JUMVI together in the garden'],
-    ['assets/g-hero.jpg','The complete set: 4 paddles, 4 balls, mesh bag and gift box'],
-    ['assets/g-size.jpg','In scale: 8.5" paddle and 2.4" ball next to real hands'],
-    ['assets/g-inside.jpg','Everything included, laid out'],
-    ['assets/g-playgrow.jpg','Pick a mission on the phone and earn the Champion Certificate'],
-    ['assets/g-build.jpg','Build quality: loop surface, EVA core, reinforced stitching'],
-    ['assets/g-settings.jpg','Backyard, beach, indoor and park play'],
-    ['assets/g-learn.jpg','Develops coordination, focus and reflexes while playing'],
-    ['assets/g-vs.jpg','JUMVI compared with basic paddle sets'],
-    ['assets/g-gift.jpg','Gift-ready: opening the box together']
+    ['assets/g-together.webp','Two kids playing JUMVI together in the garden'],
+    ['assets/g-hero.webp','The complete set: 4 paddles, 4 balls, mesh bag and gift box'],
+    ['assets/g-size.webp','In scale: 8.5" paddle and 2.4" ball next to real hands'],
+    ['assets/g-inside.webp','Everything included, laid out'],
+    ['assets/g-playgrow.webp','Pick a mission on the phone and earn the Champion Certificate'],
+    ['assets/g-build.webp','Build quality: loop surface, EVA core, reinforced stitching'],
+    ['assets/g-settings.webp','Backyard, beach, indoor and park play'],
+    ['assets/g-learn.webp','Develops coordination, focus and reflexes while playing'],
+    ['assets/g-vs.webp','JUMVI compared with basic paddle sets'],
+    ['assets/g-gift.webp','Gift-ready: opening the box together']
   ];
   let idx=0;
   const mainImg=document.getElementById('mainImg'), thumbsEl=document.getElementById('thumbs'),
