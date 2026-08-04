@@ -65,7 +65,10 @@
   /* image protection layer */
   img{-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-drag:none;user-drag:none;
       -webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;user-select:none;pointer-events:auto}
-  img{max-width:100%;display:block}
+  /* height:auto is required — every img carries width/height attributes for CLS,
+     and without it the attribute height survives while max-width shrinks the width,
+     stretching the picture vertically */
+  img{max-width:100%;height:auto;display:block}
   a{color:inherit;text-decoration:none}
   h1,h2,h3,h4{font-family:var(--display);margin:0;color:var(--navy)}
   p{margin:0;line-height:1.55}
@@ -105,13 +108,15 @@
   /* NAV */
   header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1.5px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:var(--maxw);margin:0 auto}
+  .nav .brand{display:flex;align-items:center;min-height:44px}
   .nav .brand img{height:32px;width:auto}
   .nav-links{display:flex;gap:26px;font-weight:700;font-size:14.5px}
   .nav-links a{padding:6px 2px;border-bottom:2px solid transparent}
   .nav-links a:hover{border-color:var(--lime)}
   .nav-right{display:flex;align-items:center;gap:12px}
-  .hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px}
-  .hamburger span{display:block;width:24px;height:3px;background:var(--navy);margin:5px 0;border-radius:2px}
+  .hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;
+    min-width:44px;min-height:44px}
+  .hamburger span{display:block;width:24px;height:3px;background:var(--navy);margin:5px auto;border-radius:2px}
   .mobile-menu{display:none;flex-direction:column;background:#fff;border-top:1px solid var(--line);padding:6px 20px 16px}
   .mobile-menu.open{display:flex}
   .mobile-menu a{padding:12px 0;font-weight:700;border-bottom:1.5px solid var(--line)}
@@ -298,7 +303,7 @@
   footer{background:var(--navy);color:rgba(228,240,250,.75);padding:52px 0 26px}
   .foot{display:grid;grid-template-columns:1.4fr repeat(3,minmax(0,1fr));gap:34px}
   .foot h5{font-family:var(--display);color:#fff;font-size:13.5px;letter-spacing:.03em;text-transform:uppercase;margin-bottom:12px}
-  .foot a{display:block;padding:5px 0;font-size:14px}
+  .foot a{display:flex;align-items:center;min-height:44px;padding:5px 0;font-size:14px}
   .foot-brand{font-family:var(--display);font-weight:800;font-size:19px;color:#fff}
   .foot-desc{margin-top:12px;font-size:14px;max-width:270px}
   .warn{margin-top:36px;padding:15px 18px;background:rgba(255,138,30,.14);border:1px solid rgba(255,138,30,.4);
@@ -313,7 +318,10 @@
     box-shadow:0 -8px 24px rgba(11,35,64,.14)}
   .sticky .row{display:flex;align-items:center;gap:11px}
   .sticky .info{flex:1;min-width:0}
-  .sticky .info strong{display:block;font-family:var(--display);color:var(--navy);font-size:13.5px}
+  /* both lines stay single-line: at 320px the subtitle used to wrap to three lines,
+     pushing the bar to 85px and covering content under the 80px body padding */
+  .sticky .info strong,.sticky .info span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sticky .info strong{font-family:var(--display);color:var(--navy);font-size:13.5px}
   .sticky .info span{font-size:11.5px;color:var(--ink-soft)}
   .sticky .btn{padding:13px 20px;font-size:14.5px}
   @media(max-width:760px){.sticky{display:block}body{padding-bottom:72px}}
@@ -365,6 +373,7 @@
     .thumbs-more{text-align:center}
     .pdp-thumbs{justify-content:flex-start}
     .foot{text-align:center}
+    .foot a{justify-content:center}
     .foot-desc{margin-left:auto;margin-right:auto}
     .news-box > div{text-align:center}
     .news-box > div p{margin-left:auto;margin-right:auto}
@@ -385,12 +394,15 @@
     .eyebrow{font-size:11.5px;padding:5px 12px}
 
     /* gallery: edge-to-edge, no clipped corners */
-    .pdp-gallery{margin:0 -16px}
+    /* max-width:none lets the negative margin actually bleed: with max-width:100%
+       the box is clamped back to the grid track and only shifts left, leaving a
+       32px gap on the right */
+    .pdp-gallery{margin:0 -16px;max-width:none}
     .pdp-main{border-radius:0;border-left:none;border-right:none}
     .pdp-thumbs{padding:10px 16px 2px;margin:0;scroll-padding-left:16px}
     .pdp-thumbs button{width:58px;height:58px}
     .thumbs-more{padding:0 16px}
-    .g-nav{width:38px;height:38px;font-size:18px}
+    .g-nav{width:44px;height:44px;font-size:18px}
     .g-nav.prev{left:6px} .g-nav.next{right:6px}
     .zoom-hint,.img-count{font-size:11px;padding:5px 9px;bottom:9px}
 
@@ -940,16 +952,25 @@
     thumbsEl.appendChild(b);
   });
 
-  function show(i){
+  // scrolls the thumb strip only. scrollIntoView would also scroll the page
+  // vertically whenever the strip sits below the fold (landscape phones), so the
+  // page loaded already scrolled a few hundred px down.
+  function centreThumb(){
+    const b=thumbsEl.children[idx];
+    if(!b) return;
+    thumbsEl.scrollTo({left:Math.max(0,b.offsetLeft-(thumbsEl.clientWidth-b.offsetWidth)/2),
+                       behavior:'smooth'});
+  }
+  function show(i,scrollThumb=true){
     idx=(i+GAL.length)%GAL.length;
     mainImg.src=GAL[idx][0]; mainImg.alt=GAL[idx][1];
     countEl.textContent=`${idx+1} / ${GAL.length}`;
     [...thumbsEl.children].forEach((b,j)=>b.classList.toggle('active',j===idx));
-    thumbsEl.children[idx].scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'});
+    if(scrollThumb) centreThumb();
     if(document.getElementById('lb').classList.contains('open')) lbSync();
   }
   function go(d){show(idx+d)}
-  show(0);
+  show(0,false);
 
   // swipe on main image (mobile)
   let sx=null;
