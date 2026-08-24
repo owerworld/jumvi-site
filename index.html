@@ -196,6 +196,7 @@ body.modal-open{overflow:hidden}
   .hub-modal-phone{width:min(300px,76vw)}
 }
 @media(max-width:560px){
+  .hub-modal-close{position:fixed;right:12px;top:calc(12px + env(safe-area-inset-top));}
   .hub-screens{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:3px 17px 18px;margin-left:-17px;margin-right:-17px;-webkit-overflow-scrolling:touch}
   .hub-screens::-webkit-scrollbar{display:none}
   .hub-shot{min-width:76vw;scroll-snap-align:center;border-radius:23px}
@@ -334,6 +335,16 @@ footer{background:#071521;color:#fff;padding:48px 0 88px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
+
+<!-- Microsoft Clarity -->
+<script>
+(function(c,l,a,r,i,t,y){
+  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,"clarity","script","xws3uwygg6");
+</script>
+
 </head>
 <body>
 <!-- JUMVI production homepage -->
@@ -351,7 +362,7 @@ footer{background:#071521;color:#fff;padding:48px 0 88px}
     </nav>
     <div class="nav-actions">
       <a class="btn btn-primary" href="https://www.amazon.com/dp/B0H16JPQCF?maas=maas_adg_D8B6F9FD996EA3884CA69A3B4B3C116F_afap_abs&amp;ref_=aa_maas&amp;tag=maas" target="_blank" rel="noopener">View on Amazon</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span class="menu-lines"></span></button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span class="menu-lines"></span></button>
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
@@ -756,6 +767,18 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Escape') closeHubModal();
   if(e.key==='ArrowLeft'){hubIndex=(hubIndex+hubScreens.length-1)%hubScreens.length;renderHubModal();}
   if(e.key==='ArrowRight'){hubIndex=(hubIndex+1)%hubScreens.length;renderHubModal();}
+});
+
+
+// Conversion/engagement events for Microsoft Clarity.
+document.querySelectorAll('a[href*="amazon.com/dp/B0H16JPQCF"]').forEach(a=>{
+  a.addEventListener('click',()=>{ if(window.clarity) clarity('event','amazon_click'); });
+});
+document.querySelectorAll('a[href="#hub-preview"]').forEach(a=>{
+  a.addEventListener('click',()=>{ if(window.clarity) clarity('event','mission_hub_preview_click'); });
+});
+document.querySelectorAll('[data-hub-index]').forEach(card=>{
+  card.addEventListener('click',()=>{ if(window.clarity) clarity('event','mission_hub_screen_open'); });
 });
 
 </script>
