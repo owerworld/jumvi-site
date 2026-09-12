@@ -13,12 +13,27 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-# --- AI search / citation crawlers: welcome ---
-# OAI-SearchBot is OpenAI's search + citation crawler (ChatGPT search).
-# It is a DIFFERENT agent from GPTBot, the model-training crawler, which stays
-# blocked below. Because this is its own group, the `User-agent: *` group at the
-# bottom - including its `Disallow: /assets/` - does not apply to it.
+# --- AI search / user retrieval: welcome ---
+# These agents answer live user queries and send referral traffic. They are
+# SEPARATE from the model-training crawlers blocked further down: allowing them
+# does not opt this site into training. Each has its own group, so the
+# `User-agent: *` group at the bottom - including its `Disallow: /assets/` -
+# does not apply to any of them.
+#
+# OAI-SearchBot   - OpenAI search + citation (ChatGPT search). Not GPTBot.
+# Claude-SearchBot - Anthropic search indexing. Not ClaudeBot.
+# Claude-User     - Anthropic user-initiated fetch on behalf of a person.
+# PerplexityBot   - Perplexity search index and citation.
 User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
 Allow: /
 
 # --- Search image crawlers: welcome ---
@@ -44,9 +59,6 @@ User-agent: Google-Extended
 Disallow: /
 
 User-agent: CCBot
-Disallow: /
-
-User-agent: PerplexityBot
 Disallow: /
 
 User-agent: Bytespider
