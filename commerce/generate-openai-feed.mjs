@@ -145,6 +145,13 @@ export function buildRow(truth, draft, offer, setup) {
   };
 }
 
+/** How to clear each gate. Printed only for gates that actually fired. */
+const HELP = {
+  product_truth: "correct commerce/product-truth.json",
+  marketplace_seller: "OpenAI onboarding (commerce/openai-onboarding-pack.md)",
+  price: "write a fresh commerce/runtime/amazon-offer.json (commerce/amazon-offer-source.md)",
+};
+
 function main() {
   const emit = process.argv.includes("--emit");
   const truth = loadTruth();
@@ -163,9 +170,15 @@ function main() {
   if (gates.length) {
     console.log(`  REFUSING TO EMIT — ${gates.length} blocker(s):\n`);
     for (const g of gates) console.log(`    [${g.gate}] ${g.reason}\n`);
-    console.log("  This is correct behaviour, not a bug. Resolve the gates first:");
-    console.log("    - marketplace_seller -> OpenAI onboarding (commerce/openai-onboarding-pack.md)");
-    console.log("    - price              -> implement commerce/amazon-offer-source.md\n");
+    // Guidance is derived from the gates that actually fired, so a resolved
+    // blocker stops being advertised as outstanding work.
+    const open = [...new Set(gates.map((g) => g.gate))].filter((g) => HELP[g]);
+    if (open.length) {
+      console.log("  This is correct behaviour, not a bug. Resolve the gates first:");
+      const pad = Math.max(...open.map((g) => g.length));
+      for (const g of open) console.log(`    - ${g.padEnd(pad)} -> ${HELP[g]}`);
+      console.log();
+    }
     process.exit(emit ? 1 : 0);
   }
 
