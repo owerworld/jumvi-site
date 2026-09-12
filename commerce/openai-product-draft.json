@@ -1,0 +1,67 @@
+{
+  "_meta": {
+    "document": "OpenAI Agentic Commerce product feed - INTERNAL DRAFT",
+    "status": "draft",
+    "submittable": false,
+    "do_not_submit_reason": "Blockers: (1) price is REQUIRED and must be current, and no current-price source or update pipeline exists; (2) marketplace_seller requires OpenAI feed setup. seller_url is additionally unresolved pending a verified Amazon seller storefront URL. Image format and availability are NOT blockers - see _field_notes.",
+    "generated_from": "commerce/product-truth.json",
+    "spec_reviewed": "https://developers.openai.com/commerce/specs/feed.md (Stable)",
+    "spec_reviewed_on": "2026-09-12 (re-verified)",
+    "target_feed_format": "JSONL (one record per line). This file is pretty-printed JSON for review only; the emitted feed must be JSONL.",
+    "record_count": 1
+  },
+  "record": {
+    "item_id": "JUMVI-TOSS-CATCH-001",
+    "title": "JUMVI Toss & Catch Game Set - 4 Hand-Strap Paddles, 4 Sticky Balls, 36 Guided Missions, Ages 3-12",
+    "description": "JUMVI Toss & Catch is a 2-4 player toss-and-catch activity set for ages 3-12. The box contains 4 hand-strap EVA paddles, 4 sticky toss-and-catch balls, a mesh carry bag and a QR Mission Card. Scanning the QR Mission Card opens the JUMVI Mission Hub in a mobile browser with 36 Guided Missions across 6 skill packs. No app download and no signup are required.",
+    "url": "https://www.jumvi.co/",
+    "brand": "JUMVI",
+    "seller_name": "SAY23 LLC",
+    "marketplace_seller": null,
+    "image_url": "https://www.jumvi.co/assets/v5-contents.webp",
+    "availability": "unknown",
+    "price": null,
+    "condition": "new",
+    "product_category": "Toys & Games > Outdoor Play > Toss & Catch Games",
+    "gtin": null,
+    "review_count": null,
+    "star_rating": null,
+    "is_eligible_search": true,
+    "is_eligible_checkout": false,
+    "seller_url": null,
+    "seller_privacy_policy": "https://www.jumvi.co/privacy",
+    "seller_tos": null
+  },
+  "_field_notes": {
+    "item_id": "Stable neutral internal ID. Per spec, item_id must stay stable and must never be reused. No better-established internal ID exists in the repository.",
+    "title": "97 characters, within the 150-character limit. Front-loads brand and product type, then the verified contents and age range. No superlatives or promotional padding.",
+    "description": "Plain factual text, 358 characters, well within the 5,000-character limit. Every claim traces to a verified field in product-truth.json.",
+    "url": "The canonical homepage. jumvi.co has no product-detail route; the homepage IS the product page.",
+    "seller_name": "SAY23 LLC is the brand owner and seller of record. This is not the marketplace name - see _marketplace_position below.",
+    "image_url": "Set to the live production WebP full-set shot - the best existing canonical product image for a feed (4 paddles, 4 balls, mesh bag and printed box on white, 1400x1200). The spec says 'Use a direct image URL, such as a JPEG or PNG'; JPEG and PNG are examples and WebP is not documented as rejected. A high-quality JPEG derivative is staged at commerce/assets/jumvi-feed-main.jpg for defensive compatibility, future public path assets/jumvi-feed-main.jpg. Not deployed. Not a blocker.",
+    "availability": "Set to 'unknown', which the spec explicitly accepts. This makes no stock claim and is honest while no automated stock source exists, so availability is NOT a discovery blocker. Automating it to a real in_stock / out_of_stock value via amazon_offer_source remains highly desirable.",
+    "price": "UNRESOLVED and THE blocker. Required by the spec, must be current, and must use '<amount> <CURRENCY>' format e.g. '29.99 USD'. Must be injected at build time from a current verified source. Never hardcode and never reuse a cached value - a required-and-current field cannot be satisfied by a stale constant.",
+    "gtin": "Optional: 'One assigned GTIN: exactly 8, 12, 13, or 14 digits, including a valid check digit.' None verified for JUMVI, and the spec instructs 'do not invent a value to replace a missing GTIN'. Omitted.",
+    "review_count": "Omitted. Recommended by the spec for discovery, but JUMVI has no first-party review corpus. Amazon review data belongs to Amazon and is not republished.",
+    "star_rating": "Omitted, same reason.",
+    "is_eligible_search": "Set true to request search/discovery eligibility. The spec documents this as a request flag that defaults to true; it is NOT a guarantee of display, ranking or inclusion. OpenAI makes no documented promise about visibility or placement.",
+    "is_eligible_checkout": "Set false deliberately. Search/discovery and ChatGPT checkout are separate tracks; the current objective is discovery only. Enabling checkout is a separate decision with its own requirements (seller_tos among them).",
+    "seller_tos": "jumvi.co publishes a privacy policy but no terms of service page. seller_tos is conditionally required for CHECKOUT eligibility, which is intentionally disabled. It is NOT a discovery blocker.",
+    "marketplace_seller": "UNRESOLVED pending OpenAI feed setup. The spec documents it as 'Conditionally required for third-party marketplace offers; requires setup' and defines it as the marketplace where checkout occurs, kept distinct from the supplying seller_name. For JUMVI: seller_name is SAY23 LLC, checkout_location is Amazon US. The exact registered value must come from OpenAI during onboarding and must NOT be guessed.",
+    "mpn": "EXISTS in the Stable spec as an Optional field: 'Manufacturer-assigned part number, preserving its punctuation and casing.' It is required only in the Google-compatible format, 'Required if no valid GTIN and identifier_exists is omitted or true'. We emit nothing: no manufacturer part number is verified for JUMVI, and the spec says plainly 'do not invent a value to replace a missing GTIN'. JMV-TC-001 is NOT emitted here - its semantic use as a public mpn is unverified.",
+    "sku": "There is no distinct 'sku' product-identifier field in the Stable spec. 'sku' appears only as a LEGACY ALIAS FOR item_id: 'Send only one name per value: item_id wins over id and sku'. So writing JUMVI-001 into a 'sku' column would not publish a product identifier at all - it would attempt to set the feed's item_id, which is a different and worse mistake. Nothing is emitted.",
+    "offer_id": "Optional: 'Stable offer ID, unique within the feed. Use it to distinguish offers that share a product URL.' Not needed - single offer, single URL.",
+    "seller_url": "UNRESOLVED, deliberately null. The spec defines it as 'Seller's storefront or profile page. For a marketplace offer, use the specific seller's page.' For a third-party marketplace offer that means the SAY23 LLC seller page on Amazon, not the JUMVI brand site. Presenting https://www.jumvi.co/ here would misrepresent the brand homepage as an Amazon seller profile. jumvi.co remains correct as the product 'url'. Pending a verified Amazon seller storefront/profile URL, which must not be guessed."
+  },
+  "_marketplace_position": {
+    "situation": "The physical product is sold on Amazon US (ASIN B0H16JPQCF) with SAY23 LLC as the seller. jumvi.co is a brand and product-information site with no cart and no checkout.",
+    "spec_support": "SUPPORTED. The Stable product feed specification handles third-party marketplace offers directly. Verbatim: 'For a third-party seller, seller_name identifies that seller and marketplace_seller identifies the marketplace where checkout occurs.' marketplace_seller is documented as 'Conditionally required for third-party marketplace offers; requires setup', defined as 'Marketplace where checkout occurs. Keep distinct from the supplying seller_name.' Verified against https://developers.openai.com/commerce/specs/feed.md on 2026-09-12.",
+    "jumvi_model": {
+      "seller_name": "SAY23 LLC",
+      "checkout_location": "Amazon US",
+      "marketplace_seller": "unresolved_pending_openai_feed_setup"
+    },
+    "why_unresolved": "marketplace_seller 'requires setup'. The exact registered marketplace value is assigned through OpenAI feed onboarding. Guessing a string such as 'Amazon' or 'amazon_us' would be inventing an identifier we have not been given.",
+    "action": "Complete OpenAI feed setup / merchant onboarding and record the value OpenAI supplies, then emit it."
+  }
+}

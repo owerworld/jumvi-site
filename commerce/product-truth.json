@@ -1,0 +1,279 @@
+{
+  "schema_version": "1.0.0",
+  "document": "JUMVI Product Truth",
+  "purpose": "Single internal source of verified product facts. Platform-specific commerce and discovery records (OpenAI, Google, Perplexity, Schema.org) are generated FROM this file. Nothing here is published directly.",
+  "status": "internal-draft",
+  "last_reviewed": "2026-09-12",
+  "internal_item_id": "JUMVI-TOSS-CATCH-001",
+  "internal_item_id_note": "Stable neutral internal identifier chosen for Phase 2A. No pre-existing internal item ID was found in this repository; the only prior identifier strings (JUMVI-001, JMV-TC-001) appear solely inside a noindex draft page and are unresolved - see identifiers.unresolved. This value is an INTERNAL key only and is never emitted as sku or mpn.",
+  "brand": {
+    "name": "JUMVI",
+    "verified": true,
+    "source": "https://www.jumvi.co/ homepage, JSON-LD Brand entity, trademark notice in site footer"
+  },
+  "company": {
+    "legal_name": "SAY23 LLC",
+    "role": "brand owner and seller of record",
+    "verified": true,
+    "source": "https://www.jumvi.co/ footer, homepage JSON-LD Organization entity",
+    "support_email": "support@jumvi.co",
+    "postal_address": null,
+    "postal_address_status": "not_verified",
+    "social_profiles": [],
+    "social_profiles_status": "not_verified"
+  },
+  "product": {
+    "name": "JUMVI Toss & Catch",
+    "category": "Children's toss-and-catch activity game / outdoor active toy",
+    "url": "https://www.jumvi.co/",
+    "condition": "new",
+    "age_range": {
+      "min": 3,
+      "max": 12,
+      "unit": "years"
+    },
+    "players": {
+      "min": 2,
+      "max": 4
+    },
+    "verified": true,
+    "source": "https://www.jumvi.co/ homepage body copy and FAQ; Amazon listing B0H16JPQCF"
+  },
+  "physical_contents": [
+    {
+      "item": "hand-strap EVA paddles",
+      "quantity": 4
+    },
+    {
+      "item": "sticky toss-and-catch balls",
+      "quantity": 4
+    },
+    {
+      "item": "mesh carry bag",
+      "quantity": 1
+    },
+    {
+      "item": "printed retail box",
+      "quantity": 1
+    },
+    {
+      "item": "QR Mission Card",
+      "quantity": 1
+    }
+  ],
+  "digital_mission_hub": {
+    "guided_missions": 36,
+    "skill_packs": 6,
+    "access": "QR Mission Card opens the Mission Hub in a mobile browser",
+    "app_download_required": false,
+    "signup_required": false,
+    "verified": true,
+    "source": "https://www.jumvi.co/ homepage Mission Hub section and FAQ"
+  },
+  "packaging_claims": {
+    "_note": "The printed retail box and the digital Mission Hub are SEPARATE surfaces with SEPARATE claims. They are not in conflict and must never be normalised to a single number.",
+    "printed_retail_box": {
+      "mission_claim_text": "30+ Missions",
+      "applies_to": "physical printed packaging artwork only",
+      "source": "Confirmed by the brand owner (SAY23 LLC). Artifact verification pending: not yet checked against a production artwork file or a photograph of the retail box.",
+      "must_not_be_restated_as": "36 Missions",
+      "verification_level": "brand_owner_confirmed",
+      "artifact_verification": "pending"
+    },
+    "digital_mission_hub": {
+      "mission_claim_text": "36 Guided Missions",
+      "applies_to": "digital Mission Hub only",
+      "verified": true,
+      "source": "https://www.jumvi.co/ homepage and FAQ"
+    },
+    "website_box_mission_claim": null,
+    "website_box_mission_claim_note": "The live homepage makes NO mission-count claim about the printed box. It describes the box only as 'a printed retail box with the physical set and Mission Card presented together'. There is therefore no on-site contradiction to resolve."
+  },
+  "identifiers": {
+    "asin": {
+      "value": "B0H16JPQCF",
+      "marketplace": "amazon_us",
+      "verified": true,
+      "source": "Live Amazon listing linked from https://www.jumvi.co/; appears 9 times in the production homepage"
+    },
+    "gtin": {
+      "value": null,
+      "verified": false,
+      "verification_status": "not_found",
+      "policy": "Do not assert a GTIN in any feed until an independently verified 8/12/13/14-digit value with a valid check digit is on file."
+    },
+    "unresolved": [
+      {
+        "string": "JUMVI-001",
+        "observed_in": "redesign-preview.html (noindex,nofollow draft page), draft Product JSON-LD, field 'sku'",
+        "semantic_use_verified": false,
+        "policy": "Do NOT map to public sku or mpn in any commerce feed until the intended semantic use is explicitly verified and recorded here."
+      },
+      {
+        "string": "JMV-TC-001",
+        "observed_in": "redesign-preview.html (noindex,nofollow draft page), draft Product JSON-LD, field 'mpn'",
+        "semantic_use_verified": false,
+        "policy": "Do NOT map to public sku or mpn in any commerce feed until the intended semantic use is explicitly verified and recorded here."
+      }
+    ],
+    "public_sku": null,
+    "public_mpn": null,
+    "public_sku_mpn_note": "Intentionally null. Emitting either unresolved string as a public sku/mpn would publish an unverified product identity claim."
+  },
+  "marketplace": {
+    "channel": "amazon_us",
+    "marketplace_name": "Amazon",
+    "region": "United States",
+    "listing_url": "https://www.amazon.com/dp/B0H16JPQCF",
+    "checkout_location": "Amazon US",
+    "direct_checkout_on_jumvi_co": false,
+    "verified": true,
+    "source": "Live homepage 'View on Amazon' links resolve to the ASIN detail page; jumvi.co has no cart or checkout.",
+    "openai_feed_model": {
+      "_note": "The OpenAI Stable product feed specification supports third-party marketplace offers. Verbatim: 'For a third-party seller, seller_name identifies that seller and marketplace_seller identifies the marketplace where checkout occurs.' marketplace_seller is documented as 'Conditionally required for third-party marketplace offers; requires setup'. Verified against https://developers.openai.com/commerce/specs/feed.md on 2026-09-12.",
+      "seller_name": "SAY23 LLC",
+      "seller_name_role": "the third-party seller supplying the offer",
+      "checkout_location": "Amazon US",
+      "marketplace_seller": null,
+      "marketplace_seller_status": "unresolved_pending_openai_feed_setup",
+      "marketplace_seller_policy": "The conceptual shape - brand sells as a third-party seller, checkout happens on Amazon - is supported by the Stable specification. The exact registered value must be supplied by OpenAI during feed setup and must NOT be guessed."
+    },
+    "marketplace_id": "ATVPDKIKX0DER",
+    "marketplace_id_note": "Verified Amazon US marketplace identifier. Used by the offer source; not emitted in the OpenAI feed."
+  },
+  "media": {
+    "primary_image_url": "https://www.jumvi.co/assets/v5-hero-action.webp",
+    "additional_image_urls": [
+      "https://www.jumvi.co/assets/v5-hero-product.webp",
+      "https://www.jumvi.co/assets/v5-contents.webp"
+    ],
+    "feed_main_image": {
+      "_note": "The homepage primary image is the lifestyle action shot. For a commerce feed the full-set shot on a white background is the better main image: it shows 4 paddles, 4 balls, the mesh bag and the printed retail box together.",
+      "production_webp_candidate": "https://www.jumvi.co/assets/v5-contents.webp",
+      "production_webp_status": "live, crawlable, 1400x1200",
+      "jpeg_derivative_staged_path": "commerce/assets/jumvi-feed-main.jpg",
+      "jpeg_derivative_future_public_path": "assets/jumvi-feed-main.jpg",
+      "jpeg_derivative_deployed": false
+    },
+    "format_note": "The Stable specification defines image_url as 'Main product image, showing this variant. Use a direct image URL, such as a JPEG or PNG.' JPEG and PNG are given as EXAMPLES; the spec does not state that WebP is rejected. Current production images are WebP and remain valid candidates. A JPEG derivative is prepared as a defensive compatibility optimisation, not because a schema blocker has been demonstrated.",
+    "crawlable": true,
+    "crawlable_source": "Phase 1 removed the asset-level X-Robots-Tag and allowed Googlebot-Image / Bingbot-Image; /assets/ now serves index, follow, max-image-preview:large."
+  },
+  "dynamic_offer_facts": {
+    "_note": "Price and availability are live Amazon offer facts and are never stored here as static values. They are NOT equally blocking - see each entry.",
+    "price": {
+      "value": null,
+      "currency": "USD",
+      "status": "unresolved",
+      "spec_requirement": "REQUIRED by the OpenAI Stable feed specification, in '<amount> <CURRENCY>' format, and must be current.",
+      "blocking": true,
+      "blocking_reason": "This is THE dynamic blocker for submission. There is no current-price source or update pipeline. A price that is required and must be current cannot be satisfied by a one-off manual value that immediately goes stale.",
+      "source_interface": "amazon_offer_source.primary (sp-api:getPricing)",
+      "max_staleness_minutes": 60
+    },
+    "availability": {
+      "value": null,
+      "allowed_values": [
+        "in_stock",
+        "out_of_stock",
+        "pre_order",
+        "backorder",
+        "unknown"
+      ],
+      "status": "unresolved",
+      "spec_requirement": "REQUIRED, but 'unknown' is an explicitly accepted value. Omitted, empty or unrecognised values reject the row.",
+      "blocking": false,
+      "blocking_reason": "Not a discovery blocker. 'unknown' is a valid, honest value that makes no stock claim, so the absence of an automated stock source does not prevent a discovery feed. Automating this to a real in_stock / out_of_stock value remains highly desirable for buyer experience and is expected to help ranking.",
+      "interim_value_for_discovery": "unknown",
+      "source_interface": "amazon_offer_source.optional_availability (sp-api:getInventorySummaries)",
+      "max_staleness_minutes": 60
+    },
+    "source_interfaces": {
+      "amazon_offer_source": {
+        "implemented": false,
+        "priority": "price first - it is the only required-and-must-be-current field with no source",
+        "primary": {
+          "route": "sp-api:getPricing",
+          "api": "Amazon Selling Partner API - Product Pricing API v0",
+          "operation": "getPricing",
+          "item_type": "Asin",
+          "asin": "B0H16JPQCF",
+          "marketplace_id": "ATVPDKIKX0DER",
+          "why": "Official description: 'Returns pricing information for a seller's offer listings based on seller SKU or ASIN.' It is a seller-owned operational source, it accepts the ASIN we have already verified, and it needs no seller SKU to get started.",
+          "documented_rate_limit": "0.5 requests per second, burst 1 (usage plans are dynamic and may be higher)",
+          "source_url": "https://developer-docs.amazon/sp-api/reference/getpricing",
+          "checked_on": "2026-09-12"
+        },
+        "optional_enrichment": {
+          "route": "sp-api:getListingsItem",
+          "api": "Amazon Selling Partner API - Listings Items v2021-08-01",
+          "precondition": "requires a VERIFIED seller SKU, which is not on file",
+          "why": "Richer listing-level attributes once the seller SKU is confirmed. Not required to unblock price."
+        },
+        "optional_availability": {
+          "route": "sp-api:getInventorySummaries",
+          "api": "Amazon Selling Partner API - FBA Inventory",
+          "why": "Real stock automation, to replace availability 'unknown' with a verified value.",
+          "blocking": false
+        },
+        "rejected": [
+          {
+            "route": "Amazon Product Advertising API 5.0 (PA-API 5)",
+            "reason": "DEPRECATED by Amazon and replaced by the Creators API. It is also affiliate/publisher tooling returning general marketplace offers rather than our own seller offer, which is the wrong semantic relationship for stating our own price.",
+            "source_url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation",
+            "checked_on": "2026-09-12"
+          },
+          {
+            "route": "Amazon Creators API",
+            "reason": "Affiliate-oriented successor to PA-API 5. Not a seller-owned source for our own offer price."
+          },
+          {
+            "route": "Scraping the Amazon product page",
+            "reason": "Against Amazon's terms, fragile, and produces data we cannot stand behind."
+          }
+        ],
+        "contract": {
+          "input": {
+            "asin": "B0H16JPQCF",
+            "marketplace_id": "ATVPDKIKX0DER",
+            "item_type": "Asin"
+          },
+          "output": {
+            "price": "string, '<amount> <CURRENCY>' e.g. '29.99 USD'",
+            "availability": "one of the allowed_values above; may remain 'unknown'",
+            "fetched_at": "ISO 8601 timestamp",
+            "source": "sp-api:getPricing"
+          },
+          "on_failure": "Do not emit the record. Never substitute a cached, estimated or previously seen value."
+        }
+      }
+    }
+  },
+  "ratings_and_reviews": {
+    "_note": "No rating or review data is asserted anywhere in this project. Amazon review data belongs to Amazon and is not republished here.",
+    "star_rating": null,
+    "review_count": null,
+    "status": "not_asserted"
+  },
+  "physical_attributes": {
+    "_note": "Not asserted. No verified source in this project for product or package dimensions, weight, or materials beyond the EVA paddle construction stated in the contents list.",
+    "dimensions": null,
+    "weight": null,
+    "certifications": null,
+    "certifications_status": "not_verified"
+  },
+  "canonical_description": "JUMVI is a 2–4 player toss-and-catch activity set for ages 3–12 with 4 hand-strap paddles, 4 sticky balls and 36 Guided Missions across 6 skill packs. The Mission Hub opens in a mobile browser from the QR Mission Card — no app download and no signup.",
+  "drift_targets": {
+    "_note": "Fields the validator compares against the live homepage JSON-LD at https://www.jumvi.co/ to detect factual drift between this file and what is actually published.",
+    "product_name": "JUMVI Toss & Catch",
+    "brand_name": "JUMVI",
+    "organization_name": "SAY23 LLC",
+    "url": "https://www.jumvi.co/",
+    "suggested_min_age": 3,
+    "suggested_max_age": 12,
+    "players": "2-4",
+    "guided_missions": "36",
+    "skill_packs": "6",
+    "asin_same_as": "https://www.amazon.com/dp/B0H16JPQCF"
+  }
+}

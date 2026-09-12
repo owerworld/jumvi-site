@@ -1,0 +1,9 @@
+# Internal, never deployed.
+#
+# This repository deploys its root directory statically, so anything committed
+# here is otherwise publicly fetchable. commerce/ holds the internal JUMVI
+# Product Truth source, platform drafts and the validator - working material,
+# not site content. Excluding it here keeps it out of every deployment
+# (production and preview) rather than relying on robots directives, which
+# would still leave the files downloadable.
+commerce/
