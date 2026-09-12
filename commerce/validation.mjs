@@ -137,8 +137,12 @@ const allEntries = [...entries(truth, "product-truth"), ...entries(feed, "openai
   );
   const skuKey = /^(sku|mpn|public_sku|public_mpn|seller_sku|manufacturer_part_number)$/i;
 
+  // Documentation containers explain WHY these identifiers are not emitted; they
+  // are prose, not assertions. Real emission sites (record.*, identifiers.*) and
+  // the feed-record scan in R12 still catch an actual mapping.
+  const docPath7 = /_field_notes|_meta|_note$|_notes$|\.policy$|policy$|note$/i;
   for (const [p, k, v] of allEntries) {
-    if (!skuKey.test(k) || typeof v !== "string") continue;
+    if (!skuKey.test(k) || typeof v !== "string" || docPath7.test(p)) continue;
     const hit = legacy.find((l) => v.includes(l));
     if (hit && !verifiedMap.has(hit))
       fail("R7 unresolved-id", `${hit} asserted as ${k} at ${p} without a verified semantic mapping`);
@@ -291,6 +295,91 @@ try {
     : fail("R9 drift", `primary image ${truth.media.primary_image_url} not in homepage JSON-LD image list`);
 } catch (err) {
   warn("R9 drift", `drift check skipped - ${err.message}${live ? " (retry without --live to use ./index.html)" : ""}`);
+}
+
+// ------------- R12: spec facts about mpn / sku / gtin must stay accurate
+{
+  const n = feed._field_notes ?? {};
+  const blob = JSON.stringify([truth, feed]);
+
+  // The Stable spec DOES define mpn (Optional). Claiming otherwise is a regression.
+  const denies = /(spec|specification)[^.]{0,60}\b(has|have|defines?|contains?)\s+no\s+(sku\s+or\s+)?mpn|no\s+mpn\s+field|mpn\s+(does\s+not|doesn't)\s+exist/i;
+  const hits = allStrings.filter(([, v]) => denies.test(v));
+  hits.length
+    ? hits.forEach(([p]) => fail("R12 identifier-docs", `documentation claims the spec has no MPN field, at ${p}. mpn exists as an Optional field.`))
+    : pass("R12 identifier-docs", "no claim that the spec lacks an MPN field");
+
+  /exists/i.test(n.mpn ?? "")
+    ? pass("R12 identifier-docs", "mpn documented as existing and optional")
+    : fail("R12 identifier-docs", "_field_notes.mpn must record that mpn exists in the spec as Optional");
+  /alias/i.test(n.sku ?? "")
+    ? pass("R12 identifier-docs", "sku documented as a legacy alias for item_id, not a product identifier")
+    : fail("R12 identifier-docs", "_field_notes.sku must record that sku is only a legacy alias for item_id");
+
+  // Nothing may emit the legacy identifiers, under any field name.
+  for (const legacy of ["JUMVI-001", "JMV-TC-001"]) {
+    const r = feed.record ?? {};
+    Object.entries(r).some(([, v]) => typeof v === "string" && v.includes(legacy))
+      ? fail("R12 identifier-docs", `${legacy} appears in the emitted feed record`)
+      : pass("R12 identifier-docs", `${legacy} is not emitted in the feed record`);
+  }
+  (feed.record?.mpn ?? null) === null && (feed.record?.gtin ?? null) === null
+    ? pass("R12 identifier-docs", "feed emits neither mpn nor gtin")
+    : fail("R12 identifier-docs", "feed must emit neither mpn nor gtin while both are unverified");
+  void blob;
+}
+
+// ------------- R13: seller_url must not misrepresent jumvi.co as a seller page
+{
+  const su = feed.record?.seller_url ?? null;
+  if (su === null) {
+    pass("R13 seller-url", "seller_url is null pending a verified Amazon seller storefront URL");
+  } else if (/jumvi\.co/i.test(su)) {
+    fail("R13 seller-url", `seller_url is ${JSON.stringify(su)}. For a third-party marketplace offer the spec says "use the specific seller's page" - jumvi.co is the brand site, not the SAY23 LLC page on Amazon.`);
+  } else if (/amazon\./i.test(su)) {
+    pass("R13 seller-url", `seller_url points at an Amazon seller page: ${su}`);
+  } else {
+    warn("R13 seller-url", `seller_url is ${JSON.stringify(su)} - confirm it is the seller's marketplace page`);
+  }
+  /pending|unresolved/i.test(feed._field_notes?.seller_url ?? "")
+    ? pass("R13 seller-url", "seller_url documented as pending a verified marketplace seller URL")
+    : fail("R13 seller-url", "_field_notes.seller_url must record why it is unresolved");
+
+  // The product url stays jumvi.co - that part is correct and must not be "fixed".
+  feed.record?.url === truth.product.url
+    ? pass("R13 seller-url", "product url remains the canonical jumvi.co homepage")
+    : fail("R13 seller-url", `feed url drifted from Product Truth: ${JSON.stringify(feed.record?.url)}`);
+}
+
+// ------------- R14: PA-API 5.0 must never be an active price source again
+{
+  const src = truth.dynamic_offer_facts?.source_interfaces?.amazon_offer_source ?? {};
+  src.primary?.route === "sp-api:getPricing"
+    ? pass("R14 price-source", "primary price route is sp-api:getPricing")
+    : fail("R14 price-source", `primary price route must be sp-api:getPricing, got ${JSON.stringify(src.primary?.route)}`);
+
+  const rejected = (src.rejected ?? []).map((r) => String(r.route));
+  rejected.some((r) => /PA-API|Product Advertising/i.test(r))
+    ? pass("R14 price-source", "PA-API 5.0 explicitly recorded as rejected and deprecated")
+    : fail("R14 price-source", "PA-API 5.0 must be listed under rejected routes with its reason");
+
+  // Any PA-API mention outside the rejected block reads as a recommendation.
+  const rejectedBlob = JSON.stringify(src.rejected ?? []);
+  const paapi = /PA-API|Product Advertising API/i;
+  allStrings
+    .filter(([p, v]) => paapi.test(v) && !rejectedBlob.includes(v) && !/rejected|deprecat/i.test(v))
+    .forEach(([p, v]) => fail("R14 price-source", `PA-API referenced outside the rejected block at ${p}: ${JSON.stringify(v.slice(0, 90))}`));
+
+  // Same check across the readiness prose.
+  const md = readFileSync(join(HERE, "platform-readiness.md"), "utf8");
+  const badLine = md.split("\n").find((l) => paapi.test(l) && !/reject|deprecat/i.test(l));
+  badLine
+    ? fail("R14 price-source", `platform-readiness.md recommends PA-API outside a rejection context: ${badLine.trim().slice(0, 90)}`)
+    : pass("R14 price-source", "platform-readiness.md mentions PA-API only as rejected/deprecated");
+
+  /scrap/i.test(JSON.stringify(src.rejected ?? []))
+    ? pass("R14 price-source", "HTML scraping explicitly rejected")
+    : warn("R14 price-source", "scraping is not explicitly listed as rejected");
 }
 
 // ------------------------------------------------------------------- report

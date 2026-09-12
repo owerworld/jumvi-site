@@ -137,7 +137,9 @@
       "marketplace_seller": null,
       "marketplace_seller_status": "unresolved_pending_openai_feed_setup",
       "marketplace_seller_policy": "The conceptual shape - brand sells as a third-party seller, checkout happens on Amazon - is supported by the Stable specification. The exact registered value must be supplied by OpenAI during feed setup and must NOT be guessed."
-    }
+    },
+    "marketplace_id": "ATVPDKIKX0DER",
+    "marketplace_id_note": "Verified Amazon US marketplace identifier. Used by the offer source; not emitted in the OpenAI feed."
   },
   "media": {
     "primary_image_url": "https://www.jumvi.co/assets/v5-hero-action.webp",
@@ -166,7 +168,7 @@
       "spec_requirement": "REQUIRED by the OpenAI Stable feed specification, in '<amount> <CURRENCY>' format, and must be current.",
       "blocking": true,
       "blocking_reason": "This is THE dynamic blocker for submission. There is no current-price source or update pipeline. A price that is required and must be current cannot be satisfied by a one-off manual value that immediately goes stale.",
-      "source_interface": "amazon_offer_source",
+      "source_interface": "amazon_offer_source.primary (sp-api:getPricing)",
       "max_staleness_minutes": 60
     },
     "availability": {
@@ -183,26 +185,64 @@
       "blocking": false,
       "blocking_reason": "Not a discovery blocker. 'unknown' is a valid, honest value that makes no stock claim, so the absence of an automated stock source does not prevent a discovery feed. Automating this to a real in_stock / out_of_stock value remains highly desirable for buyer experience and is expected to help ranking.",
       "interim_value_for_discovery": "unknown",
-      "source_interface": "amazon_offer_source",
+      "source_interface": "amazon_offer_source.optional_availability (sp-api:getInventorySummaries)",
       "max_staleness_minutes": 60
     },
     "source_interfaces": {
       "amazon_offer_source": {
         "implemented": false,
         "priority": "price first - it is the only required-and-must-be-current field with no source",
-        "candidates": [
-          "Amazon Product Advertising API 5.0 (GetItems: Offers.Listings.Price, Offers.Listings.Availability)",
-          "Amazon Selling Partner API (Product Pricing) for the seller's own listing"
+        "primary": {
+          "route": "sp-api:getPricing",
+          "api": "Amazon Selling Partner API - Product Pricing API v0",
+          "operation": "getPricing",
+          "item_type": "Asin",
+          "asin": "B0H16JPQCF",
+          "marketplace_id": "ATVPDKIKX0DER",
+          "why": "Official description: 'Returns pricing information for a seller's offer listings based on seller SKU or ASIN.' It is a seller-owned operational source, it accepts the ASIN we have already verified, and it needs no seller SKU to get started.",
+          "documented_rate_limit": "0.5 requests per second, burst 1 (usage plans are dynamic and may be higher)",
+          "source_url": "https://developer-docs.amazon/sp-api/reference/getpricing",
+          "checked_on": "2026-09-12"
+        },
+        "optional_enrichment": {
+          "route": "sp-api:getListingsItem",
+          "api": "Amazon Selling Partner API - Listings Items v2021-08-01",
+          "precondition": "requires a VERIFIED seller SKU, which is not on file",
+          "why": "Richer listing-level attributes once the seller SKU is confirmed. Not required to unblock price."
+        },
+        "optional_availability": {
+          "route": "sp-api:getInventorySummaries",
+          "api": "Amazon Selling Partner API - FBA Inventory",
+          "why": "Real stock automation, to replace availability 'unknown' with a verified value.",
+          "blocking": false
+        },
+        "rejected": [
+          {
+            "route": "Amazon Product Advertising API 5.0 (PA-API 5)",
+            "reason": "DEPRECATED by Amazon and replaced by the Creators API. It is also affiliate/publisher tooling returning general marketplace offers rather than our own seller offer, which is the wrong semantic relationship for stating our own price.",
+            "source_url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation",
+            "checked_on": "2026-09-12"
+          },
+          {
+            "route": "Amazon Creators API",
+            "reason": "Affiliate-oriented successor to PA-API 5. Not a seller-owned source for our own offer price."
+          },
+          {
+            "route": "Scraping the Amazon product page",
+            "reason": "Against Amazon's terms, fragile, and produces data we cannot stand behind."
+          }
         ],
         "contract": {
           "input": {
-            "asin": "string",
-            "marketplace": "amazon_us"
+            "asin": "B0H16JPQCF",
+            "marketplace_id": "ATVPDKIKX0DER",
+            "item_type": "Asin"
           },
           "output": {
             "price": "string, '<amount> <CURRENCY>' e.g. '29.99 USD'",
-            "availability": "one of the allowed_values above",
-            "retrieved_at": "ISO 8601 timestamp"
+            "availability": "one of the allowed_values above; may remain 'unknown'",
+            "fetched_at": "ISO 8601 timestamp",
+            "source": "sp-api:getPricing"
           },
           "on_failure": "Do not emit the record. Never substitute a cached, estimated or previously seen value."
         }

@@ -54,6 +54,7 @@ pretty-printed for review only.
 | `seller_name` | ready | SAY23 LLC — the third-party seller supplying the offer |
 | `marketplace_seller` | **unresolved** | Conditionally required for this offer shape; requires OpenAI setup |
 | `image_url` | ready | Live production WebP; JPEG derivative staged for compatibility |
+| `seller_url` | **unresolved** | Optional. Must be the SAY23 LLC seller page **on Amazon**, not jumvi.co |
 | `availability` | ready | `unknown` — explicitly accepted, asserts no stock state |
 | `price` | **BLOCKED** | Required **and must be current**. No source exists |
 
@@ -220,9 +221,28 @@ amazon_offer_source
   on failure  do not emit the record — never substitute a cached or estimated value
 ```
 
-Candidate implementations: Amazon Product Advertising API 5.0 (`GetItems` →
-`Offers.Listings.Price` / `Offers.Listings.Availability`), or Selling Partner API Product
-Pricing for the seller's own listing. **Not implemented.** Any generator must fail closed.
+### Source hierarchy — seller-owned only
+
+| Tier | Route | Purpose | Precondition |
+|---|---|---|---|
+| **PRIMARY** | SP-API **Product Pricing API v0 — `getPricing`**, `ItemType=Asin`, ASIN `B0H16JPQCF`, marketplace `ATVPDKIKX0DER` | Current seller offer price | SP-API authorisation |
+| Optional enrichment | SP-API **Listings Items v2021-08-01 — `getListingsItem`** | Richer listing attributes | **Verified seller SKU**, not on file |
+| Optional availability | SP-API **FBA Inventory — `getInventorySummaries`** | Replace `unknown` with real stock | Not blocking |
+
+`getPricing` is the primary because Amazon documents it as returning *"pricing information for a
+seller's offer listings based on seller SKU or ASIN"* — a seller-owned operational source that
+works from the ASIN we have already verified, with no seller SKU required to start.
+Documented rate limit: 0.5 requests/second, burst 1 (usage plans are dynamic).
+
+**Rejected:**
+
+| Route | Why |
+|---|---|
+| **PA-API 5.0** | **Deprecated** by Amazon in favour of the Creators API. Also affiliate/publisher tooling returning general marketplace offers, not our own seller offer |
+| Creators API | Affiliate-oriented successor; wrong relationship for our own price |
+| Scraping Amazon HTML | Against Amazon's terms, fragile, indefensible data |
+
+**Not implemented.** Any generator must fail closed.
 
 Build price first — it is the only required-and-must-be-current field with no source.
 
@@ -232,7 +252,7 @@ Build price first — it is the only required-and-must-be-current field with no 
 
 | # | Item | Severity |
 |---|---|---|
-| 1 | **Current price source** — PA-API 5.0 or SP-API credentials and an update pipeline | **True blocker** for OpenAI submission |
+| 1 | **Current price source** — SP-API authorisation for `getPricing`, plus an update pipeline | **True blocker** for OpenAI submission |
 | 2 | **OpenAI feed onboarding** to obtain the registered `marketplace_seller` value | **True blocker** for this offer shape |
 | 3 | Printed retail box "30+ Missions" artwork confirmation | Recorded `brand_owner_confirmed`, `artifact_verification: pending` |
 | 4 | GTIN / UPC | Optional — recommended field only, omitted safely |
