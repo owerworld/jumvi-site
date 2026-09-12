@@ -3,14 +3,13 @@
     "document": "OpenAI Agentic Commerce product feed - INTERNAL DRAFT",
     "status": "draft",
     "submittable": false,
-    "do_not_submit_reason": "Two blockers: (1) price and availability are unresolved and there is no implemented Amazon offer source; (2) image_url is WebP and the spec requires a direct JPEG or PNG link. See commerce/platform-readiness.md.",
+    "do_not_submit_reason": "One true blocker: price is REQUIRED and must be current, and no current-price source or update pipeline exists. Marketplace onboarding with OpenAI is also required to resolve marketplace_seller. Image format and availability are NOT blockers - see _field_notes.",
     "generated_from": "commerce/product-truth.json",
-    "spec_reviewed": "https://developers.openai.com/commerce/specs/feed/",
+    "spec_reviewed": "https://developers.openai.com/commerce/specs/feed.md (Stable)",
     "spec_reviewed_on": "2026-09-12",
     "target_feed_format": "JSONL (one record per line). This file is pretty-printed JSON for review only; the emitted feed must be JSONL.",
     "record_count": 1
   },
-
   "record": {
     "item_id": "JUMVI-TOSS-CATCH-001",
     "title": "JUMVI Toss & Catch Game Set - 4 Hand-Strap Paddles, 4 Sticky Balls, 36 Guided Missions, Ages 3-12",
@@ -18,47 +17,48 @@
     "url": "https://www.jumvi.co/",
     "brand": "JUMVI",
     "seller_name": "SAY23 LLC",
-    "image_url": null,
-    "availability": null,
+    "marketplace_seller": null,
+    "image_url": "https://www.jumvi.co/assets/v5-contents.webp",
+    "availability": "unknown",
     "price": null,
-
     "condition": "new",
     "product_category": "Toys & Games > Outdoor Play > Toss & Catch Games",
     "gtin": null,
     "review_count": null,
     "star_rating": null,
-
     "is_eligible_search": true,
     "is_eligible_checkout": false,
-
     "seller_url": "https://www.jumvi.co/",
     "seller_privacy_policy": "https://www.jumvi.co/privacy",
     "seller_tos": null
   },
-
   "_field_notes": {
     "item_id": "Stable neutral internal ID. Per spec, item_id must stay stable and must never be reused. No better-established internal ID exists in the repository.",
     "title": "97 characters, within the 150-character limit. Front-loads brand and product type, then the verified contents and age range. No superlatives or promotional padding.",
     "description": "Plain factual text, 358 characters, well within the 5,000-character limit. Every claim traces to a verified field in product-truth.json.",
     "url": "The canonical homepage. jumvi.co has no product-detail route; the homepage IS the product page.",
     "seller_name": "SAY23 LLC is the brand owner and seller of record. This is not the marketplace name - see _marketplace_position below.",
-    "image_url": "UNRESOLVED. product-truth.json media is WebP; the spec requires a direct JPEG or PNG link. A JPEG or PNG derivative of assets/v5-hero-action.webp must be produced and published first.",
-    "availability": "UNRESOLVED by design. A live Amazon offer fact. Must be filled at build time from dynamic_offer_facts.source_interfaces.amazon_offer_source, using one of in_stock / out_of_stock / pre_order / backorder / unknown.",
-    "price": "UNRESOLVED by design. A live Amazon offer fact. Must be filled at build time in the spec's money format, '<amount> <CURRENCY>' e.g. '29.99 USD'. Never hardcode, never reuse a cached value.",
+    "image_url": "Set to the live production WebP full-set shot - the best existing canonical product image for a feed (4 paddles, 4 balls, mesh bag and printed box on white, 1400x1200). The spec says 'Use a direct image URL, such as a JPEG or PNG'; JPEG and PNG are examples and WebP is not documented as rejected. A high-quality JPEG derivative is staged at commerce/assets/jumvi-feed-main.jpg for defensive compatibility, future public path assets/jumvi-feed-main.jpg. Not deployed. Not a blocker.",
+    "availability": "Set to 'unknown', which the spec explicitly accepts. This makes no stock claim and is honest while no automated stock source exists, so availability is NOT a discovery blocker. Automating it to a real in_stock / out_of_stock value via amazon_offer_source remains highly desirable.",
+    "price": "UNRESOLVED and THE blocker. Required by the spec, must be current, and must use '<amount> <CURRENCY>' format e.g. '29.99 USD'. Must be injected at build time from a current verified source. Never hardcode and never reuse a cached value - a required-and-current field cannot be satisfied by a stale constant.",
     "gtin": "Omitted. No GTIN is verified. The spec validates the check digit, and an invented value would fail validation as well as being a false identity claim.",
     "review_count": "Omitted. Recommended by the spec for discovery, but JUMVI has no first-party review corpus. Amazon review data belongs to Amazon and is not republished.",
     "star_rating": "Omitted, same reason.",
     "sku_mpn": "The spec has no sku or mpn field, so no mapping is emitted. Even if a compatible field existed, JUMVI-001 and JMV-TC-001 remain unresolved and must not be mapped - see identifiers.unresolved in product-truth.json.",
     "is_eligible_search": "Set true to request search/discovery eligibility. The spec documents this as a request flag that defaults to true; it is NOT a guarantee of display, ranking or inclusion. OpenAI makes no documented promise about visibility or placement.",
-    "is_eligible_checkout": "Set false. Checkout happens on Amazon, not on jumvi.co. Setting this true requires a completed OpenAI checkout integration (Agentic Checkout / Instant Checkout) that this project does not have.",
-    "seller_tos": "UNRESOLVED. jumvi.co publishes a privacy policy but no terms of service page. The spec lists seller_tos as required for checkout; it is not required for search-only eligibility."
+    "is_eligible_checkout": "Set false deliberately. Search/discovery and ChatGPT checkout are separate tracks; the current objective is discovery only. Enabling checkout is a separate decision with its own requirements (seller_tos among them).",
+    "seller_tos": "jumvi.co publishes a privacy policy but no terms of service page. seller_tos is conditionally required for CHECKOUT eligibility, which is intentionally disabled. It is NOT a discovery blocker.",
+    "marketplace_seller": "UNRESOLVED pending OpenAI feed setup. The spec documents it as 'Conditionally required for third-party marketplace offers; requires setup' and defines it as the marketplace where checkout occurs, kept distinct from the supplying seller_name. For JUMVI: seller_name is SAY23 LLC, checkout_location is Amazon US. The exact registered value must come from OpenAI during onboarding and must NOT be guessed."
   },
-
   "_marketplace_position": {
-    "situation": "The physical product is sold on Amazon US (ASIN B0H16JPQCF). jumvi.co is a brand and product-information site with no cart and no checkout.",
-    "finding": "The published OpenAI product feed specification does NOT define a marketplace_seller field, and the commerce documentation contains no explicit marketplace, third-party-seller, multi-seller or reseller support. Its seller fields are written for a single merchant that both lists and fulfils. This was checked against the feed spec and the consolidated commerce docs on 2026-09-12.",
-    "consequence": "There is no field to add that would correctly express 'listed by SAY23 LLC, transacted on Amazon'. Adding an invented marketplace_seller column would fabricate support that the spec does not document.",
-    "decision": "No marketplace field is emitted. Marketplace/third-party-seller handling must be confirmed directly with OpenAI during merchant onboarding, and any marketplace representation must follow whatever the feed-specific setup they provide actually specifies.",
-    "open_question_for_openai": "Does the programme accept a discovery-only feed from a brand whose checkout is on a third-party marketplace, and if so how should the marketplace and the seller of record be represented?"
+    "situation": "The physical product is sold on Amazon US (ASIN B0H16JPQCF) with SAY23 LLC as the seller. jumvi.co is a brand and product-information site with no cart and no checkout.",
+    "spec_support": "SUPPORTED. The Stable product feed specification handles third-party marketplace offers directly. Verbatim: 'For a third-party seller, seller_name identifies that seller and marketplace_seller identifies the marketplace where checkout occurs.' marketplace_seller is documented as 'Conditionally required for third-party marketplace offers; requires setup', defined as 'Marketplace where checkout occurs. Keep distinct from the supplying seller_name.' Verified against https://developers.openai.com/commerce/specs/feed.md on 2026-09-12.",
+    "jumvi_model": {
+      "seller_name": "SAY23 LLC",
+      "checkout_location": "Amazon US",
+      "marketplace_seller": "unresolved_pending_openai_feed_setup"
+    },
+    "why_unresolved": "marketplace_seller 'requires setup'. The exact registered marketplace value is assigned through OpenAI feed onboarding. Guessing a string such as 'Amazon' or 'amazon_us' would be inventing an identifier we have not been given.",
+    "action": "Complete OpenAI feed setup / merchant onboarding and record the value OpenAI supplies, then emit it."
   }
 }

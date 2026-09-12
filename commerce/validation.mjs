@@ -102,19 +102,29 @@ const allEntries = [...entries(truth, "product-truth"), ...entries(feed, "openai
     node.value === null && node.status === "unresolved"
       ? pass("R5 dynamic-offer", `product-truth ${f} is an unresolved placeholder`)
       : fail("R5 dynamic-offer", `product-truth dynamic_offer_facts.${f} carries a static value: ${JSON.stringify(node.value)}`);
-    feed.record?.[f] === null
-      ? pass("R6 dynamic-offer", `feed ${f} is null pending build-time resolution`)
-      : fail("R6 dynamic-offer", `feed record hardcodes ${f}: ${JSON.stringify(feed.record?.[f])}`);
+  }
+  // price is required AND must be current: it may never be a baked-in constant.
+  feed.record?.price === null
+    ? pass("R6 dynamic-offer", "feed price is null pending build-time injection from a current source")
+    : fail("R6 dynamic-offer", `feed record hardcodes price: ${JSON.stringify(feed.record?.price)}`);
+  // availability is required too, but "unknown" is explicitly accepted by the
+  // spec and asserts nothing about stock, so it is permitted. The four real
+  // stock claims are not, while no verified source exists.
+  {
+    const a = feed.record?.availability;
+    a === "unknown" || a === null
+      ? pass("R6 dynamic-offer", `feed availability is ${JSON.stringify(a)} - no unverified stock claim`)
+      : fail("R6 dynamic-offer", `feed record claims stock state ${JSON.stringify(a)} with no verified source`);
   }
   // Nothing anywhere may look like a baked-in USD amount or an availability enum.
   const money = /\$\s?\d|\b\d+\.\d{2}\s*USD\b/;
   allStrings
     .filter(([p, v]) => money.test(v) && !/_note|note$|contract|_field_notes|policy|source_interface/i.test(p))
     .forEach(([p, v]) => fail("R5 dynamic-offer", `looks like a hardcoded price at ${p}: ${JSON.stringify(v)}`));
-  const avail = /^(in_stock|out_of_stock|pre_order|backorder)$/i;
+  const avail = /^(in_stock|out_of_stock|pre_order|backorder)$/i; // "unknown" excluded on purpose
   allEntries
     .filter(([p, k, v]) => /availability/i.test(k) && typeof v === "string" && avail.test(v) && !/allowed_values/.test(p))
-    .forEach(([p, , v]) => fail("R6 dynamic-offer", `hardcoded availability at ${p}: ${JSON.stringify(v)}`));
+    .forEach(([p, , v]) => fail("R6 dynamic-offer", `unverified stock claim at ${p}: ${JSON.stringify(v)}`));
 }
 
 // --------------------------------------------- R7: JUMVI-001 / JMV-TC-001 as sku/mpn
@@ -150,6 +160,13 @@ const allEntries = [...entries(truth, "product-truth"), ...entries(feed, "openai
     ? pass("R8 packaging", `printed box claim permitted: "${box.mission_claim_text}"`)
     : fail("R8 packaging", `printed box claim must be "30+ Missions", got ${JSON.stringify(box.mission_claim_text)}`);
 
+  box.verification_level === "brand_owner_confirmed"
+    ? pass("R8 packaging", "printed box claim classified brand_owner_confirmed")
+    : fail("R8 packaging", `printed box verification_level must be "brand_owner_confirmed", got ${JSON.stringify(box.verification_level)}`);
+  ["pending", "confirmed"].includes(box.artifact_verification)
+    ? pass("R8 packaging", `printed box artifact_verification = ${box.artifact_verification}`)
+    : fail("R8 packaging", `printed box artifact_verification must be "pending" or "confirmed", got ${JSON.stringify(box.artifact_verification)}`);
+
   /36/.test(box.mission_claim_text ?? "")
     ? fail("R8 packaging", "printed box claim states 36 - the box is 30+, never 36")
     : pass("R8 packaging", "printed box claim does not state 36");
@@ -170,6 +187,56 @@ const allEntries = [...entries(truth, "product-truth"), ...entries(feed, "openai
   truth.digital_mission_hub?.guided_missions === 36
     ? pass("R8 packaging", "digital Mission Hub = 36 Guided Missions")
     : fail("R8 packaging", `digital_mission_hub.guided_missions must be 36, got ${truth.digital_mission_hub?.guided_missions}`);
+}
+
+// ------------------------------- R10: marketplace_seller must not be guessed
+{
+  const m = truth.marketplace?.openai_feed_model ?? {};
+  m.seller_name === "SAY23 LLC"
+    ? pass("R10 marketplace", "seller_name = SAY23 LLC (the supplying third-party seller)")
+    : fail("R10 marketplace", `seller_name must be "SAY23 LLC", got ${JSON.stringify(m.seller_name)}`);
+  m.checkout_location === "Amazon US"
+    ? pass("R10 marketplace", "checkout_location = Amazon US")
+    : fail("R10 marketplace", `checkout_location must be "Amazon US", got ${JSON.stringify(m.checkout_location)}`);
+
+  const unresolved = (v, s) => v === null && s === "unresolved_pending_openai_feed_setup";
+  unresolved(m.marketplace_seller, m.marketplace_seller_status)
+    ? pass("R10 marketplace", "marketplace_seller unresolved_pending_openai_feed_setup - not guessed")
+    : fail("R10 marketplace", `marketplace_seller must stay null with status unresolved_pending_openai_feed_setup until OpenAI supplies it, got ${JSON.stringify(m.marketplace_seller)}`);
+
+  const fm = feed.record?.marketplace_seller ?? null;
+  fm === null
+    ? pass("R10 marketplace", "feed record emits no guessed marketplace_seller")
+    : fail("R10 marketplace", `feed record asserts marketplace_seller ${JSON.stringify(fm)} before onboarding supplied it`);
+
+  // The spec supports this shape - stale "not supported" claims must not linger.
+  const stale = /marketplace_seller (does not exist|is not (defined|documented))|no marketplace[ _-]?seller field|marketplace support is undocumented|assumes only one direct merchant|(documents|contains) no marketplace/i;
+  const hits = allStrings.filter(([, v]) => stale.test(v));
+  hits.length
+    ? hits.forEach(([p]) => fail("R10 marketplace", `stale "marketplace unsupported" claim at ${p} - the Stable spec supports third-party marketplace offers`))
+    : pass("R10 marketplace", "no stale 'marketplace unsupported' claims");
+}
+
+// -------------------------------- R11: image format is advisory, never fatal
+{
+  const fm = truth.media?.feed_main_image ?? {};
+  const url = feed.record?.image_url ?? "";
+  if (/\.(jpe?g|png)$/i.test(url)) pass("R11 image-format", `image_url is a documented example format: ${url}`);
+  else if (/\.webp$/i.test(url))
+    warn("R11 image-format", `image_url is WebP (${url}). The spec says "such as a JPEG or PNG" - examples, not an exclusion - so this is a compatibility recommendation, not a failure. JPEG derivative staged at ${fm.jpeg_derivative_staged_path ?? "(none)"}.`);
+  else if (url) warn("R11 image-format", `image_url has an undocumented extension: ${url}`);
+  else fail("R11 image-format", "image_url is empty - it is a required field");
+
+  // Flag ASSERTIONS that WebP is rejected - not corrections that say it is not.
+  const bad = /openai rejects webp|webp is rejected|webp is not (accepted|allowed|supported)|hard blocker/gi;
+  const negated = (text, at) => /\b(not|never|n't|rather than|instead of)\b/i.test(text.slice(Math.max(0, at - 45), at));
+  const hits = allStrings.filter(([, v]) => {
+    for (const m of v.matchAll(bad)) if (!negated(v, m.index)) return true;
+    return false;
+  });
+  hits.length
+    ? hits.forEach(([p]) => fail("R11 image-format", `overstated image-format claim at ${p} - WebP rejection is not documented`))
+    : pass("R11 image-format", "no overstated WebP-rejection claims");
 }
 
 // ---------------------------------------------- R9: drift vs homepage JSON-LD

@@ -7,23 +7,37 @@ Internal working document. **Nothing in `commerce/` is published, submitted or d
 
 The physical product is sold on **Amazon US (ASIN B0H16JPQCF)**. `jumvi.co` is a brand and
 product-information site: it has **no cart and no checkout**, and its call to action is
-"View on Amazon". Every commerce platform below assumes the merchant both lists *and*
-transacts. That mismatch — not data quality — is the real gate on Phase 2B.
+"View on Amazon". How each platform treats that differs sharply, and the difference is the whole story:
+OpenAI's Stable feed specification **explicitly supports** third-party marketplace offers
+via `marketplace_seller`, so JUMVI's shape is supported and needs onboarding. Google
+Merchant Center does **not** permit it under current landing-page policy.
 
 ## Readiness table
 
-| Platform | Record type | Data ready | Blocked by | Can submit today |
+| Platform | Record type | Status | Primary gate | Submit today |
 |---|---|---|---|---|
-| **OpenAI** — Agentic Commerce product feed | JSONL feed record | 7 of 9 required fields | `image_url` is WebP (spec needs JPEG/PNG); `price` + `availability` unresolved; marketplace position undocumented | **No** |
+| **OpenAI** — Agentic Commerce product feed | JSONL feed record | Data + seller identity ready | **Current price source / update pipeline**, plus marketplace onboarding | **No** |
 | **Google / Gemini** — Merchant Center free listings | Merchant Center product feed | Attribute mapping complete | Landing-page policy: destination must be a checkout on the claimed domain; affiliate/redirect promotion not allowed | **No** |
-| **Perplexity** — Merchant Program | XML/CSV product feed | Attribute mapping complete | Application + manual review; same off-site-checkout question; programme details only confirmable with Perplexity | **No** |
+| **Perplexity** — Merchant Program | XML/CSV product feed | Attribute mapping complete (provisional) | Application + manual review; same off-domain-checkout question | **No** |
 | **Claude / web search** | *(none — HTML + JSON-LD)* | **Live since Phase 1** | — | **Already done** |
 
----
+### OpenAI component status
+
+| Component | Status |
+|---|---|
+| Product identity / data | **READY** |
+| Seller identity | **READY** — `seller_name` = SAY23 LLC |
+| Marketplace architecture | **SUPPORTED IN SPEC, ONBOARDING REQUIRED** |
+| Main image | **READY**, with format-compatibility follow-up |
+| Availability | **CAN USE `unknown`** — automation recommended, not blocking |
+| Price | **BLOCKED** until a current verified price pipeline exists |
+| Search eligibility | **READY IN PRINCIPLE** |
+| Checkout | **Intentionally disabled** |
 
 ## OpenAI — Agentic Commerce product feed
 
-Spec reviewed 2026-09-12: <https://developers.openai.com/commerce/specs/feed/>
+Stable specification reviewed 2026-09-12:
+<https://developers.openai.com/commerce/specs/feed.md>
 
 Draft record: `commerce/openai-product-draft.json`. Feed format is **JSONL**; the draft is
 pretty-printed for review only.
@@ -37,41 +51,79 @@ pretty-printed for review only.
 | `description` | ready | 358 / 5,000 chars, plain factual text |
 | `url` | ready | `https://www.jumvi.co/` — the homepage *is* the product page |
 | `brand` | ready | JUMVI |
-| `seller_name` | ready | SAY23 LLC |
-| `image_url` | **blocked** | Spec requires a direct JPEG/PNG link; current assets are WebP |
-| `availability` | **unresolved by design** | Live Amazon offer fact |
-| `price` | **unresolved by design** | Live Amazon offer fact |
+| `seller_name` | ready | SAY23 LLC — the third-party seller supplying the offer |
+| `marketplace_seller` | **unresolved** | Conditionally required for this offer shape; requires OpenAI setup |
+| `image_url` | ready | Live production WebP; JPEG derivative staged for compatibility |
+| `availability` | ready | `unknown` — explicitly accepted, asserts no stock state |
+| `price` | **BLOCKED** | Required **and must be current**. No source exists |
 
-### Marketplace position — read this before adding any column
+### Marketplace model — supported by the spec
 
-The published feed specification defines **no `marketplace_seller` field**, and the
-consolidated commerce documentation contains **no marketplace, third-party-seller,
-multi-seller or reseller support**. Its seller fields are written for a single merchant
-that both lists and fulfils. Verified against the feed spec and `llms-full.txt` on
-2026-09-12.
+The Stable specification handles third-party marketplace offers directly. Verbatim:
 
-So there is no correct column to add for "listed by SAY23 LLC, transacted on Amazon".
-Inventing one would fabricate support the spec does not document. **No marketplace field
-is emitted.** This must be settled directly with OpenAI during merchant onboarding.
+> For a third-party seller, `seller_name` identifies that seller and `marketplace_seller`
+> identifies the marketplace where checkout occurs.
 
-Question to put to them: *does the programme accept a discovery-only feed from a brand
-whose checkout is on a third-party marketplace, and if so how should the marketplace and
-the seller of record be represented?*
+`marketplace_seller` is documented as *"Conditionally required for third-party marketplace
+offers; requires setup"*, defined as *"Marketplace where checkout occurs. Keep distinct
+from the supplying `seller_name`."*
 
-### Eligibility flags
+JUMVI's shape — a brand selling as a third-party seller with checkout on Amazon — is
+therefore a **supported conceptual shape** in the specification, not an unsupported edge
+case. What it needs is feed setup:
+
+| Concept | Value |
+|---|---|
+| `seller_name` | SAY23 LLC |
+| checkout location | Amazon US |
+| `marketplace_seller` | `unresolved_pending_openai_feed_setup` |
+
+The exact registered marketplace value is assigned through OpenAI feed onboarding.
+Guessing a string such as `Amazon` or `amazon_us` would be inventing an identifier we have
+not been given, so nothing is emitted until OpenAI supplies it.
+
+### The one true dynamic blocker: price
+
+`price` is **required and must be current**. That combination is what blocks submission —
+not a missing value, but a missing *pipeline*. A manually entered figure satisfies the
+schema for a day and is wrong thereafter, which is worse than not submitting.
+`amazon_offer_source` in `product-truth.json` declares the contract; it is not implemented.
+
+`availability` is a different case. It is required, but `unknown` is an explicitly accepted
+value and makes no stock claim, so the absence of an automated stock source is **not** a
+discovery blocker. The draft uses `unknown`. Automating it to a real `in_stock` /
+`out_of_stock` value remains highly desirable for buyer experience and is expected to help
+ranking — it is an upgrade, not a gate.
+
+### Image format
+
+The spec defines `image_url` as *"Main product image, showing this variant. Use a direct
+image URL, such as a JPEG or PNG."* JPEG and PNG are given as **examples**; the spec does
+not state that WebP is rejected.
+
+The record uses the live production WebP full-set shot —
+`https://www.jumvi.co/assets/v5-contents.webp`, 1400×1200, the best existing canonical
+product image for a feed (4 paddles, 4 balls, mesh bag and printed box on white). A
+high-quality JPEG derivative is staged at `commerce/assets/jumvi-feed-main.jpg` as a
+**defensive compatibility optimisation**, with future public path
+`assets/jumvi-feed-main.jpg`. Not deployed. The validator warns about format; it never
+fails on it.
+
+### Search versus checkout — separate tracks
+
+The current objective is **search / product discovery only**.
 
 - `is_eligible_search: true` — a **request** for discovery eligibility. The spec documents
   it as defaulting to true and makes **no promise** of display, ranking or inclusion.
-  Submitting a feed does not guarantee a product is ever shown.
-- `is_eligible_checkout: false` — checkout is on Amazon. Setting this true requires a
-  completed OpenAI checkout integration this project does not have.
+- `is_eligible_checkout: false` — deliberate. ChatGPT checkout is a separate track with its
+  own requirements.
+- `seller_tos` is absent (jumvi.co has a privacy policy but no terms page). It is
+  conditionally required for **checkout** eligibility and is **not a discovery blocker**.
 
 ### Omitted recommended fields
 
 `gtin` (none verified), `review_count` and `star_rating` (no first-party review corpus;
 Amazon's review data is Amazon's and is not republished).
-
----
 
 ## Google / Gemini — Merchant Center free listings
 
@@ -158,7 +210,8 @@ actually published, so this foundation cannot silently drift.
 ## Dynamic offer facts — the interface, not the values
 
 `price` and `availability` are live Amazon facts and are **never** stored statically.
-`product-truth.json` declares the contract only:
+They are **not equally blocking**: `price` is required *and must be current*, while
+`availability` can honestly be `unknown`. `product-truth.json` declares the contract only:
 
 ```
 amazon_offer_source
@@ -171,17 +224,21 @@ Candidate implementations: Amazon Product Advertising API 5.0 (`GetItems` →
 `Offers.Listings.Price` / `Offers.Listings.Availability`), or Selling Partner API Product
 Pricing for the seller's own listing. **Not implemented.** Any generator must fail closed.
 
+Build price first — it is the only required-and-must-be-current field with no source.
+
 ---
 
 ## Open items requiring human verification
 
-| # | Item | Why it is blocking |
+| # | Item | Severity |
 |---|---|---|
-| 1 | Printed retail box "30+ Missions" claim | Recorded on the brand owner's statement; not confirmed against artwork or a box photograph |
-| 2 | GTIN / UPC | None found. Required before any feed can carry a product identifier |
-| 3 | `JUMVI-001` / `JMV-TC-001` intended semantic use | Until recorded, neither may be mapped to public `sku` or `mpn` |
-| 4 | JPEG/PNG product image derivative | OpenAI spec rejects WebP for `image_url` |
-| 5 | Amazon offer source credentials and access | Needed before any feed can carry price or availability |
-| 6 | Terms of service page for `jumvi.co` | Listed as required for checkout eligibility; not required for search-only |
-| 7 | Whether direct checkout on `jumvi.co` is ever intended | Decides whether Google Merchant Center is reachable at all |
-| 8 | SAY23 LLC business address and verified social profiles | Would strengthen the Organization entity; currently unasserted |
+| 1 | **Current price source** — PA-API 5.0 or SP-API credentials and an update pipeline | **True blocker** for OpenAI submission |
+| 2 | **OpenAI feed onboarding** to obtain the registered `marketplace_seller` value | **True blocker** for this offer shape |
+| 3 | Printed retail box "30+ Missions" artwork confirmation | Recorded `brand_owner_confirmed`, `artifact_verification: pending` |
+| 4 | GTIN / UPC | Optional — recommended field only, omitted safely |
+| 5 | `JUMVI-001` / `JMV-TC-001` intended semantic use | Not blocking — the spec has no sku/mpn field |
+| 6 | Deploy `assets/jumvi-feed-main.jpg` | Compatibility follow-up, not a blocker |
+| 7 | Automated availability source | Desirable upgrade from `unknown`, not a blocker |
+| 8 | Terms of service page for `jumvi.co` | Checkout-only; not a discovery blocker |
+| 9 | Whether direct checkout on `jumvi.co` is ever intended | Decides whether Google Merchant Center is reachable |
+| 10 | SAY23 LLC business address and verified social profiles | Would strengthen the Organization entity |
