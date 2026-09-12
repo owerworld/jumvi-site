@@ -30,7 +30,7 @@
         },
         {
           "key": "X-Robots-Tag",
-          "value": "index, follow, noarchive, noimageindex, max-image-preview:standard"
+          "value": "index, follow, max-image-preview:large"
         },
         {
           "key": "X-Copyright",
@@ -47,7 +47,7 @@
         },
         {
           "key": "X-Robots-Tag",
-          "value": "noimageindex, noarchive"
+          "value": "noarchive"
         },
         {
           "key": "Cross-Origin-Resource-Policy",
@@ -55,7 +55,7 @@
         },
         {
           "key": "Timing-Allow-Origin",
-          "value": "https://jumvi.co"
+          "value": "https://www.jumvi.co"
         }
       ]
     },

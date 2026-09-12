@@ -13,12 +13,22 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-# --- Image scrapers / hotlink harvesters: blocked ---
+# --- AI search / citation crawlers: welcome ---
+# OAI-SearchBot is OpenAI's search + citation crawler (ChatGPT search).
+# It is a DIFFERENT agent from GPTBot, the model-training crawler, which stays
+# blocked below. Because this is its own group, the `User-agent: *` group at the
+# bottom - including its `Disallow: /assets/` - does not apply to it.
+User-agent: OAI-SearchBot
+Allow: /
+
+# --- Search image crawlers: welcome ---
+# These are the first-party image crawlers for Google and Bing, not hotlink
+# harvesters. They need /assets/ to understand the canonical product imagery.
 User-agent: Googlebot-Image
-Disallow: /assets/
+Allow: /
 
 User-agent: Bingbot-Image
-Disallow: /assets/
+Allow: /
 
 # --- AI training crawlers: blocked ---
 User-agent: GPTBot
@@ -105,4 +115,4 @@ User-agent: *
 Allow: /
 Disallow: /assets/
 
-Sitemap: https://jumvi.co/sitemap.xml
+Sitemap: https://www.jumvi.co/sitemap.xml
