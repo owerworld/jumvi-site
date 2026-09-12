@@ -1,9 +1,0 @@
-{
-  "asin": "B0H16JPQCF",
-  "marketplace_id": "ATVPDKIKX0DER",
-  "currency": "USD",
-  "price": 32.99,
-  "fetched_at": "2026-09-12T23:41:38.489Z",
-  "source": "sp-api:getPricing",
-  "availability": "unknown"
-}
