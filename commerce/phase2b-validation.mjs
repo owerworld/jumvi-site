@@ -27,6 +27,16 @@ const fail = (r, m) => fails.push(`${r}: ${m}`);
 const pass = (r, m) => passes.push(`${r}: ${m}`);
 const warn = (r, m) => warns.push(`${r}: ${m}`);
 
+/** Nth cell (1-based) of the markdown table row whose first cell matches `re`. */
+function tableCell(md, re, n = 2) {
+  for (const line of md.split("\n")) {
+    if (!line.trim().startsWith("|")) continue;
+    const cells = line.split("|").slice(1, -1).map((c) => c.trim());
+    if (cells.length >= n && re.test(cells[0])) return cells[n - 1];
+  }
+  return null;
+}
+
 const NOW = new Date();
 /** A snapshot that satisfies every gate. Mutated per case below. */
 const validOffer = () => ({
@@ -61,17 +71,36 @@ const has = (gs, gate, re) => gs.some((g) => g.gate === gate && (!re || re.test(
     ? pass("P1 pack-agreement", "pack carries no contradicting age range")
     : warn("P1 pack-agreement", "pack does not restate the 3-12 age range");
 
-  /is_eligible_search[^\n]*true/i.test(pack) && /is_eligible_checkout[^\n]*false/i.test(pack)
-    ? pass("P1 pack-agreement", "pack states search true / checkout false")
-    : fail("P1 pack-agreement", "pack must state is_eligible_search true and is_eligible_checkout false");
+  {
+    // Read the VALUE CELL, not the whole row - the rationale cell legitimately
+    // mentions the other value and would satisfy a row-wide scan.
+    const searchVal = tableCell(pack, /is_eligible_search/);
+    const checkoutVal = tableCell(pack, /is_eligible_checkout/);
+    searchVal === "`true`"
+      ? pass("P1 pack-agreement", "eligibility table value for is_eligible_search is `true`")
+      : fail("P1 pack-agreement", `is_eligible_search value cell must be \`true\`, got ${JSON.stringify(searchVal)}`);
+    checkoutVal === "`false`"
+      ? pass("P1 pack-agreement", "eligibility table value for is_eligible_checkout is `false`")
+      : fail("P1 pack-agreement", `is_eligible_checkout value cell must be \`false\`, got ${JSON.stringify(checkoutVal)}`);
+    // Nothing anywhere may assert checkout eligibility while it is disabled.
+    const asserts = pack.split("\n").filter((l) => /is_eligible_checkout[^\n]{0,30}\btrue\b/i.test(l));
+    asserts.length
+      ? asserts.forEach((l) => fail("P1 pack-agreement", `pack asserts checkout eligibility: ${l.trim().slice(0, 80)}`))
+      : pass("P1 pack-agreement", "pack never asserts is_eligible_checkout true");
+  }
 
   pack.includes("Eligibility does not guarantee display")
     ? pass("P1 pack-agreement", "pack records that eligibility does not guarantee display")
     : fail("P1 pack-agreement", "pack must record the official 'Eligibility does not guarantee display' caveat");
 
-  /not supplied/i.test(pack)
-    ? pass("P1 pack-agreement", "pack marks unverified company details as not supplied")
-    : fail("P1 pack-agreement", "pack must mark address / socials as not supplied rather than inventing them");
+  // Check the Company table cells themselves. A "Not supplied" heading elsewhere
+  // in the document must not satisfy this.
+  for (const [label, re] of [["business address", /business address/i], ["social profiles", /social profiles/i]]) {
+    const cell = tableCell(pack, re);
+    /not supplied/i.test(cell ?? "")
+      ? pass("P1 pack-agreement", `${label} marked not supplied`)
+      : fail("P1 pack-agreement", `${label} must be marked "not supplied" rather than invented, got ${JSON.stringify(cell)}`);
+  }
 
   // Every material OpenAI fact needs a confidence rating.
   ["official", "unknown"].every((c) => new RegExp(`\\*\\*${c}\\*\\*`, "i").test(pack))
@@ -160,9 +189,9 @@ const has = (gs, gate, re) => gs.some((g) => g.gate === gate && (!re || re.test(
   /getPricing/.test(offerDoc) && /PRIMARY|Primary/.test(offerDoc)
     ? pass("P5 price-source", "offer-source design names getPricing as primary")
     : fail("P5 price-source", "offer-source design must name getPricing as the primary route");
-  /scrap/i.test(offerDoc)
-    ? pass("P5 price-source", "HTML scraping explicitly rejected")
-    : fail("P5 price-source", "offer-source design must explicitly reject scraping");
+  offerDoc.split("\n").some((l) => /scrap/i.test(l) && /reject|against .{0,20}terms|must not|do not/i.test(l))
+    ? pass("P5 price-source", "HTML scraping rejected on an explicit rejection line")
+    : fail("P5 price-source", "offer-source design must reject scraping explicitly - a passing mention elsewhere is not enough");
 }
 
 // -------------------------------------------------- P6: seller_url stays honest
