@@ -1,0 +1,5 @@
+# Runtime inputs carry live offer data and setup values. Never committed.
+# The whole commerce/ tree is already excluded from deployment by /.vercelignore.
+*
+!.gitignore
+!README.md

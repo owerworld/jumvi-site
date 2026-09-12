@@ -20,7 +20,10 @@
     "postal_address": null,
     "postal_address_status": "not_verified",
     "social_profiles": [],
-    "social_profiles_status": "not_verified"
+    "social_profiles_status": "not_verified",
+    "privacy_policy_url": "https://www.jumvi.co/privacy",
+    "terms_of_service_url": null,
+    "terms_of_service_status": "not_published_checkout_only_requirement"
   },
   "product": {
     "name": "JUMVI Toss & Catch",
