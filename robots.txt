@@ -13,12 +13,37 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-# --- Image scrapers / hotlink harvesters: blocked ---
+# --- AI search / user retrieval: welcome ---
+# These agents answer live user queries and send referral traffic. They are
+# SEPARATE from the model-training crawlers blocked further down: allowing them
+# does not opt this site into training. Each has its own group, so the
+# `User-agent: *` group at the bottom - including its `Disallow: /assets/` -
+# does not apply to any of them.
+#
+# OAI-SearchBot   - OpenAI search + citation (ChatGPT search). Not GPTBot.
+# Claude-SearchBot - Anthropic search indexing. Not ClaudeBot.
+# Claude-User     - Anthropic user-initiated fetch on behalf of a person.
+# PerplexityBot   - Perplexity search index and citation.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# --- Search image crawlers: welcome ---
+# These are the first-party image crawlers for Google and Bing, not hotlink
+# harvesters. They need /assets/ to understand the canonical product imagery.
 User-agent: Googlebot-Image
-Disallow: /assets/
+Allow: /
 
 User-agent: Bingbot-Image
-Disallow: /assets/
+Allow: /
 
 # --- AI training crawlers: blocked ---
 User-agent: GPTBot
@@ -34,9 +59,6 @@ User-agent: Google-Extended
 Disallow: /
 
 User-agent: CCBot
-Disallow: /
-
-User-agent: PerplexityBot
 Disallow: /
 
 User-agent: Bytespider
@@ -105,4 +127,4 @@ User-agent: *
 Allow: /
 Disallow: /assets/
 
-Sitemap: https://jumvi.co/sitemap.xml
+Sitemap: https://www.jumvi.co/sitemap.xml
